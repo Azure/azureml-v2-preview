@@ -21,7 +21,7 @@ const features = [
     imageUrl: 'img/undraw_docusaurus_tree.svg',
     description: (
       <>
-        A User Guide for AMLv2.
+        A user guide for AMLv2.
       </>
     ),
   },
