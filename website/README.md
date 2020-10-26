@@ -8,7 +8,7 @@ This website is built using [Docusaurus 2](https://v2.docusaurus.io/), a modern 
 
 ##  Contributions
 
-Make PR's against the `main` branch
+Make PR's against the `main` branch with changes to the `website` directory
 
 ```bash
 git clone git@github.com:Azure/azureml-v2-preview.git
