@@ -2,11 +2,11 @@ module.exports = {
   title: 'Azure Machine Learning (AML)',
   tagline: 'this website is under development',
   url: 'https://github.com/Azure/',
-  baseUrl: '/azureml-examples/',
+  baseUrl: '/azureml-v2-preview/',
   onBrokenLinks: 'ignore',
   favicon: 'img/logo.svg',
   organizationName: 'Azure', // Usually your GitHub org/user name.
-  projectName: 'azureml-examples', // Usually your repo name.
+  projectName: 'azureml-v2-preview', // Usually your repo name.
   themeConfig: {
     navbar: {
       title: 'Azure Machine Learning',
