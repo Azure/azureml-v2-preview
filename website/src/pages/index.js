@@ -12,18 +12,16 @@ const features = [
     imageUrl: 'img/undraw_docusaurus_mountain.svg',
     description: (
       <>
-        A cheat sheet for common use cases with AML.
-        Get 80% of what you need in 20% of the documentation.
+        A cheat sheet for AMLv2.
       </>
     ),
   },
   {
-    title: 'VS Code Integration',
+    title: 'User Guide',
     imageUrl: 'img/undraw_docusaurus_tree.svg',
     description: (
       <>
-        These VS Code snippets will make you 100x more productive with AML,
-        or your money back.
+        A User Guide for AMLv2.
       </>
     ),
   },
@@ -32,8 +30,7 @@ const features = [
     imageUrl: 'img/undraw_docusaurus_react.svg',
     description: (
       <>
-        Make it easy to start a new project with scaffolding set up for you. No
-        more wasting time with boilerplate!
+        Powerful CLI tools to accelerate and scale auditable ML in the cloud.
       </>
     ),
   },
@@ -72,7 +69,7 @@ function Home() {
                 styles.getStarted,
               )}
               to={useBaseUrl('docs/cheatsheet/')}>
-              Get Started
+              Cheat Sheet 
             </Link>
           </div>
         </div>

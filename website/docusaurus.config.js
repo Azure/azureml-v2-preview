@@ -1,5 +1,5 @@
 module.exports = {
-  title: 'Azure Machine Learning (AML)',
+  title: 'AMLv2',
   tagline: 'this website is under development',
   url: 'https://github.com/Azure/',
   baseUrl: '/azureml-v2-preview/',
@@ -9,7 +9,7 @@ module.exports = {
   projectName: 'azureml-v2-preview', // Usually your repo name.
   themeConfig: {
     navbar: {
-      title: 'Azure Machine Learning',
+      title: 'AMLv2',
       logo: {
         alt: 'My Site Logo',
         src: 'img/logo.svg',
@@ -20,13 +20,18 @@ module.exports = {
           label: 'Cheat Sheet',
           position: 'left',
         },
+        {
+          to: 'docs/userguide/',
+          label: 'User Guide',
+          position: 'left',
+        },
         // {position: 'left', type: 'docsVersionDropdown'},
         // {
         //   to: 'docs/cbdocs/cookbook',
         //   label: 'Cookbook',
         //   position: 'left',
         // },
-        {to: 'docs/vs-code-snippets/snippets', label: 'Snippets', position: 'left'},
+        // {to: 'docs/vs-code-snippets/snippets', label: 'Snippets', position: 'left'},
         // {to: 'blog', label: 'Blog', position: 'left'},
         // {
         //   to: 'docs/userguide/',
@@ -47,17 +52,9 @@ module.exports = {
           title: 'Documentation',
           items: [
             {
-              label: 'Microsoft Docs',
-              href: 'https://docs.microsoft.com/azure/machine-learning',
-            },
-            {
               label: 'GitHub',
-              href: 'https://github.com/Azure/azureml-examples',
+              href: 'https://github.com/Azure/azureml-v2-preview',
             },
-            {
-              label: 'Python SDK API',
-              href: 'https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py'
-            }
           ],
         },
         {
@@ -65,12 +62,8 @@ module.exports = {
           items: [
             {
               label: 'GitHub (Issues)',
-              href: 'https://github.com/Azure/azureml-examples/issues',
+              href: 'https://github.com/Azure/azureml-v2-preview/issues',
             },
-            {
-              label: 'Stack Overflow',
-              href: 'https://stackoverflow.microsoft.com/questions/tagged/10888',
-            }
           ],
         },
         {
@@ -80,10 +73,6 @@ module.exports = {
               label: 'Blog',
               to: 'blog',
             },
-            {
-              label: 'User Guide',
-              to: 'docs/userguide/',
-            }
           ],
         },
       ],
