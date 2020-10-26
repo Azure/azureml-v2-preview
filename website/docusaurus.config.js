@@ -96,7 +96,7 @@ module.exports = {
           sidebarPath: require.resolve('./sidebars.js'),
           // Please change this to your repo.
           editUrl:
-            'https://github.com/Azure/azureml-examples/tree/main/website/',
+            'https://github.com/Azure/azureml-v2-preview/tree/main/website/',
         },
         cookbook: {
           sidebarPath: require.resolve('./sidebars.js'),
@@ -105,7 +105,7 @@ module.exports = {
           showReadingTime: true,
           // Please change this to your repo.
           editUrl:
-            'https://github.com/Azure/azureml-examples/tree/main/website/blog',
+            'https://github.com/Azure/azureml-v2-preview/tree/main/website/blog',
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
