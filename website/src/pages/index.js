@@ -18,7 +18,7 @@ const features = [
   },
   {
     title: 'User Guide',
-    imageUrl: 'img/undraw_docusaurus_tree.svg',
+    imageUrl: 'img/undraw_docusaurus_react.svg',
     description: (
       <>
         A user guide for AMLv2.
@@ -27,7 +27,7 @@ const features = [
   },
   {
     title: 'Command Line Tools',
-    imageUrl: 'img/undraw_docusaurus_react.svg',
+    imageUrl: 'img/undraw_docusaurus_tree.svg',
     description: (
       <>
         Powerful CLI tools to accelerate and scale auditable ML in the cloud.
