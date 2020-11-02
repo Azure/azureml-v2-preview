@@ -1,6 +1,6 @@
 module.exports = {
   mainSidebar: {
-    'Menu': [
+    'Cheat Sheet': [
       {
         type: 'doc',
         id: 'cheatsheet/cheatsheet'
@@ -15,7 +15,7 @@ module.exports = {
         type: 'category',
         label: 'Basic Assets',
         collapsed: false,
-        items: ['cheatsheet/workspace', 'cheatsheet/compute-targets', 'cheatsheet/environment', 'cheatsheet/data'],
+        items: ['cheatsheet/compute', 'cheatsheet/environment', 'cheatsheet/data'],
       },
       {
         type: 'category',
@@ -50,18 +50,5 @@ module.exports = {
         items: ['userguide/workspace', 'userguide/job', 'userguide/endpoint', 'userguide/data', 'userguide/compute', 'userguide/model']
       }
     ],
-  },
-  secondaySidebar: {
-    Cookbook: [
-      {
-        type: 'doc',
-        id: 'cbdocs/cookbook',
-      },
-      {
-        type: 'category',
-        label: 'Setup',
-        items: ['cbdocs/setup-sdk', 'cbdocs/setup-notebook'],
-      }
-    ]
   }
 };

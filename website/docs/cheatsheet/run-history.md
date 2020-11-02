@@ -39,8 +39,6 @@ epoch=1, batch= 6000: loss 1.66
 
 You may log metrics to Azure ML with `run.log('<metric_name>', metric_value)` and monitor them in the studio:
 
-![](img/logging-metrics.png)
-
 The training concludes, usually some model files are saved, and the nodes are
 released.
 

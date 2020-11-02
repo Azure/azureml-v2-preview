@@ -104,5 +104,3 @@ run.complete()                              # stop interactive run
 ```
 
 Follow the link to the run to see the metric logging in real time.
-
-![](img/run-ex-sine.png)
