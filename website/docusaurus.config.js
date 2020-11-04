@@ -67,7 +67,7 @@ module.exports = {
       placeholder: 'Search'
     },
     googleAnalytics: {
-      trackingID: '',
+      trackingID: 'G-2DKKZ26VP0',
     }
   },
   presets: [
