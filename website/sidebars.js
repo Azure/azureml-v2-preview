@@ -1,24 +1,4 @@
 module.exports = {
-  mainSidebar: {
-    'Cheat Sheet': [
-      {
-        type: 'doc',
-        id: 'cheatsheet/cheatsheet'
-      },
-      {
-        type: 'category',
-        label: 'Getting Started',
-        collapsed: false,
-        items: ['cheatsheet/installation'],
-      },
-      {
-        type: 'category',
-        label: 'Basic Assets',
-        collapsed: false,
-        items: ['cheatsheet/compute', 'cheatsheet/environment', 'cheatsheet/data'],
-      },
-    ],
-  },
   userguide:{
     'User Guide': [
       {

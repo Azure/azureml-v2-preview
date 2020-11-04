@@ -16,28 +16,10 @@ module.exports = {
       },
       items: [
         {
-          to: 'docs/cheatsheet/',
-          label: 'Cheat Sheet',
-          position: 'left',
-        },
-        {
           to: 'docs/userguide/',
           label: 'User Guide',
           position: 'left',
         },
-        // {position: 'left', type: 'docsVersionDropdown'},
-        // {
-        //   to: 'docs/cbdocs/cookbook',
-        //   label: 'Cookbook',
-        //   position: 'left',
-        // },
-        // {to: 'docs/vs-code-snippets/snippets', label: 'Snippets', position: 'left'},
-        // {to: 'blog', label: 'Blog', position: 'left'},
-        // {
-        //   to: 'docs/userguide/',
-        //   label: 'User Guide',
-        //   position: 'left',
-        // },
         {
           href: 'https://github.com/Azure/azureml-v2-preview',
           label: 'GitHub',
@@ -82,10 +64,10 @@ module.exports = {
       apiKey: 'b12ff2d7b13980e0983244167d1c2450',
       indexName: 'azure',
       searchParameters: {},
-      placeholder: 'Search cheat sheet'
+      placeholder: 'Search'
     },
     googleAnalytics: {
-      trackingID: 'G-2DKKZ26VP0',
+      trackingID: '',
     }
   },
   presets: [

@@ -8,15 +8,6 @@ import styles from './styles.module.css';
 
 const features = [
   {
-    title: 'Cheat Sheet',
-    imageUrl: 'img/undraw_docusaurus_mountain.svg',
-    description: (
-      <>
-        A cheat sheet for AMLv2.
-      </>
-    ),
-  },
-  {
     title: 'User Guide',
     imageUrl: 'img/undraw_docusaurus_react.svg',
     description: (
@@ -68,8 +59,8 @@ function Home() {
                 'button button--outline button--secondary button--lg',
                 styles.getStarted,
               )}
-              to={useBaseUrl('docs/cheatsheet/')}>
-              Cheat Sheet 
+              to={useBaseUrl('docs/userguide/')}>
+              User Guide 
             </Link>
           </div>
         </div>
