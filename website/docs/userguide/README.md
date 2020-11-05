@@ -18,8 +18,9 @@ We have pre-built the Azure ML CLI as part of this Git repository. Simply run th
 
 ```console
 wget https://mldevplatv2.blob.core.windows.net/cli/cli.zip
-tar xvf cli.zip -C .
-set AZURE_EXTENSION_DIR=./azext_ml
+mkdir azmlcli
+tar xvf cli.zip -C ./azmlcli
+set AZURE_EXTENSION_DIR=./azmlcli/azext_ml
 az ml -h
 ```
 
@@ -30,7 +31,7 @@ This should show off the new set of AZ CLI commands and you'll be all set to get
 Prepare the code you'd like to run. For this example, we'll simply clone LightGBM from GitHub and run an example:
 
 ```console
-git clone https://github.com/Microosft/lightgbm
+git clone https://github.com/Microsoft/lightgbm
 ```
 
 CLI example: ```az ml job create jobspec.yaml```
