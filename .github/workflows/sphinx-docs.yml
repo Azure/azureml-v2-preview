@@ -1,8 +1,15 @@
 name: sphinx-docs
 on:
   push:
-    #branches: [main]
-    paths: [docs/**, .github/workflows/sphinx-docs.yml]
+    branches:
+      - main
+    paths: 
+      - docs/**
+  pull_request:
+    branches: 
+      - main
+    paths:
+      - docs/**
 jobs:
   build:
     name: Push Sphinx Pages
