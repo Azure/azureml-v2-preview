@@ -4,6 +4,7 @@ slug: /userguide/
 ---
 
 ## Azure ML CLI
+
 ```az ml``` is Azure ML on the command line. 
 It brings training and scoring capabilities to the terminal next to where you are already working with git and your code.
 
