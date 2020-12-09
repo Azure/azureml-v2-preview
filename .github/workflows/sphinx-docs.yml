@@ -1,8 +1,5 @@
 name: sphinx-docs
 on:
-  pull_request:
-    #branches: [main]
-    paths: [docs/**]
   push:
     #branches: [main]
     paths: [docs/**]
@@ -11,8 +8,27 @@ jobs:
     name: Push Sphinx Pages
     runs-on: ubuntu-latest
     steps:
-      - uses: seanzhengw/sphinx-pages@v1
-        id: sphinx-pages
+      - uses: actions/checkout@v1
+      - uses: ammaraskar/sphinx-action@master
         with:
+          docs-folder: docs
+      - uses: actions/upload-artifact@v1
+        with:
+          name: DocumentationHTML
+          path: docs/_build/html/
+
+      - name: Commit documentation changes
+        run: |
+          git clone https://github.com/azure/azureml-v2-preview.git --branch gh-pages --single-branch gh-pages
+          cp -r docs/_build/html/* gh-pages/
+          cd gh-pages
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add .
+          git commit -m "Update documentation" -a || true
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          branch: gh-pages
+          directory: gh-pages
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          create_readme: false
