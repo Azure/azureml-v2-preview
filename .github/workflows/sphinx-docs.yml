@@ -5,11 +5,13 @@ on:
       - main
     paths: 
       - docs/**
+      - .github/workflows/sphinx-docs.yml
   pull_request:
     branches: 
       - main
     paths:
       - docs/**
+      - .github/workflows/sphinx-docs.yml
 jobs:
   build:
     name: Push Sphinx Pages
