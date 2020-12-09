@@ -2,7 +2,7 @@ name: sphinx-docs
 on:
   push:
     #branches: [main]
-    paths: [docs/**]
+    paths: [docs/**, .github/workflows/sphinx-docs.yml]
 jobs:
   build:
     name: Push Sphinx Pages
