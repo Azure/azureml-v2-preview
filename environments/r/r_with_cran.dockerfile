@@ -1,4 +1,4 @@
-aaFROM rocker/tidyverse:4.0.0-ubuntu18.04
+FROM rocker/tidyverse:4.0.0-ubuntu18.04
 
 # install optparse package
 RUN R -e "install.packages('optparse', repos='https://cran.rstudio.com')"
