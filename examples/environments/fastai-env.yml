@@ -1,0 +1,4 @@
+name: fastai
+version: 1
+docker:
+  image: docker.io/fastai/fastai

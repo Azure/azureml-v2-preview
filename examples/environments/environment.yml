@@ -1,0 +1,10 @@
+name: example-environment
+channels:
+  - conda-forge
+dependencies:
+  - python=3.6.1
+  - numpy
+  - pip
+  - pip:
+    - pandas
+    - matplotlib

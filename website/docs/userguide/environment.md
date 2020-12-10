@@ -14,54 +14,51 @@ Environment can be created in number of ways. For example using docker file, con
 ### Example - Create Environment from YAML file representing the environment.
 
 ```console
-az ml environment create --file examples/fastai-vision-env.yml
+az ml environment create --file examples/environments/fastai-vision-env.yml
 ```
 
-#### Environment can be created in number of ways. These examples shows YAML files representing environments for supported scenarios.
+Environment can be created in number of ways. These examples shows YAML files representing environments for supported scenarios.
 
 ##### Creating Environment using existing Docker Image:
+```console
+az ml environment create --file examples/environments/fastai-env.yml
+```
+
+where `fastai-env.yml` contains:
 ```yml
-name: fastai
-version: 1
-docker:
-  image: docker.io/fastai/fastai
+#source ../../../examples/environments/fastai-env.yml
 ```
 
 ##### Creating Environment using DockerFile:
+```console
+az ml environment create --file examples/environments/fastai-vision-env.yml
+```
+
+where `fastai-vision-env.yml` contains:
 ```yml
-name: fastai-vision
-version: 1
-docker:
-   build:
-     dockerfile: ../environments/fastai.dockerfile
+#source ../../../examples/environments/fastai-vision-env.yml
 ```
 
 ##### Creating Environment using Conda File:
-```yml
-name: conda_env
-version: 1
-conda_file: ../environments/environment.yml
+```console
+az ml environment create --file examples/environments/conda-env.yml
 ```
 
-Where `environmemt.yml` contains: 
+Where `conda-env.yml` contains: 
 ```yml
-name: example-environment
-channels:
-  - conda-forge
-dependencies:
-  - python=3.6.1
-  - numpy
-  - pip
-  - pip:
-    - pandas
-    - matplotlib
+#source ../../../examples/environments/conda-env.yml
+```
+
+where `environmemt.yml` contains: 
+```yml
+#source ../../../examples/environments/environment.yml
 ```
 
 ##### Creating Environment using DockerFile + Conda File:
+```console
+az ml environment create --file examples/environments/docker-conda-env.yml
+```
+where `docker-conda-env.yml` contains: 
 ```yml
-name: conda_env
-version: 1
-docker:
-  image: docker.io/ubuntu/ubuntu
-conda_file: ../environments/environment.yml
+#source ../../../examples/environments/docker-conda-env.yml
 ```
