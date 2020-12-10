@@ -13,7 +13,7 @@ Registered models are identified by name and version. Each time you register a m
 
 Run the following command to create a model.
 ```console
-az ml model create --file azureml-v2-preview/examples/models/model.yml
+az ml model create --file azureml-v2-preview/examples/simplemodel.yml
 ```
 
 ## What constitutes a model?
