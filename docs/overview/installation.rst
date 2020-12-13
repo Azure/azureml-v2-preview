@@ -1,23 +1,26 @@
 Installation
 ============
 
-You can install *azure.ml* on Linux, MacOS, and Windows for several interfaces. The CLI is recommended to get started.
-
-CLI
----
-
-The CLI through ``az ml`` provides full access to Azure ML and a set of CLI-specific functionality.
-
-Launch a terminal
-~~~~~~~~~~~~~~~~~
-
-You may use any terminal. 
+You can install *azure.ml* on Linux, MacOS, and Windows for several interfaces.
 
 .. tip::
-    A cloud shell (https://shell.azure.com) is recommended for private preview.
+    Only the command line interface is available for private preview.
 
-Install the Azure CLI
-~~~~~~~~~~~~~~~~~~~~~
+Command Line Interface (CLI)
+----------------------------
+
+The ``az ml`` CLI provides full access to Azure ML.
+
+Terminal
+~~~~~~~~
+
+Launch any terminal. 
+
+.. warning::
+    A cloud shell (https://shell.azure.com) is recommended for private preview to avoid conflicting installations.
+
+Azure CLI Install
+~~~~~~~~~~~~~~~~~
 
 If you do not have the Azure CLI installed, follow the installation instructions at https://docs.microsoft.com/cli/azure/install-azure-cli.
 
@@ -27,10 +30,10 @@ Verify installation:
 
     az version
 
-Install the ML extension
-~~~~~~~~~~~~~~~~~~~~~~~~
+ML Extension Install
+~~~~~~~~~~~~~~~~~~~~
 
-Remove any previous extension installations if you have them:
+Remove any previous extension installations:
 
 .. code-block:: console
 
@@ -39,7 +42,7 @@ Remove any previous extension installations if you have them:
 Install the Azure CLI extension for ML:
 
 .. tip:: 
-    This will be ``az extension add -n ml`` for public preview.
+    This will be simplified to "``az extension add -n ml``" for public preview.
 
 .. literalinclude:: ../../.github/workflows/runcliwhl.yml
    :lines: 22

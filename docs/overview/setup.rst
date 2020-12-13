@@ -52,6 +52,7 @@ Create a workspace:
 
 .. warning::
     Workspace creation from CLI does not work yet, please use the ARM template.
+    Note that the defaults set above may not match the ARM template.
 
 .. image:: https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.svg?sanitize=true
     :target: https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fmldevplatv2.blob.core.windows.net%2Fcli%2Fazuredeploy.json
