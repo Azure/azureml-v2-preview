@@ -1,12 +1,12 @@
-name: sphinx-docs
+name: sphinx-docs-pr
 on:
-  push:
+  pull_request:
     branches:
       - main
     paths: 
       - docs/**
       - sdk2-src/**
-      - .github/workflows/sphinx-docs.yml
+      - .github/workflows/sphinx-docs-pr.yml
 jobs:
   build:
     name: deploy documentation
@@ -20,9 +20,7 @@ jobs:
         working-directory: docs
       - run: make html
         working-directory: docs
-      - run: git config --global user.email "azureml@microsoft.com"
-      - run: git config --global user.name "Azure ML"
-      - run: git checkout -b docs
-      - run: git add -f docs
-      - run: git commit -m "adding built sphinx docs"
-      - run: git push -uf origin docs
+      - uses: actions/upload-artifact@v1
+        with:
+          name: PR HTML Artifact
+          path: docs/_build/html/
