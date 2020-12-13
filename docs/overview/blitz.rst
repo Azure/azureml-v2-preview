@@ -56,12 +56,13 @@ Let's add a sweep section to the job configuration to tune the learning rate and
 Deploy to endpoint
 ------------------
 
+Let's deploy the best model as an endpoint.
+
 .. code-block:: console 
 
     az ml endpoint create --name
 
-Test endpoint
--------------
+Let's test the endpoint.
 
 .. code-block:: console 
 
