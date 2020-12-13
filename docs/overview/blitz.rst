@@ -47,6 +47,8 @@ Let's train a simple lightgbm model on the Iris dataset.
 Tune parameters
 ---------------
 
+Let's add a sweep section to the job configuration to tune the learning rate and [pick something else].
+
 .. code-block:: console
 
     az ml job create --name 
