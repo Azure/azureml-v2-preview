@@ -6,11 +6,6 @@ Azure
 
 If you need an Azure subscription, `create a free account <https://aka.ms/amlfree>`_.
 
-Launch Terminal
----------------
-A cloud shell (https://shell.azure.com) is recommended for private preview.
-You may also use your local terminal.
-
 Authentication
 ~~~~~~~~~~~~~~
 
@@ -37,15 +32,15 @@ Configure other defaults:
     az config set defaults.location="eastus"
     az config set defaults.group="azureml-rg"
 
-(If not onboarded) Add your subscription to the allow list:
+If needed, add your subscription to the allow list:
 
 .. note::
-    This is a one time operation and is only required during private preview. Onboarding will take around 10 minutes, go grab a coffee while you wait. Once onboarded, run the CURL command again and you should see status as "Registered."
+    This is a one-time operation only required during private preview. Onboarding will take around 10 minutes. Once onboarded, running the CURL command will result in a state of "Registered."
 
 .. code-block:: console
 
     TOKEN=$(`echo "az account get-access-token -s $SUBSCRIPTION_ID -o tsv --query accessToken"`)
-    curl --location --request POST "https://management.azure.com/subscriptions/$SUBSCRIPTION/providers/Microsoft.Features/providers/Microsoft.MachineLearningServices/features/MFE/register?api-version=2015-12-01" --header "Authorization: Bearer $TOKEN" --header 'Content-Length: 0'
+    curl --location --request POST "https://management.azure.com/subscriptions/$SUBSCRIPTION_ID/providers/Microsoft.Features/providers/Microsoft.MachineLearningServices/features/MFE/register?api-version=2015-12-01" --header "Authorization: Bearer $TOKEN" --header 'Content-Length: 0'
 
 Azure Machine Learning
 ----------------------
@@ -60,14 +55,5 @@ Create a workspace:
 
 .. image:: https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.svg?sanitize=true
     :target: https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fmldevplatv2.blob.core.windows.net%2Fcli%2Fazuredeploy.json
-
-
-Install the CLI
-~~~~~~~~~~~~~~~~~~
-
-Run the following command in your terminal to install the latest Azure ML preview CLI:
-
-.. literalinclude:: ../../.github/workflows/runcliwhl.yml
-   :lines: 22
 
 You're all set! Let's try it out.
