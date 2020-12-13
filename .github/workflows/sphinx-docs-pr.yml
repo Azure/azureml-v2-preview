@@ -9,7 +9,7 @@ on:
       - .github/workflows/sphinx-docs-pr.yml
 jobs:
   build:
-    name: deploy documentation
+    name: check documentation
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
