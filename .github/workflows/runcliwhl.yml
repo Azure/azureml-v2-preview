@@ -5,7 +5,7 @@ on:
     branches:
       - main
     paths-ignore:
-    - 'website/**'
+    - 'docs/**'
   pull_request:
     branches: [main]
 jobs:
