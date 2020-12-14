@@ -5,9 +5,12 @@ on:
     branches:
       - main
     paths-ignore:
-    - 'docs/**'
+      - 'docs/**'
   pull_request:
-    branches: [main]
+    branches:
+      - main
+    paths-ignore:
+      - 'docs/**'
 jobs:
   dev-setup:
     runs-on: ubuntu-latest
