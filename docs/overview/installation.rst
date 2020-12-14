@@ -45,7 +45,7 @@ Install the Azure CLI extension for ML:
     This will be simplified to "``az extension add -n ml``" for public preview.
 
 .. literalinclude:: ../../.github/workflows/runcliwhl.yml
-   :lines: 22
+   :lines: 25
 
 Verify installation:
 
