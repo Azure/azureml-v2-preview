@@ -53,7 +53,7 @@ March 20201 (pending):
 
    overview/installation.rst
    overview/setup.rst
-   overview/blitz.rst
+   overview/tutorial.rst
    overview/concepts.rst
 
 .. toctree::

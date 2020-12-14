@@ -46,6 +46,12 @@ Submit to the new compute target:
 
     az ml job create --command "echo 'hello azure!'" --target default
 
+View the output in the ML studio:
+
+.. code-block:: console
+
+    az ml job view --web
+
 Training a model
 ----------------
 
@@ -84,7 +90,7 @@ Let's add a sweep section to the job configuration to tune the learning rate and
 
 Write ``job-sweep.yml``:
 
-.. code-block:: console
+.. code-block:: yaml
 
     command: >-
         lightgbm --task train 
