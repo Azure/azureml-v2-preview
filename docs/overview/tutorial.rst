@@ -108,7 +108,7 @@ Write ``job-sweep.yml``:
         spec: uniform
         min_value: 0.001
         max_value: 0.1
-      boosting
+      boosting:
         spec: categorical
         options: ["gdbt", "dart"]
     objective:
