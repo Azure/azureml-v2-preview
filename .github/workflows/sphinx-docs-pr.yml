@@ -1,4 +1,4 @@
-name: sphinx-docs-pr
+name: docs-pr
 on:
   pull_request:
     branches:
