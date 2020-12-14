@@ -8,14 +8,15 @@ Overview
 
 The ``azure.ml`` package provides user-friendly developer tools for Azure Machine Learning.
 
+It is available via the typical installation tools for each interface, e.g. via `pip` for Python. 
+
 Goals
 -----
 
-- consistent job story
-- consistent endpoint story
-- all ML resources, assets, and artifacts can be serialized and exported in a human-readable format
-- all jobs are composable
-- reduce concepts to fundamentals
+- consistent job and endpoint stories
+- all resources are serializable in a human-readable format
+- reduce to fundamental concepts
+- jobs are composable
 
 ARM Support
 -----------
