@@ -56,6 +56,7 @@ Verify installation:
 You should see the following output:
 
 .. code-block:: console
+
     Group
         az ml
 
