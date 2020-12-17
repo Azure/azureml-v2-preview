@@ -1,0 +1,32 @@
+name: sweep-job-example
+job_type: Sweep
+experiment_name: tune-pytorch-fowls
+algorithm: random
+search_space:
+  lr:
+    spec: uniform
+    min_value: 0.0005
+    max_value: 0.005
+  momentum:
+    spec: uniform
+    min_value: 0.9
+    max_value: 0.99
+objective:
+  primary_metric: best_val_acc
+  goal: maximize
+early_termination:
+  spec: bandit
+  slack_factor: 0.15
+  evaluation_interval: 1
+  delay_evaluation: 10
+trial:
+  code:
+    directory: ./src
+  command: python train.py --num-epochs 30
+  environment: azureml:pytorch-env:1
+  compute:
+    target: azureml:goazurego
+limits:
+  max_total_runs: 8
+  max_concurrent_runs: 4
+  max_duration_minutes: 10080
