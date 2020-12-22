@@ -1,4 +1,4 @@
-name: tf-distributed-example
+# yaml-language-server: $schema=https://azuremlsdk2.blob.core.windows.net/latest/commandJob.schema.json
 code:
   directory: ./src
 command: python train.py --epochs 30 --model-dir outputs/keras-model
