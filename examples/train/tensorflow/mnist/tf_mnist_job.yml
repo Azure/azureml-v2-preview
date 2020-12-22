@@ -5,4 +5,4 @@ command: python train.py
 environment: azureml:tf-env:1
 experiment_name: tf-mnist
 compute:
-  target: azureml:testCompute
+  target: azureml:goazurego
