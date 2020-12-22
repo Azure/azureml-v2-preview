@@ -3,7 +3,7 @@ code:
   directory: ./src
 command: python train.py --epochs 30 --model-dir outputs/keras-model
 environment: azureml:tf-env:1
-experiment_name: tf-mnist-distr
+experiment_name: tf-mnist
 distribution:
   type: tensorflow
   worker_count: 2
