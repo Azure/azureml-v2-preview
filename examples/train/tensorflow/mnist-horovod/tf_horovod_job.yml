@@ -8,5 +8,5 @@ distribution:
   type: mpi
   process_count_per_instance: 2
 compute:
-  target: azureml:testCompute
+  target: azureml:goazurego
   node_count: 2
