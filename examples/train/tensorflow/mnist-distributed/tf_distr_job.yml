@@ -8,5 +8,5 @@ distribution:
   type: tensorflow
   worker_count: 2
 compute:
-  target: azureml:testCompute
+  target: azureml:goazurego
   node_count: 2
