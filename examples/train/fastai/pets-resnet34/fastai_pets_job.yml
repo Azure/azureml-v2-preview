@@ -1,7 +1,7 @@
-name: fastai-pets-example
+# yaml-language-server: $schema=https://azuremlsdk2.blob.core.windows.net/latest/commandJob.schema.json
 code: 
   directory: ./src
 command: python train.py
-environment: "azureml:fastai-vision:1"
+environment: azureml:fastai-vision:1
 compute:
-  target: "azureml:testCompute"
+  target: azureml:testCompute
