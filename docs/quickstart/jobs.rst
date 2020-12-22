@@ -44,7 +44,7 @@ The following is a fully fleshed out job specification YML:
    :language: yaml
 
         
-``name`` is the user defined run name which needs to be **unique**. 
+``name`` is the user defined run name which needs to be **unique**. **If you do not provide a name a GUID name will be generated for you.**
 
     - By default, runs are created in an Experiment called "Default". If you want to use a different experiment name, you can use the parameter **experiment_name.** 
     - ``name`` and other parameters can be overwritten from the command line. For example: ```az ml job create --file azureml-v2-preview/examples/commandjob.yml --name test2```
