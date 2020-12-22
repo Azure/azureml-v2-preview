@@ -1,4 +1,3 @@
-name: hello-python-example
 command: python hello.py
 code:
   directory: src
