@@ -4,4 +4,4 @@ code:
 command: python train.py
 environment: azureml:fastai-env:1
 compute:
-  target: azureml:testCompute
+  target: azureml:goazurego
