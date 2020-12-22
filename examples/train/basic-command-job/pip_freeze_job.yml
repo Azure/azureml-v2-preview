@@ -1,4 +1,4 @@
-name: pip-freeze-job-example
+# yaml-language-server: $schema=https://azuremlsdk2.blob.core.windows.net/latest/commandJob.schema.json
 command: pip freeze
 environment: azureml:AzureML-Minimal:1
 compute:
