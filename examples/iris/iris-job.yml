@@ -1,5 +1,4 @@
 # yaml-language-server: $schema=https://azuremlsdk2.blob.core.windows.net/latest/commandJob.schema.json
-name: irisjob
 code: 
   directory: train
 command: >-
