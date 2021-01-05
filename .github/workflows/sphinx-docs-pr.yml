@@ -27,4 +27,4 @@ jobs:
       - uses: actions/upload-artifact@v1
         with:
           name: PR HTML Artifact
-          path: docs/_build/html/
+          path: docs/_build/
