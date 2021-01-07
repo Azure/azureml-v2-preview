@@ -95,4 +95,3 @@ Environment Parameters
 - ``docker_image``, type = string, default = ``"azureml/default"``
 - ``docker_file``, type = string, default = ``""``
 - ``conda_file``, type = string, default = ``""``
-- ``pip_file``, type = string, default = ``""``
