@@ -7,5 +7,5 @@ code:
 inputs:
   iris:
     data: azureml:iris:1
-    mode: Mount
+    mode: mount
 

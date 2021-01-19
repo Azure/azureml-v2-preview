@@ -167,7 +167,7 @@ we can use the CLI to show this job:
     inputs:
       training_data:
         data: azureml:irisdata:1
-        mode: Mount
+        mode: mount
 
 The above job can be run without reference to the dataset, by removing the inputs and the arg in the command, since the script sets the default value if no data is input. 
 This is to allow further debugging if data store does not work.
