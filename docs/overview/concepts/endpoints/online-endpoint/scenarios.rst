@@ -3,13 +3,13 @@ Deployment Scenarios
 
 Here we will explore the following scenarios:
 
-1. Simple deployment flow
-2. Canary flow (Gitops)
-3. Canary flow (non Gitops)
+1. :ref:`simple-deploy-flow`
+2. :ref:`declarative-flow`
+3. :ref:`imperative-flow`
 
 .. toctree::   
    :hidden:
    
    scenarios/simple-deploy-flow.rst
-   scenarios/canary-flow-gitops.rst
-   scenarios/canary-flow-non-gitops.rst
+   scenarios/declarative-flow.rst
+   scenarios/imperative-flow.rst

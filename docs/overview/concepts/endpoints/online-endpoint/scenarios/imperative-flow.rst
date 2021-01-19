@@ -1,11 +1,13 @@
-Canary Flow - directly executing via CLI
-========================================
+.. _imperative-flow:
 
-:ref:`canary-gitops-flow` section explains the concept of Canary deployment and how to do it in a fully git backed approach.
+Imperative Canary Flow
+=================================
+
+:ref:`declarative-flow` section explains the concept of Canary deployment and how to do it in a fully git backed approach.
 In this scenario, we execute a canary deployment flow, however without having to perform all updates via the endpoint yaml.
 In this case we will have a yaml file for endpoint and seperate yaml files for each deployment.
 Operations like scaling up, changing traffic or deleting deployments can be done directly using the CLI wihtout updating the YAML.
-This approach could be useful during development time. The :ref:`canary-gitops-flow` would be useful for a production scenario.
+This approach could be useful during development time. The :ref:`declarative-flow` would be useful for a production scenario.
 
 Step 1: Deploy the v1 version of the model(blue) 
 -------------------------------------------------

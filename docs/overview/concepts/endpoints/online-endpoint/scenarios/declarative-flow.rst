@@ -1,7 +1,7 @@
-.. _canary-gitops-flow:
+.. _declarative-flow:
 
-Canary Flow with Gitops
-========================
+Declarative Canary Flow (aka Gitops flow)
+=========================================
 
 `Canary release <https://martinfowler.com/bliki/CanaryRelease.html>`_ is a deployment approach in which new version of a 
 service is introduced to production by rolling out the change to small subset of users/requests before rolling it out 

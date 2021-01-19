@@ -25,9 +25,9 @@ deployments:
     sku: Standard_F2s_v2
     scale_settings:
       scale_type: manual
-      instance_count: 3
+      instance_count: 2
       min_instances: 1
-      max_instances: 3
+      max_instances: 2
     request_settings:
       request_timeout_ms: 3000
       max_concurrent_requests_per_instance: 1
@@ -50,9 +50,9 @@ deployments:
     sku: Standard_F2s_v2
     scale_settings:
       scale_type: manual
-      instance_count: 1
+      instance_count: 2
       min_instances: 1
-      max_instances: 1
+      max_instances: 2
     request_settings:
       request_timeout_ms: 3000
       max_concurrent_requests_per_instance: 1
