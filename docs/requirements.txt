@@ -9,3 +9,7 @@ sphinx-togglebutton
 # themes
 sphinx-rtd-theme
 furo
+
+# azure-cli
+azure-cli
+knack

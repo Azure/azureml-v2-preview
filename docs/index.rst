@@ -40,3 +40,4 @@ Coming soon:
   reference/feedback.rst
   reference/qna.rst
   reference/troubleshooting.rst
+  reference/azure-ml.rst

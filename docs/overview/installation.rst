@@ -30,6 +30,13 @@ Verify installation:
 
     az version
 
+The Azure ML extension requires CLI version **>=2.15.0**. To upgrade your CLI installation, please run the below command.
+ 
+ 
+.. code-block:: console
+
+    az upgrade
+
 ML Extension Install
 ~~~~~~~~~~~~~~~~~~~~
 

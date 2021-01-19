@@ -5,6 +5,12 @@ Manage Environments
 - All environments are built as docker images.
 - We provide convenience functions to generate a environment.
 
+.. note::
+  Until July of 2021 any image used for Azure ML training requires Python as an implicit dependency.
+  To add python to your own docker image you can run the following: 
+  
+  RUN apt-get update -qq && \  apt-get install -y python3
+
 Creating an environment
 ----------------------
 
@@ -95,4 +101,3 @@ Environment Parameters
 - ``docker_image``, type = string, default = ``"azureml/default"``
 - ``docker_file``, type = string, default = ``""``
 - ``conda_file``, type = string, default = ``""``
-- ``pip_file``, type = string, default = ``""``

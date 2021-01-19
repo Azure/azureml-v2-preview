@@ -5,14 +5,14 @@ job_type: Sweep
 name: test_v3111
 search_space:
   lr:
-    spec: uniform
+    type: uniform
     min_value: 0.001
     max_value: 0.1
   conv_size:
-    spec: choice
+    type: choice
     values: [2, 5, 7]
   dropout_rate:
-    spec: uniform
+    type: uniform
     min_value: 0.1
     max_value: 0.5     
 objective:

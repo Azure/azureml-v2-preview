@@ -36,7 +36,6 @@ Full specification of a model (note: if you're using MLflow this information can
   name: my-model
   asset_path: ./model
   version: 1
-  environment: azureml:AzureML-Minimal/versions/1
   description: this is my test model
   tags:
     foo: bar
