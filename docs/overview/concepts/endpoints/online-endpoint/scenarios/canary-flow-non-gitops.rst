@@ -15,9 +15,9 @@ Step 1a: Create an empty endpoint (no deployment and no set traffic rules)
 
 .. code-block:: bash
 
-    az ml endpoint create --file ../../examples/endpoints/online/managed/canary-non-gitops-flow/1-create-endpoint.yaml
+    az ml endpoint create --file examples/endpoints/online/managed/canary-non-gitops-flow/1-create-endpoint.yaml
 
-.. literalinclude:: ../../../../../examples/endpoints/online/managed/canary-non-gitops-flow/1-create-endpoint.yaml
+.. literalinclude:: ../../../../../../examples/endpoints/online/managed/canary-non-gitops-flow/1-create-endpoint.yaml
    :language: yaml
 
 Step 1b: create the deployment
@@ -27,7 +27,7 @@ Step 1b: create the deployment
 
     az ml endpoint update  --name my-new-endpoint --deployment-file ../../examples/endpoints/online/managed/canary-non-gitops-flow/2-create-blue.yaml
 
-.. literalinclude:: ../../../../../examples/endpoints/online/managed/canary-non-gitops-flow/2-create-blue.yaml
+.. literalinclude:: ../../../../../../examples/endpoints/online/managed/canary-non-gitops-flow/2-create-blue.yaml
    :language: yaml
 
 Step 1c: Set traffic
@@ -58,7 +58,7 @@ Step 3: Deploy a new model (green) to the endpoint, but taking NO live traffic y
 
     az ml endpoint update  --name my-new-endpoint --deployment-file ../../examples/endpoints/online/managed/canary-non-gitops-flow/3-create-green.yaml
 
-.. literalinclude:: ../../../../../examples/endpoints/online/managed/canary-non-gitops-flow/3-create-green.yaml
+.. literalinclude:: ../../../../../../examples/endpoints/online/managed/canary-non-gitops-flow/3-create-green.yaml
    :language: yaml
 
 **Test the new deployment by directly invoking it** (since invoking the endpoint would only use the blue deployment for now)

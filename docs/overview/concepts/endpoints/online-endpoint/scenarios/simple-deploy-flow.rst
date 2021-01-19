@@ -8,11 +8,11 @@ Step 1: Deploy simple endpoint
 
 .. code-block:: bash 
     
-    az ml endpoint create --file ../../examples/endpoints/online/managed/simple-flow/1-create-endpoint-with-blue.yaml --wait
+    az ml endpoint create --file examples/endpoints/online/managed/simple-flow/1-create-endpoint-with-blue.yaml --wait
 
 This is the yaml file
 
-.. literalinclude:: ../../../../../examples/endpoints/online/managed/simple-flow/1-create-endpoint-with-blue.yaml
+.. literalinclude:: ../../../../../../examples/endpoints/online/managed/simple-flow/1-create-endpoint-with-blue.yaml
    :language: yaml
 
 Get the state of endpoint/deployment along with the status

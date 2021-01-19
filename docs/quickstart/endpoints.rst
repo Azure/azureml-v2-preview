@@ -55,9 +55,4 @@ Minimal endpoint specification - batch
 .. code-block:: console
 
   az ml endpoint create --file batchendpoint.yml
-  `
-
-.. toctree::
-   :hidden:
-
-   endpoints/online-endpoint/online-endpoint.rst    
+  `  

@@ -2,4 +2,4 @@
 name: my-new-endpoint
 type: online
 infrastructure: managed
-auth_mode: amltoken
+auth_mode: aml_token

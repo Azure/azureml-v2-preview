@@ -27,10 +27,10 @@ Step 2: Scale the blue deployment to handle additional traffic
 --------------------------------------------------------------
 .. code-block:: bash
 
-    az ml endpoint update --file ../../examples/endpoints/online/managed/canary-gitops-flow/2-scale-blue.yaml
+    az ml endpoint update --file examples/endpoints/online/managed/canary-gitops-flow/2-scale-blue.yaml
 
 
-.. literalinclude:: ../../../../../examples/endpoints/online/managed/canary-gitops-flow/2-scale-blue.yaml
+.. literalinclude:: ../../../../../../examples/endpoints/online/managed/canary-gitops-flow/2-scale-blue.yaml
    :language: yaml
 
 Step 3: Deploy a new model (green) to the endpoint, but taking NO live traffic yet
@@ -38,10 +38,10 @@ Step 3: Deploy a new model (green) to the endpoint, but taking NO live traffic y
 
 .. code-block:: bash
 
-    az ml endpoint update --file ../../examples/endpoints/online/managed/canary-gitops-flow/3-create-green.yaml
+    az ml endpoint update --file examples/endpoints/online/managed/canary-gitops-flow/3-create-green.yaml
 
 
-.. literalinclude:: ../../../../../examples/endpoints/online/managed/canary-gitops-flow/3-create-green.yaml
+.. literalinclude:: ../../../../../../examples/endpoints/online/managed/canary-gitops-flow/3-create-green.yaml
    :language: yaml
 
 **Test the new deployment by directly invoking it** (since invoking the endpoint would only use the blue deployment for now)
@@ -55,11 +55,11 @@ Step 4: Test the green deployment with a small percentage of the live traffic
 
 .. code-block:: bash
 
-    az ml endpoint update --file ../../examples/endpoints/online/managed/canary-gitops-flow/4-flight-green.yaml
+    az ml endpoint update --file examples/endpoints/online/managed/canary-gitops-flow/4-flight-green.yaml
 
 This is the yaml file
 
-.. literalinclude:: ../../../../../examples/endpoints/online/managed/canary-gitops-flow/4-flight-green.yaml
+.. literalinclude:: ../../../../../../examples/endpoints/online/managed/canary-gitops-flow/4-flight-green.yaml
    :language: yaml
 
 Step 5: Let the green deployment take on the full traffic
@@ -67,11 +67,11 @@ Step 5: Let the green deployment take on the full traffic
  
  .. code-block:: bash
 
-    az ml endpoint update --file ../../examples/endpoints/online/managed/canary-gitops-flow/5-full-green.yaml
+    az ml endpoint update --file examples/endpoints/online/managed/canary-gitops-flow/5-full-green.yaml
 
 This is the yaml file
 
-.. literalinclude:: ../../../../../examples/endpoints/online/managed/canary-gitops-flow/5-full-green.yaml
+.. literalinclude:: ../../../../../../examples/endpoints/online/managed/canary-gitops-flow/5-full-green.yaml
    :language: yaml
 
 Step 6: Now since green is working fine, lets delete the blue deployment
@@ -79,11 +79,11 @@ Step 6: Now since green is working fine, lets delete the blue deployment
  
  .. code-block:: bash
 
-    az ml endpoint update --file ../../examples/endpoints/online/managed/canary-gitops-flow/6-delete-blue.yaml
+    az ml endpoint update --file examples/endpoints/online/managed/canary-gitops-flow/6-delete-blue.yaml
 
 This is the yaml file
 
-.. literalinclude:: ../../../../../examples/endpoints/online/managed/canary-gitops-flow/6-delete-blue.yaml
+.. literalinclude:: ../../../../../../examples/endpoints/online/managed/canary-gitops-flow/6-delete-blue.yaml
    :language: yaml
 
 Step 7: Cleanup - delete the endpoint
