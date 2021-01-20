@@ -1,5 +1,8 @@
-Online Endpoints
-================
+Online Endpoints (WIP)
+======================
+
+.. note::
+    Private preview for this functionality is invite only at this point
 
 Using Online Endpoints users can deploy models for online scoring (also called as realtime scoring).
 There different kind of endpoints that you could create based on the underlying compute that you want to use:

@@ -1,9 +1,9 @@
 # yaml-language-server: $schema=https://azuremlsdk2.blob.core.windows.net/latest/onlineDeployment.schema.json
-green:    
+name: green
 model:
   name: model-2
   version: 1
-  asset_path: ../../model-2/model/sklearn_regression_model.pkl
+  path: ../../model-2/model/sklearn_regression_model.pkl
 code_configuration:
   code: 
     directory: ../../model-2/onlinescoring/
@@ -13,7 +13,7 @@ environment:
     version: 1
     path: .
     conda_file: ../../model-2/env/conda.yml
-sku: Standard_F4s_v2
+sku: Standard_F2s_v2
 scale_settings:
   scale_type: manual
   instance_count: 2
