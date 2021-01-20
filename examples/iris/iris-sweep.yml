@@ -26,7 +26,7 @@ trial:
   inputs:
     training_data:
       data: azureml:irisdata:1
-      mode: Mount
+      mode: mount
 limits:
   max_total_runs: 10
   max_concurrent_runs: 10

@@ -7,7 +7,7 @@ In `azure.ml`, all concepts are represented as an asset. Assets are serializable
    :hidden:
 
    concepts/data.rst
-   concepts/job.rst
+   ../quickstart/jobs.rst
    concepts/model.rst
    concepts/endpoint.rst
    concepts/environment.rst

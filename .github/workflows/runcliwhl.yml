@@ -66,6 +66,8 @@ jobs:
           az ml job create --file examples/train/fastai/mnist-resnet18/fastai_mnist_job.yml --name fastai_mnist_$GITHUB_RUN_ID --query metadata.interaction_endpoints.studio
     - run: |
           az ml job create --file examples/sweep/sweepjob.yml --name sweeptest_$GITHUB_RUN_ID --query metadata.interaction_endpoints.studio
+      continue-on-error: true
+      
     - run: |
           az ml model create --file examples/deploy/sklearn/simplemodel.yml -n modeltest_$GITHUB_RUN_ID
       continue-on-error: true
