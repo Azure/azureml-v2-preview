@@ -4,6 +4,7 @@ type: online
 #infrastructure: managed
 auth_mode: aml_token
 traffic:
+  blue: 0
   green: 100
 
 deployments:
