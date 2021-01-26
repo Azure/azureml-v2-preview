@@ -2,6 +2,9 @@
 command: python hello.py
 code:
   directory: src
-environment: azureml:AzureML-Minimal:1
+environment: 
+  name: official_python_image
+  docker: 
+    image: docker.io/python
 compute:
   target: azureml:goazurego

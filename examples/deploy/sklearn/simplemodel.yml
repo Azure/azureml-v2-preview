@@ -1,4 +1,4 @@
 # yaml-language-server: $schema=https://azuremlsdk2.blob.core.windows.net/latest/model.schema.json
 name: my-model
 version: 3
-asset_path: ./model
+path: ./model
