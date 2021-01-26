@@ -69,7 +69,7 @@ Step 3: Deploy a new model (green) to the endpoint, but taking NO live traffic y
 
 .. code-block:: bash
 
-    az ml endpoint update  --name my-new-endpoint --deployment-file examples/endpoints/online/managed/canary-imperative-flow/3-create-green.yaml --wait
+    az ml endpoint update  --name my-new-endpoint --deployment-file examples/endpoints/online/managed/canary-imperative-flow/3-create-green.yaml  --traffic "blue:100,green:0" --wait
 
 .. literalinclude:: ../../../../../../examples/endpoints/online/managed/canary-imperative-flow/3-create-green.yaml
    :language: yaml
