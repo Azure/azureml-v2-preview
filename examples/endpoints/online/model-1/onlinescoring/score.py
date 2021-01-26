@@ -1,4 +1,5 @@
 import os
+import logging
 import pickle
 import json
 import numpy
@@ -19,6 +20,7 @@ def init():
 # note you can pass in multiple rows for scoring
 def run(raw_data):
     try:
+        logging.info("request received")
         data = json.loads(raw_data)["data"]
         data = numpy.array(data)
         result = model.predict(data)                
