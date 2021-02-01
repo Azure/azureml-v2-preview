@@ -1,8 +1,0 @@
-command: python train_torch.py
-environment:
-  docker:
-    image: docker.io/pytorch/pytorch
-code:
-  directory: .
-compute:
-  target: azureml:goazurego
