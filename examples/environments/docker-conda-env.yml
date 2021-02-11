@@ -2,4 +2,4 @@ name: conda_env
 version: 1
 docker:
   image: docker.io/ubuntu/ubuntu
-conda_file: environment.yml
+conda_file: file:environment.yml

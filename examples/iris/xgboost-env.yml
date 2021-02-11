@@ -1,4 +1,4 @@
 # yaml-language-server: $schema=https://azuremlsdk2.blob.core.windows.net/latest/environment.schema.json
 name: xgboost-env
 version: 1
-conda_file: xgboost-conda.yml
+conda_file: file:xgboost-conda.yml

@@ -2,4 +2,4 @@ name: mldotnetenv
 version: 1
 docker:
   build:
-    dockerfile: ../../environments/mldotnet/DOCKERFILE
+    dockerfile: file:../../environments/mldotnet/DOCKERFILE

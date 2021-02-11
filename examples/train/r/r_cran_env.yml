@@ -2,4 +2,4 @@ name: r-with-optparse
 version: 1
 docker:
    build:
-     dockerfile: ./r_with_cran.dockerfile
+     dockerfile: file:./r_with_cran.dockerfile

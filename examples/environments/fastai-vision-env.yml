@@ -3,5 +3,5 @@ name: fastai-vision
 version: 1
 docker:
    build:
-     dockerfile: fastai.dockerfile
+     dockerfile: file:fastai.dockerfile
 
