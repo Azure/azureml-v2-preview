@@ -49,6 +49,7 @@ jobs:
           az ml environment create --file examples/train/r/r_cran_env.yml
     - run: |
           az ml environment create --file examples/iris/xgboost-env.yml
+      continue-on-error: true
     - run: |
           az ml environment create --file examples/train/fastai/mnist-resnet18/fastai_env.yml
     - run: |
