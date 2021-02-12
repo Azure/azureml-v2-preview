@@ -52,6 +52,8 @@ jobs:
       continue-on-error: true
     - run: |
           az ml environment create --file examples/train/fastai/mnist-resnet18/fastai_env.yml
+      continue-on-error: true
+
     - run: |
           az ml environment create --file examples/environments/tensorflow/tf_env.yml
     - run: |
