@@ -2,7 +2,7 @@
 name: mirendpoint
 type: online
 infrastructure: managed
-auth_mode: Key
+auth_mode: key
 traffic:
     etblue: 75
     etgreen: 25
