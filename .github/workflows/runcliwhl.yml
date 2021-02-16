@@ -22,7 +22,7 @@ jobs:
       with:
         python-version: 3.7
     - run: |
-        az extension add --source https://azuremlsdktestpypi.blob.core.windows.net/wheels/sdk-cli-v2/ml-0.0.21-py3-none-any.whl --pip-extra-index-urls https://azuremlsdktestpypi.azureedge.net/sdk-cli-v2 -y
+        az extension add --source https://azuremlsdktestpypi.blob.core.windows.net/wheels/sdk-cli-v2/ml-0.0.31-py3-none-any.whl --pip-extra-index-urls https://azuremlsdktestpypi.azureedge.net/sdk-cli-v2 -y
     - run: az ml -h
     - run: az ml job -h
       continue-on-error: true
@@ -49,22 +49,30 @@ jobs:
           az ml environment create --file examples/train/r/r_cran_env.yml
     - run: |
           az ml environment create --file examples/iris/xgboost-env.yml
+      continue-on-error: true
     - run: |
           az ml environment create --file examples/train/fastai/mnist-resnet18/fastai_env.yml
+      continue-on-error: true
+
     - run: |
           az ml environment create --file examples/environments/tensorflow/tf_env.yml
+      continue-on-error: true
     - run: |
           az ml data create --file examples/iris/iris-data.yml
     - run: |
           az ml job create --file examples/iris/iris-job.yml --name iris_$GITHUB_RUN_ID
     - run: |
-          az ml job create --file examples/train/basic-command-job/pip_freeze_job.yml 
+          az ml job create --file examples/train/basic-command-job/pip_freeze_job.yml
     - run: |
           az ml job create --file examples/train/basic-command-job/hello_python_job.yml  --name hellotest_$GITHUB_RUN_ID 
     - run: |
           az ml job create --file examples/train/r/r_job.yml  --name rtest_$GITHUB_RUN_ID
     - run: |
           az ml job create --file examples/train/fastai/mnist-resnet18/fastai_mnist_job.yml --name fastai_mnist_$GITHUB_RUN_ID 
+    - run: |
+          az ml data upload --name wikitext-2 --version 1 --path examples/train/pytorch/word-language-model/data/wikitext-2
+    - run: |
+          az ml job create --file examples/train/pytorch/word-language-model/job.yml --name pytorch_lm_$GITHUB_RUN_ID
     - run: |
           az ml job create --file examples/sweep/sweepjob.yml --name sweeptest_$GITHUB_RUN_ID 
       continue-on-error: true

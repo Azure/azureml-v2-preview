@@ -31,7 +31,18 @@ This will run a simple "hello world" python script. Here is the YML that we ran.
 .. literalinclude:: ../../examples/train/basic-command-job/hello_python_job.yml
    :language: yaml
 
-Let's continue by going into more details on the job specification.
+Here is another example that runs a simple pytorch test.
+
+.. literalinclude:: ../../examples/train/pytorch/torchjob.yml
+   :language: yaml
+
+Run the following CLI command to initialize the job: 
+
+.. code-block:: bash
+
+    az ml job create --file azureml-v2-preview/examples/train/pytorch/torchjob.yml
+
+Let's go into more details on the job specification.
 
 Understanding a job specification
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -57,6 +68,7 @@ The following is a fully fleshed out job specification YML:
 
 - ``azureml:`` is a special moniker used to refer to an existing entity within the workspace. 
 - ``azureml:AzureML-Minimal:1`` is expecting that version 1 of an environment called AzureML-Minimal exists in the current workspace. 
+- You can also specify an environment image inline using the syntax in the hello world example above.
 
 ``compute`` defines where you want to run your job and compute-specific information
 

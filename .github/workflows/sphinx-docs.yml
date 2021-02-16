@@ -18,13 +18,13 @@ jobs:
           python-version: "3.8"
       - run: pip install -r requirements.txt
         working-directory: docs
-      - run: curl https://azuremlsdktestpypi.blob.core.windows.net/wheels/sdk-cli-v2/ml-0.0.21-py3-none-any.whl --output ml-0.0.21-py3-none-any.whl
+      - run: curl https://azuremlsdktestpypi.blob.core.windows.net/wheels/sdk-cli-v2/ml-0.0.31-py3-none-any.whl --output ml-0.0.31-py3-none-any.whl
         working-directory: docs
       - run: mkdir _build
         working-directory: docs
       - run: mkdir _build/html
         working-directory: docs
-      - run: python generate.py -e ml-0.0.21-py3-none-any.whl -o _build/html
+      - run: python generate.py -e ml-0.0.31-py3-none-any.whl -o _build/html
         working-directory: docs
       - run: git config --global user.email "azureml@microsoft.com"
       - run: git config --global user.name "Azure ML"

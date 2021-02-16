@@ -16,7 +16,7 @@ deployments:
             name: sklearn-mir-env
             version: 1
             path: .
-            conda_file: ./environment_files/endpoint_conda.yml
+            conda_file: file:./environment_files/endpoint_conda.yml
         sku: Standard_DS3_v2
     etgreen:
         model: azureml:/subscriptions/4faaaf21-663f-4391-96fd-47197c630979/resourceGroups/static_sdk_cli_v2_test_e2e/providers/Microsoft.MachineLearningServices/workspaces/sdk_vnext_cli/models/sklearn_regression_model/versions/4
@@ -27,5 +27,5 @@ deployments:
             name: sklearn-mir-env
             version: 1
             path: .
-            conda_file: ./environment_files/endpoint_conda.yml
+            conda_file: file:./environment_files/endpoint_conda.yml
         sku: Standard_DS4_v2
