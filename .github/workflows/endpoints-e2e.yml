@@ -33,7 +33,7 @@ jobs:
       with:
         python-version: 3.7
     - run: |
-        az extension add --source https://azuremlsdktestpypi.blob.core.windows.net/wheels/sdk-cli-v2/ml-0.0.22-py3-none-any.whl --pip-extra-index-urls https://azuremlsdktestpypi.azureedge.net/sdk-cli-v2 -y
+        az extension add --source https://azuremlsdktestpypi.blob.core.windows.net/wheels/sdk-cli-v2/ml-0.0.31-py3-none-any.whl --pip-extra-index-urls https://azuremlsdktestpypi.azureedge.net/sdk-cli-v2 -y
     - run: az ml -h  
     - run: az ml endpoint -h
     - name: azure login
@@ -48,7 +48,7 @@ jobs:
     - name: "Step 0: Delete endpoint if it exists"
       run: az ml endpoint delete -n ${{ github.event.client_payload.endpoint_prefix }}-simple-endpt
     - name: "Step 1a: Create endpoint with blue"
-      run: az ml endpoint create -n ${{ github.event.client_payload.endpoint_prefix }}-simple-endpt --file examples/endpoints/online/managed/simple-flow/1-create-endpoint-with-blue.yaml --wait
+      run: az ml endpoint create -n ${{ github.event.client_payload.endpoint_prefix }}-simple-endpt --file examples/endpoints/online/managed/simple-flow/1-create-endpoint-with-blue.yaml
     - name: "Step 1b: Get the state of endpoint/deployment along with the status"
       run: az ml endpoint show -n ${{ github.event.client_payload.endpoint_prefix }}-simple-endpt
     - name: "Step 2: Now test the endpoint"
