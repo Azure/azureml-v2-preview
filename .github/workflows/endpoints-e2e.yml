@@ -14,7 +14,7 @@ on:
       ws:
         description: 'Azure ML workspace'
         required: true
-        default: 'e2edemos'
+        default: 'endpoints-weu'
       endpoint_prefix:
         description: 'Endpoint prefix for uniqueness'
         required: true
