@@ -45,7 +45,21 @@ Step 3: Check the container logs
 
 by default the logs are pulled from the `inference-server`. However you can pull it from `storage-initializer` container by passing --container `storage-initializer`
 
-Step 4: [Optionally] Delete the endpoint along with the deployment
+Step 4: Check out metrics from Azure Poral
+-------------------------------------------------
+
+Open the resource group from azure portal -> open the endpoint and deployment ARM resources
+-> you can see summary view in the overview page and details in tbe metrics tab
+
+
+Step 5: Check out log analytics
+-------------------------------------------------
+
+1. Open the ARM resource page from endpoint -> select `Diagnostic settings` -> Add settings (add a log analytics workspace - create one if needed)
+2. Make some scoring requests for logs to flow to Log Analytics
+3. Open the log analytics workspace -> Click on `Logs` on left nav -> Close the `Queries` popup opend by default -> double click on `AmlOnlineEndpointConsoleLog` -> click `Run`
+
+Step 6: [Optionally] Delete the endpoint along with the deployment
 ------------------------------------------------------------------
 
 Do **not** run this step if you plan to run the :ref:`declarative-flow`

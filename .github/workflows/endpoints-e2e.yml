@@ -1,0 +1,63 @@
+name: e2e-endpoint
+on: 
+  repository_dispatch:
+    types: test-endpoints
+    inputs:
+      subs:
+        description: 'Subscription #'
+        required: true
+        default: '92c76a2f-0e1c-4216-b65e-abf7a3f34c1e'
+      rg:
+        description: 'Resource group'
+        required: true
+        default: 'demorg'
+      ws:
+        description: 'Azure ML workspace'
+        required: true
+        default: 'e2edemos'
+      endpoint_prefix:
+        description: 'Endpoint prefix for uniqueness'
+        required: true
+        default: 'test'
+jobs:
+  
+  # E2E flow#1: Simple deploy flow
+  simple-deployment-flow:
+    name: Simple deployment flow
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2.3.3
+    - name: Setup Python
+      uses: actions/setup-python@v2.1.4
+      with:
+        python-version: 3.7
+    - run: |
+        az extension add --source https://azuremlsdktestpypi.blob.core.windows.net/wheels/sdk-cli-v2/ml-0.0.22-py3-none-any.whl --pip-extra-index-urls https://azuremlsdktestpypi.azureedge.net/sdk-cli-v2 -y
+    - run: az ml -h  
+    - run: az ml endpoint -h
+    - name: azure login
+      uses: azure/login@v1
+      with:
+        creds: ${{secrets.AZURE_TOKEN}}
+    - run: |
+          az config set defaults.workspace=${{ github.event.client_payload.ws }}
+          az config set defaults.group=${{ github.event.client_payload.rg }}
+          az account set -s ${{ github.event.client_payload.subs }}    
+    
+    - name: "Step 0: Delete endpoint if it exists"
+      run: az ml endpoint delete -n ${{ github.event.client_payload.endpoint_prefix }}-simple-endpt
+    - name: "Step 1a: Create endpoint with blue"
+      run: az ml endpoint create -n ${{ github.event.client_payload.endpoint_prefix }}-simple-endpt --file examples/endpoints/online/managed/simple-flow/1-create-endpoint-with-blue.yaml --wait
+    - name: "Step 1b: Get the state of endpoint/deployment along with the status"
+      run: az ml endpoint show -n ${{ github.event.client_payload.endpoint_prefix }}-simple-endpt
+    - name: "Step 2: Now test the endpoint"
+      run: az ml endpoint invoke -n ${{ github.event.client_payload.endpoint_prefix }}-simple-endpt --request-file examples/endpoints/online/model-1/sample-request.json
+    - name: "Step 3: Check the container logs"
+      run: az ml endpoint log -n ${{ github.event.client_payload.endpoint_prefix }}-simple-endpt --deployment blue --tail 100
+    - name: "Step 4: Delete the endpoint"
+      run: az ml endpoint delete -n ${{ github.event.client_payload.endpoint_prefix }}-simple-endpt
+      
+          
+
+  
