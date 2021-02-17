@@ -18,7 +18,7 @@ deployments:
         directory: ../../model-2/onlinescoring/
       scoring_script: score.py
     environment: 
-        name: model-2-env
+        name: model2-env
         version: 1
         path: .
         conda_file: file:../../model-2/environment/conda.yml
