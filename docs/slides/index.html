@@ -16,6 +16,14 @@
 	<body>
 		<div class="reveal">
 			<div class="slides" style="text-align: left;">
+				<section>
+					<h3>Azure ML 2.0 Developer Experience</h3>
+
+					<p style="line-height: 14px;"><br><br/>Daniel Schneider<br><br/><span style="font-size:20px">Pricipal Program Manager -- AzureML</span></p>
+					<br><br/>
+					<p style="font-size:30px;">These slides can be found here: <a href='https://aka.ms/AAb6yid'>https://aka.ms/AAb6yid</a>
+					<p style="font-size:30px;">The azureml-v2-preview introduced here can be found here: <a href='https://aka.ms/azuremlv2'>https://aka.ms/azuremlv2</a>
+				</section>
 				<section data-markdown>
 					## Azure ML 2.0 Developer Experience	
 					
@@ -224,15 +232,14 @@
 						```bash
 						az ml data create --file iris-data.yaml
 						```
-						Notes: az ml data create --file iris-data.yaml --version 4
 					</section>
 					<section data-markdown data-auto-animate style="text-align: left;">
 						## `data`
-
+						
 						Create a dataset by uploading data
 						```bash
 						cd ./iris/
-						az ml data upload --name irisdata --version 1 --path ./data
+						az ml data upload --name irisdata --version 5 --path ./data
 						```
 					</section>
 				</section>
@@ -501,6 +508,8 @@
 					To provide feedback, please open issues on this Github repository:
 
 					[https://github.com/Azure/azureml-v2-preview](https://github.com/Azure/azureml-v2-preview)
+
+					These slides can be found here: [https://aka.ms/AAb6yid](https://aka.ms/AAb6yid)
 				</section>
 			</div>
 		</div>
