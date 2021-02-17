@@ -21,7 +21,7 @@ To run the job use:
 
 ```bash
 cd examples/r/train-model
-az ml job create --file job.yaml --name $(uuidgen) --stream
+az ml job create --file job.yml --name $(uuidgen) --stream
 ```
 
 ## Notes

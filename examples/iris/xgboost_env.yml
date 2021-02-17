@@ -1,5 +1,4 @@
 # yaml-language-server: $schema=https://azuremlsdk2.blob.core.windows.net/latest/environment.schema.json
-name: fastai
+name: xgboost-env
 version: 1
-docker:
-  image: docker.io/fastai/fastai
+conda_file: file:xgboost_conda.yml

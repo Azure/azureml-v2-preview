@@ -1,6 +1,0 @@
-command: Rscript hello.R
-environment: azureml:rocker-azureml:1
-compute:
-  target: azureml:cpu-cluster 
-code:
-  directory: ./code

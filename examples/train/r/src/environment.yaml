@@ -1,5 +1,0 @@
-version: 1 
-name: rocker-azureml
-docker:
-  build:
-    dockerfile: file:../../environments/r/r_with_aml_deps.dockerfile
