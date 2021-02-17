@@ -3,7 +3,7 @@ location: centraluseuap
 name: myendpoint2
 type: online
 infrastructure: azureml:myakscluster
-auth_mode: Key
+auth_mode: key
 traffic:
     blue: 0
 deployments:
@@ -19,12 +19,12 @@ deployments:
         scale_settings:
             scale_type: manual
             instance_count: 1
-            min_instances: 1
-            max_instances: 1
+            minimum: 1
+            maximum: 1
         request_settings:
             request_timeout_ms: 3000
             max_concurrent_requests_per_instance: 1
             max_queue_wait_ms: 3000
         resource_requirements:
             cpu: 1.0
-            memory: 1.0
+            memory: 1 Gib
