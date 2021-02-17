@@ -32,7 +32,7 @@ jobs:
           az account set -s ${{ github.event.client_payload.subs }}    
     
     - name: "Step 0: Delete endpoint if it exists"
-      run: az ml endpoint delete -n ${{ github.event.client_payload.endpoint_prefix }}-simple-endpt -y --no-wait
+      run: az ml endpoint delete -n ${{ github.event.client_payload.endpoint_prefix }}-simple-endpt -y
       continue-on-error: true
     - name: "Step 1a: Create endpoint with blue"
       run: az ml endpoint create -n ${{ github.event.client_payload.endpoint_prefix }}-simple-endpt --file examples/endpoints/online/managed/simple-flow/1-create-endpoint-with-blue.yaml
@@ -63,14 +63,14 @@ jobs:
     - name: azure login
       uses: azure/login@v1
       with:
-        creds: ${{secrets.AZURE_TOKEN}}
+        creds: ${{secrets.AZURE_TOKEN_FOR_ENDPOINTS}}
     - run: |
           az config set defaults.workspace=${{ github.event.client_payload.ws }}
           az config set defaults.group=${{ github.event.client_payload.rg }}
           az account set -s ${{ github.event.client_payload.subs }}    
     
     - name: "Step 0: Delete endpoint if it exists"
-      run: az ml endpoint delete -n ${{ github.event.client_payload.endpoint_prefix }}-imp-endpt -y --no-wait
+      run: az ml endpoint delete -n ${{ github.event.client_payload.endpoint_prefix }}-imp-endpt -y
       continue-on-error: true
     - name: "Step 1a: Create endpoint"
       run: az ml endpoint create -n ${{ github.event.client_payload.endpoint_prefix }}-imp-endpt --file examples/endpoints/online/managed/canary-imperative-flow/1-create-endpoint.yaml
@@ -113,14 +113,14 @@ jobs:
     - name: azure login
       uses: azure/login@v1
       with:
-        creds: ${{secrets.AZURE_TOKEN}}
+        creds: ${{secrets.AZURE_TOKEN_FOR_ENDPOINTS}}
     - run: |
           az config set defaults.workspace=${{ github.event.client_payload.ws }}
           az config set defaults.group=${{ github.event.client_payload.rg }}
           az account set -s ${{ github.event.client_payload.subs }}    
     
     - name: "Step 0: Delete endpoint if it exists"
-      run: az ml endpoint delete -n ${{ github.event.client_payload.endpoint_prefix }}-dec-endpt -y --no-wait
+      run: az ml endpoint delete -n ${{ github.event.client_payload.endpoint_prefix }}-dec-endpt -y 
       continue-on-error: true
     - name: "Step 1: Create endpoint with blue"
       run: az ml endpoint create -n ${{ github.event.client_payload.endpoint_prefix }}-dec-endpt --file examples/endpoints/online/managed/simple-flow/1-create-endpoint-with-blue.yaml
