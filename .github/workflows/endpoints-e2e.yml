@@ -25,7 +25,7 @@ jobs:
     - name: azure login
       uses: azure/login@v1
       with:
-        creds: ${{secrets.AZURE_TOKEN}}
+        creds: ${{secrets.AZURE_TOKEN_FOR_ENDPOINTS}}
     - run: |
           az config set defaults.workspace=${{ github.event.client_payload.ws }}
           az config set defaults.group=${{ github.event.client_payload.rg }}
