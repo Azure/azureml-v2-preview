@@ -44,29 +44,27 @@ jobs:
     - run: |
           az ml environment create --file examples/train/fastai/pets-resnet34/fastai_vision_env.yml
     - run: |
-          az ml environment create --file examples/train/r/r_minimal_env.yml
+          az ml environment create --file examples/train/r/r_env.yml
     - run: |
-          az ml environment create --file examples/train/r/r_cran_env.yml
-    - run: |
-          az ml environment create --file examples/iris/xgboost-env.yml
+          az ml environment create --file examples/iris/xgboost_env.yml
       continue-on-error: true
     - run: |
           az ml environment create --file examples/train/fastai/mnist-resnet18/fastai_env.yml
       continue-on-error: true
 
     - run: |
-          az ml environment create --file examples/environments/tensorflow/tf_env.yml
+          az ml environment create --file examples/train/tensorflow/tf_env.yml
       continue-on-error: true
     - run: |
-          az ml data create --file examples/iris/iris-data.yml
+          az ml data create --file examples/iris/iris_data.yml
     - run: |
-          az ml job create --file examples/iris/iris-job.yml --name iris_$GITHUB_RUN_ID
+          az ml job create --file examples/iris/iris_job.yml --name iris_$GITHUB_RUN_ID
     - run: |
           az ml job create --file examples/train/basic-command-job/pip_freeze_job.yml
     - run: |
           az ml job create --file examples/train/basic-command-job/hello_python_job.yml  --name hellotest_$GITHUB_RUN_ID 
     - run: |
-          az ml job create --file examples/train/r/r_job.yml  --name rtest_$GITHUB_RUN_ID
+          az ml job create --file examples/train/r/accident-prediction/r_job.yml  --name rtest_$GITHUB_RUN_ID
     - run: |
           az ml job create --file examples/train/fastai/mnist-resnet18/fastai_mnist_job.yml --name fastai_mnist_$GITHUB_RUN_ID 
     - run: |
