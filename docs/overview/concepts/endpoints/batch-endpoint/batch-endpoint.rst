@@ -30,34 +30,35 @@ Start a batch scoring job
 Start a batch scoring job by passing the input data and configure the output location. You will get a job name (a GUID) from the response.
 You can also use REST API, see the Appendix below.
 
-Invoke a batch scoring job with input data stored in cloud and output to cloud storage.
+Invoke a batch scoring job with input data stored in cloud and output to cloud storage. Replace with your own datastore.
 
 .. code-block:: bash
   
-  az ml endpoint invoke --name myBatchEndpoint --type batch --input-path https://pipelinedata.blob.core.windows.net/sampledata/mnist --output-datastore azureml:workspaceblobstore --output-path prediction
+  az ml endpoint invoke --name myBatchEndpoint --type batch --input-path https://pipelinedata.blob.core.windows.net/sampledata/mnist --output-datastore <azureml:workspaceblobstore> --output-path prediction
 
 .. code-block:: bash
   
-  az ml endpoint invoke --name myBatchEndpoint --type batch --input-datastore azureml:workspaceblobstore --input-path data --output-datastore azureml:workspaceblobstore --output-path prediction
+  az ml endpoint invoke --name myBatchEndpoint --type batch --input-datastore <azureml:workspaceblobstore> --input-path data --output-datastore <azureml:workspaceblobstore> --output-path prediction
 
 
-Input is registered data, and output to cloud storage.
-
-.. code-block:: bash
-  
-  az ml endpoint invoke --name myBatchEndpoint --type batch --input-data azureml:mnist-data:1 --output-datastore azureml:workspaceblobstore --output-path prediction
-
-Input is local path, and output to cloud storage.
+Input is registered data, and output to cloud storage. Replace with your own datastore and registered dataset.
 
 .. code-block:: bash
   
-  az ml endpoint invoke --name myBatchEndpoint --type batch --input-local-path ./batchinput/ --input-datastore azureml:workspaceblobstore --input-path bathinput --output-datastore azureml:workspaceblobstore --output-path prediction
+  az ml endpoint invoke --name myBatchEndpoint --type batch --input-data azureml:mnist-data:1 --output-datastore <azureml:workspaceblobstore> --output-path prediction
+
+Input is local path, and output to cloud storage. Replace with your own path and datastore.
+
+.. code-block:: bash
+  
+  az ml endpoint invoke --name myBatchEndpoint --type batch --input-local-path ./batchinput/ --input-datastore <azureml:workspaceblobstore> --input-path bathinput --output-datastore <azureml:workspaceblobstore> --output-path prediction
 
 Check batch scoring job status
 ------------------------------
 
 Batch scoring job usually takes time to process the entire input. You can monitor the job progress from Azure portal.
-1. From your workspace page, click `Studio web URL` ot launch studio.
+
+1. From your workspace page, click `Studio web URL` ot launch studio.1. 
 2. Open `Endpoints` page, click `Pipeline endpoints`.
 3. Click endpoint name, and you will see a list of jobs.
 
