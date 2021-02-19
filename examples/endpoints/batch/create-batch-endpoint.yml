@@ -10,16 +10,16 @@ deployments:
     model: 
       name: mnist
       version: 1
-      path: ./model/
+      path: ./mnist/model/
     code_configuration:
       code:
-        directory: ./code
+        directory: ./mnist/code
       scoring_script: digit_identification.py
     environment: 
       name: mnist-env
       version: 1
       path: .
-      conda_file: file:./environment/conda.yml
+      conda_file: file:./mnist/environment/conda.yml
     batch_settings:
       partition_scheme:
         mini_batch_size: 5
