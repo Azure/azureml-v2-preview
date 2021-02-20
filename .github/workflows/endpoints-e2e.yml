@@ -31,6 +31,7 @@ jobs:
           az config set defaults.group=${{ github.event.client_payload.rg }}
           az account set -s ${{ github.event.client_payload.subs }}    
     
+    - run: az ml endpoint list -o table
     - name: "Step 0: Delete endpoint if it exists"
       run: az ml endpoint delete -n ${{ github.event.client_payload.endpoint_prefix }}-simple-endpt -y
       continue-on-error: true
@@ -91,7 +92,7 @@ jobs:
     - name: "Step 5: 100% traffic to green"
       run: az ml endpoint update -n ${{ github.event.client_payload.endpoint_prefix }}-imp-endpt --traffic "blue:0,green:100"
     - name: "Step 6: Delete the blue deployment"
-      run: az ml endpoint delete -n ${{ github.event.client_payload.endpoint_prefix }}-imp-endpt --deployment blue
+      run: az ml endpoint delete -n ${{ github.event.client_payload.endpoint_prefix }}-imp-endpt --deployment blue -y
     - name: "Step 7: Cleanup - delete the endpoint"
       run: az ml endpoint delete -n ${{ github.event.client_payload.endpoint_prefix }}-imp-endpt -y
   

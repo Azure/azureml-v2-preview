@@ -9,7 +9,7 @@ code_configuration:
     directory: ../../model-1/onlinescoring/
   scoring_script: score.py
 environment: 
-    name: model1-env
+    name: model1env
     version: 1
     path: .
     conda_file: file:../../model-1/environment/conda.yml
