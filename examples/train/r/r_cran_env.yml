@@ -1,5 +1,0 @@
-name: r-with-optparse
-version: 1
-docker:
-   build:
-     dockerfile: ./r_with_cran.dockerfile

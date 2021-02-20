@@ -16,7 +16,7 @@ deployments:
             name: sklearn-aks-env
             version: 1
             path: .
-            conda_file: environment/conda.yml
+            conda_file: file:environment/conda.yml
         scale_settings:
             scale_type: manual
             instance_count: 1
@@ -37,7 +37,7 @@ deployments:
             name: sklearn-aks-env
             version: 1
             path: .
-            conda_file: environment/conda.yml
+            conda_file: file:environment/conda.yml
         scale_settings:
             scale_type: manual
             instance_count: 1

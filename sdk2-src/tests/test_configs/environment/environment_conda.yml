@@ -1,4 +1,4 @@
 name: TestEnv
 version: 3
 path: environment_files
-conda_file: environment.yml
+conda_file: file:environment.yml

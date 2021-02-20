@@ -1,0 +1,6 @@
+# yaml-language-server: $schema=https://azuremlsdk2.blob.core.windows.net/latest/asset.schema.json
+name: irisdata
+version: 1
+description: iris dataset
+datastore: azureml:workspaceblobstore
+directory: data

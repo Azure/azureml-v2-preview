@@ -3,7 +3,6 @@ command: python hello.py
 code:
   directory: src
 environment: 
-  name: official_python_image
   docker: 
     image: docker.io/python
 compute:

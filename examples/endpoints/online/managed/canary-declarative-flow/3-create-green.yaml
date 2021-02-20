@@ -19,10 +19,10 @@ deployments:
         directory: ../../model-1/onlinescoring/
       scoring_script: score.py
     environment: 
-        name: model-1-env
+        name: model1-env
         version: 1
         path: .
-        conda_file: ../../model-1/environment/conda.yml
+        conda_file: file:../../model-1/environment/conda.yml
     sku: Standard_F2s_v2
     scale_settings:
       scale_type: manual
@@ -41,10 +41,10 @@ deployments:
         directory: ../../model-2/onlinescoring/
       scoring_script: score.py
     environment: 
-        name: model-2-env
+        name: model2-env
         version: 1
         path: .
-        conda_file: ../../model-2/environment/conda.yml
+        conda_file: file:../../model-2/environment/conda.yml
     sku: Standard_F2s_v2
     scale_settings:
       scale_type: manual

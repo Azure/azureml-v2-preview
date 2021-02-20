@@ -1,0 +1,32 @@
+# yaml-language-server: $schema=https://azuremlsdk2.blob.core.windows.net/latest/sweepJob.schema.json
+experiment_name: tune-iris-example
+algorithm: random
+type: sweep_job
+search_space:
+  learning-rate:
+    type: uniform
+    min_value: 0.001
+    max_value: 0.1
+  subsample:
+    type: uniform
+    min_value: 0.1
+    max_value: 1.0    
+objective:
+  primary_metric: accuracy
+  goal: maximize
+trial:
+  command: >-
+    python train.py --data {inputs.training_data}
+  environment: azureml:xgboost-env:1
+  compute:
+    target: azureml:goazurego
+  code: 
+    directory: train
+  inputs:
+    training_data:
+      data: azureml:irisdata:1
+      mode: mount
+limits:
+  max_total_trials: 10
+  max_concurrent_trials: 10
+  timeout_minutes: 20

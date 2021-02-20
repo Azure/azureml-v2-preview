@@ -15,7 +15,7 @@ deployments:
             name: sklearn-mir-env
             version: 1
             path: .
-            conda_file: ./environmentendpoint_conda.yml
+            conda_file: file:./environmentendpoint_conda.yml
         sku: Standard_DS3_v2
         scale_settings:
             scale_type: manual
@@ -41,7 +41,7 @@ deployments:
             name: sklearn-mir-env
             version: 1
             path: .
-            conda_file: ./environment/endpoint_conda.yml
+            conda_file: file:./environment/endpoint_conda.yml
         sku: Standard_DS4_v2
         scale_settings:
             scale_type: manual
