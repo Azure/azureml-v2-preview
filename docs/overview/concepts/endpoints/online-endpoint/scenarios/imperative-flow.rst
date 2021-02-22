@@ -20,7 +20,9 @@ Step 1a: Create an empty endpoint (no deployment and no set traffic rules)
 
 .. code-block:: bash
 
-    az ml endpoint create --file examples/endpoints/online/managed/canary-imperative-flow/1-create-endpoint.yaml --wait
+    az ml endpoint create --name imperative-endpt -f examples/endpoints/online/managed/canary-imperative-flow/1-create-endpoint.yaml
+
+**Note**: Replace the above endpoint name with a unique name (it should be unique at region level)
 
 .. literalinclude:: ../../../../../../examples/endpoints/online/managed/canary-imperative-flow/1-create-endpoint.yaml
    :language: yaml
@@ -30,7 +32,7 @@ Step 1b: create the deployment
 
 .. code-block:: bash
 
-    az ml endpoint update  --name my-new-endpoint --deployment blue --deployment-file examples/endpoints/online/managed/canary-imperative-flow/2-create-blue.yaml --wait
+    az ml endpoint update -n imperative-endpt --deployment blue --deployment-file examples/endpoints/online/managed/canary-imperative-flow/2-create-blue.yaml
 
 .. literalinclude:: ../../../../../../examples/endpoints/online/managed/canary-imperative-flow/2-create-blue.yaml
    :language: yaml
@@ -40,7 +42,7 @@ Step 1c: Set traffic
 
 .. code-block:: bash
     
-    az ml endpoint update --name my-new-endpoint --traffic "blue:100" --wait
+    az ml endpoint update --name imperative-endpt --traffic "blue:100"
 
 
 Step 1d: Test the endpoint
@@ -48,7 +50,7 @@ Step 1d: Test the endpoint
 
 .. code-block:: bash
 
-    az ml endpoint invoke --name my-new-endpoint --request-file examples/endpoints/online/model-1/sample-request.json
+    az ml endpoint invoke --name imperative-endpt --request-file examples/endpoints/online/model-1/sample-request.json
 
 
 Step 2: Scale the blue deployment to handle additional traffic
@@ -56,20 +58,20 @@ Step 2: Scale the blue deployment to handle additional traffic
 
 .. code-block:: bash
     
-    az ml endpoint update --name my-new-endpoint --deployment blue --instance-count 2 --wait
+    az ml endpoint update --name imperative-endpt --deployment blue --instance-count 2
 
 you can also use the generic --set to update any attribute
 
 .. code-block:: bash
     
-    az ml endpoint update --name my-new-endpoint --set deployments.blue.scale.instance_count=2 --wait
+    az ml endpoint update --name imperative-endpt --set deployments.blue.scale.instance_count=2
 
 Step 3: Deploy a new model (green) to the endpoint, but taking NO live traffic yet
 ----------------------------------------------------------------------------------
 
 .. code-block:: bash
 
-    az ml endpoint update  --name my-new-endpoint --deployment-file examples/endpoints/online/managed/canary-imperative-flow/3-create-green.yaml  --traffic "blue:100,green:0" --wait
+    az ml endpoint update  --name imperative-endpt --deployment-file examples/endpoints/online/managed/canary-imperative-flow/3-create-green.yaml  --traffic "blue:100,green:0"
 
 .. literalinclude:: ../../../../../../examples/endpoints/online/managed/canary-imperative-flow/3-create-green.yaml
    :language: yaml
@@ -78,7 +80,7 @@ Step 3: Deploy a new model (green) to the endpoint, but taking NO live traffic y
 
 .. code-block:: bash
 
-    az ml endpoint invoke --name my-new-endpoint --deployment green --request-file examples/endpoints/online/model-2/sample-request.json
+    az ml endpoint invoke --name imperative-endpt --deployment green --request-file examples/endpoints/online/model-2/sample-request.json
 
 Step 4: Move small percentage of live traffic to green
 ------------------------------------------------------
@@ -87,25 +89,25 @@ To perform the update directly,
 
 .. code-block:: bash
     
-    az ml endpoint update --name my-new-endpoint --traffic "blue:90,green:10" --wait
+    az ml endpoint update --name imperative-endpt --traffic "blue:90,green:10"
 
 Step 5: Let the green deployment take on the full traffic
 ---------------------------------------------------------
 
 .. code-block:: bash
     
-    az ml endpoint update --name my-new-endpoint --traffic "blue:0,green:100" --wait
+    az ml endpoint update --name imperative-endpt --traffic "blue:0,green:100"
 
 Step 6: Now since green is working fine, lets delete the blue deployment
 ------------------------------------------------------------------------
 
 .. code-block:: bash
     
-    az ml endpoint delete --name my-new-endpoint --deployment blue
+    az ml endpoint delete --name imperative-endpt --deployment blue
 
 Step 7: Cleanup - delete the endpoint
 -------------------------------------
 
 .. code-block:: bash
     
-    az ml endpoint delete --name my-new-endpoint
+    az ml endpoint delete --name imperative-endpt
