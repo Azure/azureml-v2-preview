@@ -1,4 +1,4 @@
-name: myBatchEndpoint
+name: mybatchendpoint
 description: my sample batch endpoint
 type: batch
 auth_mode: aad_token
@@ -13,10 +13,10 @@ deployments:
       path: ./mnist/model/
     code_configuration:
       code:
-        directory: ./mnist/code
+        directory: ./mnist/code/
       scoring_script: digit_identification.py
     environment: 
-      name: mnist-env
+      name: mnistenv
       version: 1
       path: .
       conda_file: file:./mnist/environment/conda.yml
@@ -25,7 +25,7 @@ deployments:
         mini_batch_size: 5
       output_configuration:
         output_action: append_row
-        append_row_file_name: append_row.txt
+        append_row_file_name: predictions.txt
       retry_settings:
         maximum_retries: 3
         timeout_in_seconds: 30
