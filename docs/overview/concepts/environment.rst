@@ -20,10 +20,10 @@ Example - Create Environment from YAML file representing the environment.
 
 .. code-block:: console
 
-  az ml environment create --file examples/environments/fastai-vision-env.yml
+  az ml environment create --file examples/train/fastai/pets-resnet34/fastai_vision_env.yml
 
 
-.. literalinclude:: ../../../examples/environments/fastai-vision-env.yml
+.. literalinclude:: ../../../examples/train/fastai/pets-resnet34/fastai_vision_env.yml
    :language: yaml
    
 Environments can be created in number of ways. These examples shows YAML files representing environments for supported scenarios.
@@ -33,12 +33,12 @@ Creating Environment using existing Docker Image:
 
 .. code-block:: console
 
-  az ml environment create --file examples/environments/fastai-env.yml
+  az ml environment create --file examples/environments/docker_env.yml
 
 
 where `fastai-env.yml` contains:
 
-.. literalinclude:: ../../../examples/environments/fastai-env.yml
+.. literalinclude:: ../../../examples/environments/docker_env.yml
    :language: yaml
 
 Creating Environment using DockerFile:
@@ -46,11 +46,11 @@ Creating Environment using DockerFile:
 
 .. code-block:: console
 
-  az ml environment create --file examples/environments/fastai-vision-env.yml
+  az ml environment create --file examples/train/fastai/pets-resnet34/fastai_vision_env.yml
 
-where `fastai-vision-env.yml` contains:
+where `fastai_vision_env.yml` contains:
 
-.. literalinclude:: ../../../examples/environments/fastai-vision-env.yml
+.. literalinclude:: ../../../examples/train/fastai/pets-resnet34/fastai_vision_env.yml
    :language: yaml
 
 Creating Environment using Conda File:
@@ -58,11 +58,11 @@ Creating Environment using Conda File:
 
 .. code-block:: console
 
-  az ml environment create --file examples/environments/conda-env.yml
+  az ml environment create --file examples/environments/conda_env.yml
 
-Where `conda-env.yml` contains: 
+Where `conda_env.yml` contains: 
 
-.. literalinclude:: ../../../examples/environments/conda-env.yml
+.. literalinclude:: ../../../examples/environments/conda_env.yml
    :language: yaml
 
 where `environment.yml` contains: 
@@ -76,11 +76,11 @@ Creating Environment using DockerFile + Conda File:
 
 .. code-block:: console
 
-  az ml environment create --file examples/environments/docker-conda-env.yml
+  az ml environment create --file examples/environments/docker_conda_env.yml
 
-where `docker-conda-env.yml` contains: 
+where `docker_conda_env.yml` contains: 
 
-.. literalinclude:: ../../../examples/environments/docker-conda-env.yml
+.. literalinclude:: ../../../examples/environments/docker_conda_env.yml
    :language: yaml
 
 

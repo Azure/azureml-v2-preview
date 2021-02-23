@@ -32,6 +32,7 @@ Configure other defaults:
     az config set defaults.location="eastus"
     az config set defaults.group="azureml-rg"
 
+
 **If needed**, add your subscription to the allow list (the following must be executed from a bash terminal):
 
 .. note::
@@ -48,6 +49,7 @@ Please let us know you are using the private preview by filling out this `onboar
 
 .. note::
     This is a staged rollout. Current regions available for private preview include canary regions in addition to: **All PROD regions**
+    **Managed inference preview** is invite only at this time. The supported regions include westeurope and westus2 (i.e. Azure ML workspace needs to be in these regions)
 
 
 Azure Machine Learning
@@ -59,7 +61,7 @@ Create a Workspace
 Create a workspace:
 
 .. warning::
-    Workspace creation from CLI does not work yet, please use the ARM template.
+    Workspace creation from CLI does not work yet, please use azue portal or an ARM template.
     Note that the defaults set above may not match the ARM template.
 
 .. image:: https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.svg?sanitize=true

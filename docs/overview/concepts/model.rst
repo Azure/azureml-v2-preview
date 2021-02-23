@@ -27,7 +27,6 @@ Minimum required definition for a model:
   name: my-model
   version: 1
   asset_path: ./model
-```
 
 Full specification of a model (note: if you're using MLflow this information can be derived from the MLmodel file produced by runs):
 

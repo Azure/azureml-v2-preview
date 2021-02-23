@@ -30,8 +30,9 @@ Step 2: Scale the blue deployment to handle additional traffic
 --------------------------------------------------------------
 .. code-block:: bash
 
-    az ml endpoint update --file examples/endpoints/online/managed/canary-declarative-flow/2-scale-blue.yaml --wait
+    az ml endpoint update --name my-endpoint -f examples/endpoints/online/managed/canary-declarative-flow/2-scale-blue.yaml
 
+**Note**: Rememebr to use same endpoint from simple deployment flow
 
 .. literalinclude:: ../../../../../../examples/endpoints/online/managed/canary-declarative-flow/2-scale-blue.yaml
    :language: yaml
@@ -41,7 +42,7 @@ Step 3: Deploy a new model (green) to the endpoint, but taking NO live traffic y
 
 .. code-block:: bash
 
-    az ml endpoint update --file examples/endpoints/online/managed/canary-declarative-flow/3-create-green.yaml --wait
+    az ml endpoint update --file examples/endpoints/online/managed/canary-declarative-flow/3-create-green.yaml
 
 
 .. literalinclude:: ../../../../../../examples/endpoints/online/managed/canary-declarative-flow/3-create-green.yaml
@@ -59,7 +60,7 @@ Step 4: Test the green deployment with a small percentage of the live traffic
 
 .. code-block:: bash
 
-    az ml endpoint update --file examples/endpoints/online/managed/canary-declarative-flow/4-flight-green.yaml --wait
+    az ml endpoint update --file examples/endpoints/online/managed/canary-declarative-flow/4-flight-green.yaml
 
 This is the yaml file
 
@@ -71,7 +72,7 @@ Step 5: Let the green deployment take on the full traffic
  
  .. code-block:: bash
 
-    az ml endpoint update --file examples/endpoints/online/managed/canary-declarative-flow/5-full-green.yaml --wait
+    az ml endpoint update --file examples/endpoints/online/managed/canary-declarative-flow/5-full-green.yaml
 
 This is the yaml file
 
@@ -83,7 +84,7 @@ Step 6: Now since green is working fine, lets delete the blue deployment
  
  .. code-block:: bash
 
-    az ml endpoint update --file examples/endpoints/online/managed/canary-declarative-flow/6-delete-blue.yaml --wait
+    az ml endpoint update --file examples/endpoints/online/managed/canary-declarative-flow/6-delete-blue.yaml
 
 This is the yaml file
 

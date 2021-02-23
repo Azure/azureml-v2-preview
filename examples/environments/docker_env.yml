@@ -1,7 +1,5 @@
 # yaml-language-server: $schema=https://azuremlsdk2.blob.core.windows.net/latest/environment.schema.json
-name: fastai-vision
+name: fastai
 version: 1
 docker:
-   build:
-     dockerfile: file:fastai.dockerfile
-
+  image: docker.io/fastai/fastai

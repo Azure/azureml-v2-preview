@@ -1,0 +1,10 @@
+experiment_name: r-accidents-example
+code:
+  directory: ./src
+command: Rscript accidents.R
+environment:
+  docker:
+    build:
+      dockerfile: file:../r.dockerfile
+compute:
+  target: azureml:goazurego

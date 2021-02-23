@@ -1,8 +1,7 @@
 # yaml-language-server: $schema=https://azuremlsdk2.blob.core.windows.net/latest/sweepJob.schema.json
-experiment_name: sweep-trial-v3
+experiment_name: basic-sweep-example
 algorithm: random
 type: sweep_job
-name: test_v3111
 search_space:
   lr:
     type: uniform
@@ -24,7 +23,7 @@ trial:
     directory: src
   environment: azureml:AzureML-Minimal:1
   compute:
-    target: azureml:testCompute
+    target: azureml:goazurego
 limits:
   max_total_trials: 100
   max_concurrent_trials: 10
