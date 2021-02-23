@@ -7,7 +7,7 @@ Unlike online scoring (also known as realtime scoring) where you get the scoring
 Create a Batch Endpoint
 -----------------------
 
-Create a batch endpoint hosting one model for batch scoring.
+Create a batch endpoint for batch scoring.
 
 .. code-block:: bash
   
@@ -27,40 +27,51 @@ You can use the `--query parameter <https://docs.microsoft.com/en-us/cli/azure/q
 Start a batch scoring job
 -------------------------
 
-Start a batch scoring job by passing the input data and configure the output location. You will get a job name (a GUID) from the response.
-You can also use REST API, see the Appendix below.
+Start a batch scoring job by passing the input data. The input data can be a registered data, cloud path or local path. You will get a job name (a GUID) from the response.
+You can also use REST API to start a batch scoring job, see the Appendix below.
 
-Invoke a batch scoring job with input data stored in cloud and output to cloud storage. Replace with your own datastore.
-
-.. code-block:: bash
-  
-  az ml endpoint invoke --name myBatchEndpoint --type batch --input-path https://pipelinedata.blob.core.windows.net/sampledata/mnist --output-datastore <azureml:workspaceblobstore> --output-path prediction
-
-.. code-block:: bash
-  
-  az ml endpoint invoke --name myBatchEndpoint --type batch --input-datastore <azureml:workspaceblobstore> --input-path data --output-datastore <azureml:workspaceblobstore> --output-path prediction
+.. note:: text
+Configurable output is working in progress. Scoring outputs will be stored in your workspace's default blob store now.
 
 
-Input is registered data, and output to cloud storage. Replace with your own datastore and registered dataset.
+Option 1: Input is registered data.
 
 .. code-block:: bash
   
-  az ml endpoint invoke --name myBatchEndpoint --type batch --input-data azureml:mnist-data:1 --output-datastore <azureml:workspaceblobstore> --output-path prediction
+  az ml endpoint invoke --name myBatchEndpoint --type batch --input-data azureml:mnist-data:1
 
-Input is local path, and output to cloud storage. Replace with your own path and datastore.
+
+Option 2: Input is cloud path.
 
 .. code-block:: bash
   
-  az ml endpoint invoke --name myBatchEndpoint --type batch --input-local-path ./batchinput/ --input-datastore <azureml:workspaceblobstore> --input-path bathinput --output-datastore <azureml:workspaceblobstore> --output-path prediction
+  az ml endpoint invoke --name myBatchEndpoint --type batch --input-path https://pipelinedata.blob.core.windows.net/sampledata/mnist
+
+.. code-block:: bash
+  
+  az ml endpoint invoke --name myBatchEndpoint --type batch --input-datastore <azureml:workspaceblobstore> --input-path data
+
+
+Option 3: Input is local path.
+
+.. code-block:: bash
+  
+  az ml endpoint invoke --name myBatchEndpoint --type batch --input-local-path ./batchinput/ --input-datastore <azureml:workspaceblobstore> --input-path bathinput
 
 Check batch scoring job status
 ------------------------------
 
 Batch scoring job usually takes time to process the entire input. You can monitor the job progress from Azure portal.
 
-1. From your workspace page, click `Studio web URL` ot launch studio.1. 
+1. From your workspace page, click `Studio web URL` to launch studio. 
 2. Open `Endpoints` page, click `Pipeline endpoints`.
 3. Click endpoint name, and you will see a list of jobs.
+
+or use below command to get the job link.
+
+.. code-block:: bash
+  
+  az ml job show -n <job-name> --query interaction_endpoints.studio
 
 You can also use below commands to check job status and progress.
 
@@ -96,7 +107,7 @@ One batch endpoint can have multiple deployments hosting different models.
 Activate the new deployment
 ---------------------------
 
-Activate the new deployment by switching the traffic. Now you can invoke a batch scoring job with this new deployment.
+Activate the new deployment by switching the traffic (can only be 0 or 100). Now you can invoke a batch scoring job with this new deployment.
 
 .. code-block:: bash
   
@@ -121,4 +132,4 @@ Copy the value of the accessToken from the response.
 
 3. Use the scoring URI and the token in your REST client
 
-If you use postman, then go to the Authorization tab in the request and paste the value of the token. Use the scoring uri from above as the URI for the POST request.
+If you use postman, then go to the Authorization tab in the request and paste the value of the token. Use the scoring uri (please add ?api-version=2020-09-01-preview) from above as the URI for the POST request.
