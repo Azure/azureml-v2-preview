@@ -151,7 +151,7 @@ Sample request body use registered data:
     "properties": {
         "dataset": {
             "dataInputType": 1,
-            "datasetId": "/subscriptions/{{subscription}}/resourceGroups/{{resourcegroup}}/providers/Microsoft.MachineLearningServices/workspaces/{{workspaceName}}/data/{{datasetName}}/versions/1"
+            "datasetId": "datasetARMId"
             }
         }        
     }
@@ -161,9 +161,9 @@ Sample request body use cloud path:
 {
     "properties": {
         "dataset": {
-            "dataInputType": "DataUrl",
+            "dataInputType": "DataUrl",          
             "AssetPath": {
-                "Path": "https://pipelinedata.blob.core.windows.net/sampledata/nytaxi/taxi-tip-data.csv",
+                "Path": "dataCloudPath",
                 "IsDirectory": false
             }
         }        
