@@ -13,6 +13,10 @@ Create a batch endpoint for batch scoring.
   
   az ml endpoint create --type batch --file examples/endpoints/batch/create-batch-endpoint.yml
 
+Below is the yaml file
+
+.. literalinclude:: ../../../../../examples/endpoints/batch/create-batch-endpoint.yml
+   :language: yaml
 
 Check the batch endpoint details
 --------------------------------
@@ -106,6 +110,11 @@ One batch endpoint can have multiple deployments hosting different models.
 .. code-block:: bash
   
   az ml endpoint update --name mybatchendpoint --type batch --deployment-file examples/endpoints/batch/add-deployment.yml
+
+Here is the yaml file
+
+.. literalinclude:: ../../../../../examples/endpoints/batch/add-deployment.yml
+   :language: yaml
 
 Activate the new deployment
 ---------------------------
