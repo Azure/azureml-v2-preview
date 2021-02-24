@@ -31,7 +31,8 @@ Start a batch scoring job by passing the input data. The input data can be a reg
 You can also use REST API to start a batch scoring job, see the Appendix below.
 
 .. note:: text
-Configurable output is working in progress. Scoring outputs will be stored in your workspace's default blob store now.
+
+  Configurable output is working in progress. Scoring outputs will be stored in your workspace's default blob store now.
 
 
 Option 1: Input is registered data.
@@ -58,12 +59,10 @@ Option 3: Input is local path.
   
   az ml endpoint invoke --name mybatchendpoint --type batch --input-local-path ./batchinput/
 
-Check batch scoring job status
-------------------------------
+Check batch scoring job execution progress
+------------------------------------------
 
-Batch scoring job usually takes time to process the entire input. You can monitor the job progress from Azure portal.
-
-The portal link is provided in the response of invoke, check interactionEndpoints.studio.
+Batch scoring job usually takes time to process the entire input. You can monitor the job progress from Azure portal. The portal link is provided in the response of invoke, check interactionEndpoints.studio.
 
 You can also get the job link following below:
 
@@ -71,13 +70,19 @@ You can also get the job link following below:
 2. Open `Endpoints` page, click `Pipeline endpoints`.
 3. Click endpoint name, and you will see a list of jobs.
 
-You can also use below commands to check job status and progress.
+If you prefer using CLI, below are the commands.
 
 Check job detail along with status.
 
 .. code-block:: bash
   
   az ml job show --name <job-name>
+
+Stream job log.
+
+.. code-block:: bash
+  
+  az ml job stream --name <job-name>
 
 Get the job name from the invoke response, or use below command to list all jobs. 
 By default, jobs under the active deployment (deployment with 100 traffic) will be listed. 
