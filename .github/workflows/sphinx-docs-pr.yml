@@ -22,7 +22,7 @@ jobs:
         working-directory: docs
       - run: mkdir _build
         working-directory: docs
-      - run: python generate.py -e ml-0.0.38-py3-none-any.whl -o _build
+      - run: python generate.py -e ml-0.0.41-py3-none-any.whl -o _build
         working-directory: docs
       - uses: actions/upload-artifact@v1
         with:

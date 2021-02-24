@@ -24,7 +24,7 @@ jobs:
         working-directory: docs
       - run: mkdir _build/html
         working-directory: docs
-      - run: python generate.py -e ml-0.0.38-py3-none-any.whl -o _build/html
+      - run: python generate.py -e ml-0.0.41-py3-none-any.whl -o _build/html
         working-directory: docs
       - run: git config --global user.email "azureml@microsoft.com"
       - run: git config --global user.name "Azure ML"
