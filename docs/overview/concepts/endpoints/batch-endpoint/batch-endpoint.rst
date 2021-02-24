@@ -85,9 +85,7 @@ Stream job log.
   
   az ml job stream --name <job-name>
 
-Get the job name from the invoke response, or use below command to list all jobs. 
-By default, jobs under the active deployment (deployment with 100 traffic) will be listed. 
-You can also add '--deployment' to get the job lists for a specific deployment.
+Get the job name from the invoke response, or use below command to list all jobs. Add '--deployment' to get the job lists for a specific deployment.
 
 .. code-block:: bash
   
@@ -144,9 +142,8 @@ Copy the value of the accessToken from the response.
 
 3. Use the scoring URI and the token in your REST client
 
-If you use postman, then go to the Authorization tab in the request and paste the value of the token. Use the scoring uri (please add ?api-version=2020-09-01-preview) from above as the URI for the POST request.
+If you use postman, then go to the Authorization tab in the request and paste the value of the token. Use the scoring uri from above as the URI for the POST request.
 
-Sample request body use registered data:
 {
     "properties": {
         "dataset": {
@@ -157,13 +154,12 @@ Sample request body use registered data:
     }
 }
 
-Sample request body use cloud path:
 {
     "properties": {
         "dataset": {
-            "dataInputType": "DataUrl",          
+            "dataInputType": "DataUrl",
             "AssetPath": {
-                "Path": "dataCloudPath",
+                "Path": "dataUrl",
                 "IsDirectory": false
             }
         }        
