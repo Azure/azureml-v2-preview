@@ -3,8 +3,7 @@ Distributed Training
 
 You can run a distributed job by specifying the ``distribution`` section in a command job yaml file. 
 
-The CLI currently supports the following distributed job types: MPI, TensorFlow. 
-Native PyTorch distributed support is in progress.
+The CLI currently supports the following distributed job types: MPI, TensorFlow, and PyTorch. 
 
 MPI job
 -------

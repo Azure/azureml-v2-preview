@@ -1,4 +1,5 @@
 # yaml-language-server: $schema=https://azuremlsdk2.blob.core.windows.net/latest/commandJob.schema.json
+experiment_name: fastai-mnist-example
 code: 
   directory: ./src
 command: python train.py

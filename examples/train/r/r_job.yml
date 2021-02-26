@@ -1,8 +1,0 @@
-
-code:
-  directory: ./src
-command: Rscript accidents.R
-environment: azureml:r-with-optparse:1
-experiment_name: r-accidents
-compute:
-  target: azureml:goazurego

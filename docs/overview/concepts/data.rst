@@ -13,7 +13,7 @@ Move some input data to the cloud by creating and naming a data artifact, follow
 
 .. code-block:: console
 
-  cd ./iris/
+  cd azureml-v2-preview/examples/iris/
   az ml data upload -n irisdata -v 1 --path ./data
 
 
@@ -22,7 +22,7 @@ Create a Data asset from cloud data
 
 This example assumes you already have some data in cloud storage.
 
-
+dataset_from_storage.yml:
 .. code-block:: yaml
 
   name: test_directory_dataset
@@ -32,11 +32,7 @@ This example assumes you already have some data in cloud storage.
 
 
 .. code-block:: console
-  az ml data create --file examples/datasets/datadir.yml
-
-Reference data in another storage account
------------------------------------------
-
+  az ml data create --file dataset_from_storage.yml
 
 
 Manage Datastore Connections
@@ -56,6 +52,7 @@ The following command will attach an external storage account to your workspace.
 
 Next, we can create a Data asset which references this other storage account.
 
+dataset_from_another_storage.yml:
 .. code-block:: yaml
 
   name: datafromsomewherelse
@@ -65,5 +62,5 @@ Next, we can create a Data asset which references this other storage account.
 
 .. code-block:: console
 
-  az ml data create --file examples/datasets/datafromsomewhere.yml
+  az ml data create --file dataset_from_another_storage.yml
 

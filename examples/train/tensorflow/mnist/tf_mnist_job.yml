@@ -1,8 +1,8 @@
 # yaml-language-server: $schema=https://azuremlsdk2.blob.core.windows.net/latest/commandJob.schema.json
+experiment_name: tf-mnist
 code: 
   directory: ./src
 command: python train.py
 environment: azureml:tf-env:1
-experiment_name: tf-mnist
 compute:
   target: azureml:goazurego

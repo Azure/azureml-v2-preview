@@ -1,0 +1,36 @@
+name: mybatchendpoint
+description: my sample batch endpoint
+type: batch
+auth_mode: aad_token
+traffic:
+  mnist_deployment: 100
+
+deployments:
+  mnist_deployment:
+    model: 
+      name: mnist
+      version: 1
+      path: ./mnist/model/
+    code_configuration:
+      code:
+        directory: ./mnist/code/
+      scoring_script: digit_identification.py
+    environment: 
+      name: mnistenv
+      version: 1
+      path: .
+      conda_file: file:./mnist/environment/conda.yml
+    batch_settings:
+      partition_scheme:
+        mini_batch_size: 5
+      output_configuration:
+        output_action: append_row
+        append_row_file_name: predictions.txt
+      retry_settings:
+        maximum_retries: 3
+        timeout_in_seconds: 30
+      error_threshold: 10 
+      logging_level: info
+    compute:
+      target: azureml:cpuCompute
+      instance_count: 1

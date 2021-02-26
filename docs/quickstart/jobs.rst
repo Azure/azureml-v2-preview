@@ -31,17 +31,6 @@ This will run a simple "hello world" python script. Here is the YML that we ran.
 .. literalinclude:: ../../examples/train/basic-command-job/hello_python_job.yml
    :language: yaml
 
-Here is another example that runs a simple pytorch test.
-
-.. literalinclude:: ../../examples/train/pytorch/torchjob.yml
-   :language: yaml
-
-Run the following CLI command to initialize the job: 
-
-.. code-block:: bash
-
-    az ml job create --file azureml-v2-preview/examples/train/pytorch/torchjob.yml
-
 Let's go into more details on the job specification.
 
 Understanding a job specification
@@ -49,11 +38,10 @@ Understanding a job specification
 
 The following is a fully fleshed out job specification YML:
 
-.. literalinclude:: ../../examples/iris/iris-job.yml
+.. literalinclude:: ../../examples/iris/iris_job.yml
    :language: yaml
 
         
-
 ``code / directory`` is the path to your code directory relative to where the YML file lives. 
 
 - This directory is uploaded as a snapshot to Azure ML and mounted to your job for execution. 
@@ -91,7 +79,7 @@ Here's an example that runs  **Python code.**
 
 .. code-block:: bash
 
-    az ml environment create --file examples/environments/tensorflow/tf_env.yml
+    az ml environment create --file examples/train/tensorflow/tf_env.yml
     az ml job create --file examples/train/tensorflow/mnist/tf_mnist_job.yml
 
 
@@ -102,10 +90,9 @@ Here's an example that runs **R code:**
 
 .. code-block:: bash
 
-    az ml environment create --file examples/train/r/r_cran_env.yml
-    az ml job create --file examples/train/r/r_job.yml
+    az ml job create --file examples/train/r/accident-prediction/r_job.yml
 
-.. literalinclude:: ../../examples/train/r/r_job.yml
+.. literalinclude:: ../../examples/train/r/accident-prediction/r_job.yml
    :language: yaml
 
 
@@ -125,13 +112,13 @@ Define your environment
 
 First we are going to define the xgboost environment we want to run.
 
-.. literalinclude:: ../../examples/iris/xgboost-env.yml
+.. literalinclude:: ../../examples/iris/xgboost_env.yml
    :language: yaml
 
 
 .. code-block:: bash
 
-    az ml environment create --file xgboost-env.yml
+    az ml environment create --file xgboost_env.yml
     
     
 Upload data to the cloud
@@ -149,14 +136,14 @@ The above command uploads the data from the local folder `.data/` to the `worksp
 Create your xgboost training job
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. literalinclude:: ../../examples/iris/iris-job.yml
+.. literalinclude:: ../../examples/iris/iris_job.yml
    :language: yaml
    
 To submit the job:
 
 .. code-block:: console
 
-    az ml job create --file iris-job.yml --name <unique name> --query metadata.interaction_endpoints.studio
+    az ml job create --file iris_job.yml --name <unique name> --query metadata.interaction_endpoints.studio
 
 The query parameter will return just the studio url for the run, rather than the entire job object. To view the entire job object,
 we can use the CLI to show this job:
@@ -200,14 +187,14 @@ Sweep Jobs (Hyperparameter Tuning)
 
 A Sweep job executes a hyperparameter sweep of a specific search space for a job. The below example uses the command job from the previous section as the 'trial' job in the sweep. It sweeps over different learning rates and subsample rates for each child run. The search space parameters will be passed as arguments to the command in the trial job.
 
-.. literalinclude:: ../../examples/iris/iris-sweep.yml
+.. literalinclude:: ../../examples/iris/iris_sweep.yml
    :language: yaml
 
 This can be executed by running (after setting compute name in yaml):
 
 .. code-block:: console
 
-    az ml job create --file iris-sweep.yml
+    az ml job create --file iris_sweep.yml
 
 
 Other Job Types
