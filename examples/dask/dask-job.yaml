@@ -6,19 +6,18 @@ command: >-
   python startDask.py
   --datastore {inputs.nyc_taxi_dataset}
   --script batch.py 
-
+  --nyc_taxi_dataset {inputs.nyc_taxi_dataset} 
+  
 environment: 
   conda_file: file:dask-conda.yaml
 
 inputs:
   nyc_taxi_dataset:
-    data: 
-      datastore: azureml:workspaceblobstore
-      directory: /
+    data: azureml:nyctaxi:2
     mode: mount
 
 compute:
-  target: azureml:goazurego
+  target: azureml:big-vms
   instance_count: 4
 
 distribution:

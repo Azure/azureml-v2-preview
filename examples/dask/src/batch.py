@@ -1,31 +1,49 @@
-# +
 from dask.distributed import Client
-from azureml.core import Run
 import dask.dataframe as dd
 from fsspec.registry import known_implementations
 import os, uuid, time
+import argparse
+import mlflow
+
+parser = argparse.ArgumentParser()
+parser.add_argument("--nyc_taxi_dataset")
+args = parser.parse_args()
+dataset = args.nyc_taxi_dataset
+print(f"dataset location: {dataset}")
+os.system(f"find {dataset}")
 
 # give other nodes some time to connect before we show the cluster setup
-time.sleep(10)
+time.sleep(3)
 c=Client("localhost:8786")
 print(c)
+mlflow.log_text(str(c), "dask_cluster")
 
-
-run = Run.get_context()
-ws = run.experiment.workspace
-
-ds = ws.get_default_datastore()
-ACCOUNT_NAME = ds.account_name
-ACCOUNT_KEY = ds.account_key
-CONTAINER = ds.container_name
-
-known_implementations['abfs'] = {'class': 'adlfs.AzureBlobFileSystem'}
-STORAGE_OPTIONS={'account_name': ACCOUNT_NAME, 'account_key': ACCOUNT_KEY}
-df = dd.read_csv(f'abfs://{CONTAINER}/nyctaxi/*.csv', 
-                 storage_options=STORAGE_OPTIONS,
+# read in the data from the provided file dataset (which is mounted at the same
+# location on all nodes of the job)
+df = dd.read_csv(f'{dataset}/nyctaxi/*.csv', 
                  parse_dates=['tpep_pickup_datetime', 'tpep_dropoff_datetime'])
 
+# as an alternative, the below would be using abfs 
+# but without making use of the dataset that was provided
+# instead it is pulling the data from a hard-code path on the
+# default_datastore
+
+# from azureml.core import Run
+# run = Run.get_context()
+# ws = run.experiment.workspace
+#
+# ds = ws.get_default_datastore()
+# ACCOUNT_NAME = ds.account_name
+# ACCOUNT_KEY = ds.account_key
+# CONTAINER = ds.container_name
+#
+# STORAGE_OPTIONS={'account_name': ACCOUNT_NAME, 'account_key': ACCOUNT_KEY}
+# df = dd.read_csv(f'abfs://{CONTAINER}/nyctaxi/*.csv', 
+#                 storage_options=STORAGE_OPTIONS,
+#                 parse_dates=['tpep_pickup_datetime', 'tpep_dropoff_datetime'])
+
 print(df.head())
+mlflow.log_text(str(df.head()), "df.head")
 
 # list of column names that need to be re-mapped
 remap = {}
@@ -135,7 +153,6 @@ def add_features(df):
     df['day'] = df['pickup_datetime'].dt.day.astype('int32')
     df['day_of_week'] = df['pickup_datetime'].dt.weekday.astype('int32')
        
-    #df['diff'] = df['dropoff_datetime'].astype('int32') - df['pickup_datetime'].astype('int32')
     df['diff'] = df['dropoff_datetime'] - df['pickup_datetime']
     
     df['pickup_latitude_r'] = (df['pickup_latitude'] // .01 * .01).astype('float32')
@@ -145,43 +162,33 @@ def add_features(df):
     
     #df = df.drop('pickup_datetime', axis=1)
     #df = df.drop('dropoff_datetime', axis=1)
-
-    #df = df.apply_rows(haversine_distance_kernel,
-    #                   incols=['pickup_latitude', 'pickup_longitude', 'dropoff_latitude', 'dropoff_longitude'],
-    #                   outcols=dict(h_distance=np.float32),
-    #                   kwargs=dict())
-
     import numpy
 
     df['h_distance'] = haversine_distance(df['pickup_latitude'], 
                                           df['pickup_longitude'], 
                                           df['dropoff_latitude'], 
                                           df['dropoff_longitude']).astype('float32')
-
-    #df = df.apply_rows(day_of_the_week_kernel,
-    #                   incols=['day', 'month', 'year'],
-    #                   outcols=dict(day_of_week=np.float32),
-    #                   kwargs=dict())
-    #df['day_of_week'] = numpy.empty(len(df), dtype=np.int32)
-    #day_of_the_week_kernel(df['day'],
-    #                       df['month'],
-    #                       df['year'],
-    #                       df['day_of_week'])
-    
     
     df['is_weekend'] = (df['day_of_week']>5).astype("int32")
     return df
 
 taxi_df = clean(df, remap, must_haves, query)
 taxi_df = add_features(taxi_df)
-output_uuid = uuid.uuid1().hex
-run.log('output_uuid', output_uuid)
-#output_path = run.get_metrics()['datastore'] + '/output/' + output_uuid + '.parquet'
-output_path =  './outputs/' + output_uuid + '.parquet'
 
+output_path =  './outputs/nyctaxi_processed.parquet'
 print('save parquet to ', output_path)
 
+start_time = time.time()
 taxi_df.to_parquet(output_path)
+elapsed_time = time.time() - start_time
+mlflow.log_metric('time_saving_seconds', elapsed_time)
+
+# as an alternative: this would be using abfs, writing straight to blob storage
+# output_uuid = uuid.uuid1().hex
+# run.log('output_uuid', output_uuid)
+# print('save parquet to ', f"abfs://{CONTAINER}/output/{output_uuid}.parquet")
+# taxi_df.to_parquet(f"abfs://{CONTAINER}/output/{output_uuid}.parquet", 
+#                    storage_options=STORAGE_OPTIONS, engine='pyarrow')
 
 print('done')
 print(c)

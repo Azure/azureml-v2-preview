@@ -1,20 +1,6 @@
-from azureml.core import Workspace, Experiment
-from azureml.train.estimator import Estimator
-from azureml.widgets import RunDetails
-from azureml.core.runconfig import MpiConfiguration
-from azureml.core import VERSION
-import uuid
-import time
-VERSION
-
-ws = Workspace.from_config()
-
-import io
-import os
-import sys
-import urllib.request
+import uuid, time, os, json
+import io, sys, urllib.request
 from tqdm import tqdm
-from time import sleep
 
 cwd = os.getcwd()
 
@@ -28,7 +14,7 @@ if not os.path.exists(taxidir):
 
 filenames = []
 local_paths = []
-for i in range(1, 13):
+for i in range(1, 13): #13
     filename = "yellow_tripdata_2015-{month:02d}.csv".format(month=i)
     filenames.append(filename)
     
@@ -54,12 +40,7 @@ for idx, filename in enumerate(filenames):
         print("- File already exists locally")
 
 print("- Uploading taxi data... ")
-ws = Workspace.from_config()
-ds = ws.get_default_datastore()
 
-ds.upload(
-    src_dir=taxidir,
-    target_path='nyctaxi',
-    show_progress=True)
+os.system("az ml data upload -n nyctaxi -v 1 --path ./data/")
 
 print("- Data transfer complete")

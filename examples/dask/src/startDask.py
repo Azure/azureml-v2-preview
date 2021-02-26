@@ -61,9 +61,12 @@ if __name__ == '__main__':
     print("unparsed: ", unparsed)
     print("- my rank is ", rank)
     print("- my ip is ", ip)
-    
+
     if not os.path.exists('logs'):
         os.makedirs('logs')
+
+    print("free disk space on /tmp")
+    os.system(f"df -P /tmp")
 
     if str(rank) == "0":
         Run.get_context().log("headnode", ip)
@@ -107,9 +110,24 @@ if __name__ == '__main__':
         if(args.script):
             command_line = ' '.join(['python', args.script]+unparsed)
             print('Launching:', command_line)
-            exit_code = os.system(command_line)
+
+            driver_log = open("logs/driver_log.txt", "w")
+            driver_proc = subprocess.Popen(command_line.split(), universal_newlines=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+            driver_flush = threading.Thread(target=flush, args=(driver_proc, driver_log))
+            driver_flush.start()
+
+            # Wait until process terminates (without using p.wait())
+            #while driver_proc.poll() is None:
+            #    # Process hasn't exited yet, let's wait some
+            #    time.sleep(0.5)
+
+            print('waiting for driver process to terminate')
+            driver_proc.wait()
+
+            exit_code = driver_proc.returncode
             print('process ended with code', exit_code)
             print('killing scheduler, worker and jupyter')
+
             jupyter_proc.kill()
             scheduler_proc.kill()
             worker_proc.kill()

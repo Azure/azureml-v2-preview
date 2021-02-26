@@ -3,11 +3,11 @@ channels:
   - defaults
   - conda-forge
 dependencies:
+  - python=3.7
   - gcsfs
   - fs-gcsfs
   - jupyterlab
   - jupyter-server-proxy
-  - python=3.6
   - numpy
   - h5py
   - scipy
@@ -30,10 +30,9 @@ dependencies:
   - s3fs
   - fastparquet
   - dask-ml
+  - adlfs
   - pip:
-    - graphviz 
-    - cachey
+    - python-snappy
+    - fastparquet
     - azureml-sdk[notebooks]
-    - mpi4py
-    - gym
-    - adlfs
+    - azureml-mlflow
