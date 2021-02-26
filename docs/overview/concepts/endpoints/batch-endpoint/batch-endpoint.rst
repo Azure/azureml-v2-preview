@@ -89,7 +89,7 @@ Stream job log.
   
   az ml job stream --name <job-name>
 
-Get the job name from the invoke response, or use below command to list all jobs. Add '--deployment' to get the job lists for a specific deployment.
+Get the job name from the invoke response, or use below command to list all jobs. Add ``--deployment`` to get the job lists for a specific deployment.
 
 .. code-block:: bash
   
@@ -152,10 +152,11 @@ Copy the value of the accessToken from the response.
 
 3. Use the scoring URI and the token in your REST client
 
-If you use postman, then go to the Authorization tab in the request and paste the value of the token. Use the scoring uri from above as the URI for the POST request.
+If you use postman, then go to the Authorization tab in the request and paste the value of the token. Use the scoring uri from above as the URI for the **POST** request.
 
 Option 1: Input is registered data. 
-Please provide the full ARMId: /subscriptions/{{subscription}}/resourceGroups/{{resourcegroup}}/providers/Microsoft.MachineLearningServices/workspaces/{{workspaceName}}/data/{{datasetName}}/versions/1.
+
+Please provide the full ARMId: **/subscriptions/{{subscription}}/resourceGroups/{{resourcegroup}}/providers/Microsoft.MachineLearningServices/workspaces/{{workspaceName}}/data/{{datasetName}}/versions/1**
 
 .. code-block:: json
   
