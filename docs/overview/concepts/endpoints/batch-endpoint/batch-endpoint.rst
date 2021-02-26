@@ -154,28 +154,31 @@ Copy the value of the accessToken from the response.
 
 If you use postman, then go to the Authorization tab in the request and paste the value of the token. Use the scoring uri from above as the URI for the POST request.
 
-Option 1: Input is registered data. Please provide the full ARMId: /subscriptions/{{subscription}}/resourceGroups/{{resourcegroup}}/providers/Microsoft.MachineLearningServices/workspaces/{{workspaceName}}/data/{{datasetName}}/versions/1.
+Option 1: Input is registered data. 
+Please provide the full ARMId: /subscriptions/{{subscription}}/resourceGroups/{{resourcegroup}}/providers/Microsoft.MachineLearningServices/workspaces/{{workspaceName}}/data/{{datasetName}}/versions/1.
 
-{
-    "properties": {
-        "dataset": {
-            "dataInputType": 1,
-            "datasetId": "datasetARMId"
-            }
-        }        
-    }
-}
+.. code-block:: json
+  {
+      "properties": {
+          "dataset": {
+              "dataInputType": 1,
+              "datasetId": "<datasetARMId>"
+              }
+          }        
+      }
+  }
 
 Option 2: Input is cloud path.
 
-{
-    "properties": {
-        "dataset": {
-            "dataInputType": "DataUrl",
-            "AssetPath": {
-                "Path": "https://pipelinedata.blob.core.windows.net/sampledata/nytaxi/taxi-tip-data.csv",
-                "IsDirectory": false
-            }
-        }        
-    }
-}
+.. code-block:: json
+  {
+      "properties": {
+          "dataset": {
+              "dataInputType": "DataUrl",
+              "AssetPath": {
+                  "Path": "https://pipelinedata.blob.core.windows.net/sampledata/nytaxi/taxi-tip-data.csv",
+                  "IsDirectory": false
+              }
+          }        
+      }
+  }
