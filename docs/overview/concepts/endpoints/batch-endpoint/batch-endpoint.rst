@@ -158,6 +158,7 @@ Option 1: Input is registered data.
 Please provide the full ARMId: /subscriptions/{{subscription}}/resourceGroups/{{resourcegroup}}/providers/Microsoft.MachineLearningServices/workspaces/{{workspaceName}}/data/{{datasetName}}/versions/1.
 
 .. code-block:: json
+  
   {
       "properties": {
           "dataset": {
@@ -171,6 +172,7 @@ Please provide the full ARMId: /subscriptions/{{subscription}}/resourceGroups/{{
 Option 2: Input is cloud path.
 
 .. code-block:: json
+  
   {
       "properties": {
           "dataset": {
