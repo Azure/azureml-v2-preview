@@ -6,7 +6,7 @@ Unlike online scoring (also known as realtime scoring) where you get the scoring
 
 Prerequisite
 ------------
-To make the samples work end to end, please create a compute cluster with name `cpuCompute`.
+To make the samples work end to end, please create a compute cluster with name **cpuCompute**.
 
 Create a Batch Endpoint
 -----------------------
@@ -127,7 +127,7 @@ When invoke an endpoint, the deployment with 100 traffic is in use. Use below co
   
   az ml endpoint update --name mybatchendpoint --type batch --traffic autolog_deployment:100
 
-use `endpoint show` to check which deployment takes 100 traffic, or follow below steps to check from UI.
+Use ``endpoint show`` to check which deployment takes 100 traffic, or follow below steps to check from UI.
 
 1. In AML Studio, go to `Endpoints` page, click `Pipeline endpoints` tab. 
 2. Click the endpoint link, click `Published pipelines`.
