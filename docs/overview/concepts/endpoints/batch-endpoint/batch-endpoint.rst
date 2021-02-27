@@ -107,7 +107,7 @@ Follow below steps to view scoring results.
 Add a deployment to the batch endpoint
 --------------------------------------
 
-One batch endpoint can have multiple deployments hosting different models.
+One batch endpoint can have multiple deployments hosting different models. Use below command to add a new deployment to an existing batch endpoint.
 
 .. code-block:: bash
   
@@ -156,7 +156,7 @@ If you use postman, then go to the Authorization tab in the request and paste th
 
 Option 1: Input is registered data. 
 
-Please provide the full ARMId: 
+Please provide the full ARMId. Replace with your own information following the sample below. 
 
 ::
   
