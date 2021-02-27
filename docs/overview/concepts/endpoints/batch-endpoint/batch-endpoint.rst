@@ -156,7 +156,11 @@ If you use postman, then go to the Authorization tab in the request and paste th
 
 Option 1: Input is registered data. 
 
-Please provide the full ARMId: **/subscriptions/{{subscription}}/resourceGroups/{{resourcegroup}}/providers/Microsoft.MachineLearningServices/workspaces/{{workspaceName}}/data/{{datasetName}}/versions/1**
+Please provide the full ARMId: 
+
+::
+  
+  /subscriptions/{{subscription}}/resourceGroups/{{resourcegroup}}/providers/Microsoft.MachineLearningServices/workspaces/{{workspaceName}}/data/{{datasetName}}/versions/1
 
 .. code-block:: json
   
