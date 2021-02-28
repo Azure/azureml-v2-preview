@@ -85,6 +85,7 @@ jobs:
       continue-on-error: true
     - name: Download/Upload nyc_taxi_dataset (just 1 month, 2GB)
       run: |
+            pip install tqdm
             python examples/dask/copy_nyc_taxi.py --months 1
     - name: Dask data processing job on small cluster with 4 nodes
       run: |
