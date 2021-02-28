@@ -13,11 +13,11 @@ environment:
 
 inputs:
   nyc_taxi_dataset:
-    data: azureml:nyctaxi:2
+    data: azureml:nyctaxi:1
     mode: mount
 
 compute:
-  target: azureml:big-vms
+  target: azureml:goazurego
   instance_count: 4
 
 distribution:
