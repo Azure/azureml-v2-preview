@@ -89,4 +89,4 @@ jobs:
             python examples/dask/copy_nyc_taxi.py --months 1
     - name: Dask data processing job on small cluster with 4 nodes
       run: |
-            az ml job create --file examples/dask/dask-job.yaml --name dask_$GITHUB_RUN_ID --stream
+            az ml job create --file examples/dask/dask-job.yaml --name dask_$GITHUB_RUN_ID
