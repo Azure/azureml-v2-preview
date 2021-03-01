@@ -29,6 +29,7 @@ Coming soon:
    overview/setup.rst
    quickstart/jobs.rst
    quickstart/distributed-training.rst
+   quickstart/dask.rst
    quickstart/endpoints.rst
    overview/concepts.rst
 
