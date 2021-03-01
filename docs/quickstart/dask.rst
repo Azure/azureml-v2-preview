@@ -28,5 +28,5 @@ The job below is currently launched as a pytorch job since that gives the full f
 different nodes of the cluster by just checking the $RANK environment variable. In the future we will provide a more generic 
 name for that mode of launching a distributed job.
 
-.. literalinclude:: ../../examples/dask/dask/dask-job.yaml
+.. literalinclude:: ../../examples/dask/dask-job.yaml
    :language: yaml
