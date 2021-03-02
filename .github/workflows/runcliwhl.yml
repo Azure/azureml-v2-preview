@@ -83,10 +83,10 @@ jobs:
     - run: |
           az ml endpoint create --file examples/deploy/sklearn/basicaksendpoint.yml
       continue-on-error: true
-    - name: Download/Upload nyc_taxi_dataset (just 1 month, 2GB)
-      run: |
-            pip install tqdm
-            python examples/dask/copy_nyc_taxi.py --months 1
+#     - name: Download/Upload nyc_taxi_dataset (just 1 month, 2GB)
+#       run: |
+#             pip install tqdm
+#             python examples/dask/copy_nyc_taxi.py --months 1
     - name: Dask data processing job on small cluster with 4 nodes
       run: |
             az ml job create --file examples/dask/dask-job.yaml --name dask_$GITHUB_RUN_ID
