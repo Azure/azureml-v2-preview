@@ -44,6 +44,8 @@ Example structure of TF_CONFIG set on a chief worker node:
 Running a DASK job
 ------------------
 
+Please see `here for the full example code <https://github.com/Azure/azureml-v2-preview/tree/main/examples/dask>`_ .
+
 This example shows how a distribted DASK job can be run on multiple nodes of a cluster. In this example we are using 4 nodes 
 using this job yaml. The startup of the cluster is done by the `startDask.py` script which launches a scheduler
 and a worker on the first node of the cluster and a worker on all the other nodes.
