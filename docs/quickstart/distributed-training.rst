@@ -58,8 +58,9 @@ and a worker on the first node of the cluster and a worker on all the other node
   (takes about 20 minutes). 
 
 .. note::
-  Due to a bug, your cluster nodes need to have enough free space on the `/tmp` volume to accomodate the whole dataset used, 
-  which will be 24GB in the case of `--months 12`. Using STANDARD_D15_V2 VMs to build your cluster will give you close to 1TB of
+  Since the script is writing the output to the local drive, and since the dataset is cached on the same local drive,
+  your cluster nodes need to have enough free space on the local volume to accomodate pretty much the whole input and output datasets used (to be on the safe side). 
+  The input dataset will be 24GB in the case of `--months 12`, the parquet output is about 4GB. Using STANDARD_D15_V2 VMs to build your cluster will give you close to 1TB of
   free disk space and works well even for bigger datasets.
 
 For debugging and interactive work, the script also launches a Jupyter server on the first node which can be accessed most 
