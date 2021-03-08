@@ -4,7 +4,9 @@ Simple deploy flow
 ==================
 
 .. note::
-    Private preview for this functionality is invite only at this point
+    1. Clone or fork this repo to try the below scenarios from your CLI.
+    1. Private preview for this functionality is invite only at this point (your subscription needs to be onboarded).
+    
 
 Step 1: Deploy simple endpoint
 ------------------------------
@@ -13,7 +15,7 @@ Step 1: Deploy simple endpoint
     
     az ml endpoint create --name my-endpoint -f examples/endpoints/online/managed/simple-flow/1-create-endpoint-with-blue.yaml
 
-**Note**: Replace the above endpoint name with a unique name (it should be unique at region level)
+**Note**: Replace the above endpoint name with a unique name (it should be unique at region level). Use the same name in all of the below commands.
 
 This is the yaml file
 

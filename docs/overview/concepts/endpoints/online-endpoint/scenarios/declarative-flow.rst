@@ -32,7 +32,7 @@ Step 2: Scale the blue deployment to handle additional traffic
 
     az ml endpoint update --name my-endpoint -f examples/endpoints/online/managed/canary-declarative-flow/2-scale-blue.yaml
 
-**Note**: Rememebr to use same endpoint from simple deployment flow
+**Note**: Remember to use same endpoint from simple deployment flow
 
 .. literalinclude:: ../../../../../../examples/endpoints/online/managed/canary-declarative-flow/2-scale-blue.yaml
    :language: yaml

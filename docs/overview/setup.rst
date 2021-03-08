@@ -36,7 +36,10 @@ Configure other defaults:
 **If needed**, add your subscription to the allow list (the following must be executed from a bash terminal):
 
 .. note::
-    This is a **one-time operation per subscription** only required during private preview. Onboarding will take **around 10 minutes.** Once onboarded, running the CURL command will result in a state of "Registered."
+    External users please contact your microsoft account team for onboarding.
+
+    This self registration script is for microsoft tenant (one-time operation per subscription). 
+    This will take **around 10 minutes.** Once onboarded, running the CURL command will result in a state of "Registered."
 
 .. code-block:: console
 
