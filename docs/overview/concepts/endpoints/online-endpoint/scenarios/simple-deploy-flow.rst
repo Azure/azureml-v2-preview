@@ -5,7 +5,7 @@ Simple deploy flow
 
 .. note::
     1. Clone or fork this repo to try the below scenarios from your CLI.
-    1. Private preview for this functionality is invite only at this point (your subscription needs to be onboarded).
+    2. Private preview for this functionality is invite only at this point (your subscription needs to be onboarded).
     
 
 Step 1: Deploy simple endpoint
