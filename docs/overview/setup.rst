@@ -61,13 +61,12 @@ Azure Machine Learning
 Create a Workspace
 ~~~~~~~~~~~~~~~~~~
 
-Create a workspace:
+A workspace is a top-level resource for Azure Machine Learning and provides a centralized place to work with all the artifacts you create during your ML lifecycle. To create a workspace with basic configurations:
 
-.. warning::
-    Workspace creation from CLI does not work yet, please use azue portal or an ARM template.
-    Note that the defaults set above may not match the ARM template.
+.. code-block:: console
 
-.. image:: https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.svg?sanitize=true
-    :target: https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fmldevplatv2.blob.core.windows.net%2Fcli%2Fazuredeploy.json
+    az ml workspace create --name <NAME OF WORKSPACE>
+
+For more advanced workspace configurations, see the following `documentation <concepts/workspace.html>`_.
 
 You're all set! Let's try it out.
