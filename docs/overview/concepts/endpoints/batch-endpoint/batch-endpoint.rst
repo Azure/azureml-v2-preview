@@ -38,11 +38,9 @@ Start a batch scoring job
 Start a batch scoring job by passing the input data. The input data can be a registered data, cloud path or local path. You will get a job name (a GUID) from the response.
 You can also use REST API to start a batch scoring job, see the Appendix below.
 
-**Note**: Configurable output location is working in progress. Scoring outputs will be stored in your workspace's default blob store now.
+**Note**: During private preview, only FileDataset is supported. Configurable output location is working in progress. Scoring outputs will be stored in your workspace's default blob store now.
 
 Option 1: Input is registered data.
-
-During private preview, only FileDataset is supported.
 
 .. code-block:: bash
   
