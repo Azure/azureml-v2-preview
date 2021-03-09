@@ -1,4 +1,4 @@
-name: top-level-security
+name: cmk-ws
 location: EastUS
 customer_managed_keys: 
   key_vault: /subscriptions/123456a-bc78-9d0e-12fg-h345i67jkl8m/resourceGroups/john/providers/Microsoft.KeyVault/vaults/john123456789
