@@ -1,0 +1,187 @@
+Batch Endpoint (WIP)
+====================
+
+Batch Endpoint is used to run batch scoring with a large data input.
+Unlike online scoring (also known as realtime scoring) where you get the scoring result right away, batch scoring is executed asynchronously. That is, you trigger a batch scoring job through Batch Endpoint, wait till it is completed, and check later for the scoring results that are stored in your configured output location.
+
+Prerequisite
+------------
+To make the samples work end to end, please create a compute cluster with name **cpuCompute**.
+
+Create a Batch Endpoint
+-----------------------
+
+Create a batch endpoint for batch scoring.
+
+.. code-block:: bash
+  
+  az ml endpoint create --type batch --file examples/endpoints/batch/create-batch-endpoint.yml
+
+Below is the yaml file. To use a registered model, please replace the model section in yaml with **model: azureml:<modelName>:<modelVersion>**.
+
+.. literalinclude:: ../../../../../examples/endpoints/batch/create-batch-endpoint.yml
+   :language: yaml
+
+Check the batch endpoint details
+--------------------------------
+
+Check the details of the batch endpoint along with status. 
+You can use the `--query parameter <https://docs.microsoft.com/en-us/cli/azure/query-azure-cli>`_ to get only specific attributes from the returned data.
+
+.. code-block:: bash
+  
+  az ml endpoint show --name mybatchendpoint --type batch
+
+Start a batch scoring job
+-------------------------
+
+Start a batch scoring job by passing the input data. The input data can be a registered data, cloud path or local path. You will get a job name (a GUID) from the response.
+You can also use REST API to start a batch scoring job, see the Appendix below.
+
+**Note**: During private preview, only FileDataset is supported. Configurable output location is working in progress. Scoring outputs will be stored in your workspace's default blob store now.
+
+Option 1: Input is registered data.
+
+.. code-block:: bash
+  
+  az ml endpoint invoke --name mybatchendpoint --type batch --input-data azureml:mnist-data:1
+
+
+Option 2: Input is cloud path.
+
+.. code-block:: bash
+  
+  az ml endpoint invoke --name mybatchendpoint --type batch --input-path https://pipelinedata.blob.core.windows.net/sampledata/mnist
+
+.. code-block:: bash
+  
+  az ml endpoint invoke --name mybatchendpoint --type batch --input-datastore workspaceblobstore --input-path mnist
+
+
+Option 3: Input is local path.
+
+.. code-block:: bash
+  
+  az ml endpoint invoke --name mybatchendpoint --type batch --input-local-path <local-data-path>
+
+Check batch scoring job execution progress
+------------------------------------------
+
+Batch scoring job usually takes time to process the entire input. You can monitor the job progress from Azure portal. The portal link is provided in the response of invoke, check `interactionEndpoints.studio`.
+
+You can also get the job link following below:
+
+1. From your workspace page, click `Studio web URL` to launch studio. 
+2. Open `Endpoints` page, click `Pipeline endpoints`.
+3. Click endpoint name, and you will see a list of jobs.
+
+If you prefer using CLI, below are the commands.
+
+Check job detail along with status.
+
+.. code-block:: bash
+  
+  az ml job show --name <job-name>
+
+Stream job log.
+
+.. code-block:: bash
+  
+  az ml job stream --name <job-name>
+
+Get the job name from the invoke response, or use below command to list all jobs. Add ``--deployment`` to get the job lists for a specific deployment.
+
+.. code-block:: bash
+  
+  az ml endpoint list-jobs --name mybatchendpoint --type batch
+
+Check scoring results
+---------------------
+
+Follow below steps to view scoring results.
+
+1. Go to the `batchscoring` step's `Outputs + logs` tab, click `Show data outputs`, and click `View output` icon.
+2. On the popup panel, copy the path and click `Open Datastore` link.
+3. On the bloblstore page, paste above path in the search box. You will find the scoring output in the folder.
+
+Add a deployment to the batch endpoint
+--------------------------------------
+
+One batch endpoint can have multiple deployments hosting different models. Use below command to add a new deployment to an existing batch endpoint.
+
+.. code-block:: bash
+  
+  az ml endpoint update --name mybatchendpoint --type batch --deployment-file examples/endpoints/batch/add-deployment.yml
+
+This sample uses an MLFlow model, the deployment yaml is much simpler, as environment and scoring script can be auto generated.
+
+.. literalinclude:: ../../../../../examples/endpoints/batch/add-deployment.yml
+   :language: yaml
+
+Activate the new deployment
+---------------------------
+
+When invoke an endpoint, the deployment with 100 traffic is in use. Use below command to activate the new deployment by switching the traffic (can only be 0 or 100). Now you can invoke a batch scoring job with this new deployment.
+
+.. code-block:: bash
+  
+  az ml endpoint update --name mybatchendpoint --type batch --traffic autolog_deployment:100
+
+Use ``endpoint show`` to check which deployment takes 100 traffic, or follow below steps to check from UI.
+
+1. In AML Studio, go to `Endpoints` page, click `Pipeline endpoints` tab. 
+2. Click the endpoint link, click `Published pipelines`.
+3. The deployment with 100 traffic has a `Default` tag.
+
+Appendix: start a batch scoring job using REST clients
+------------------------------------------------------
+
+1. Get the scoring URI
+
+.. code-block:: bash
+  
+  az ml endpoint show --name mybatchendpoint --type batch --query scoring_uri
+
+2. Get the azure ml access token
+
+Copy the value of the accessToken from the response.
+
+.. code-block:: bash
+  
+  az account get-access-token
+
+3. Use the scoring URI and the token in your REST client
+
+If you use postman, then go to the Authorization tab in the request and paste the value of the token. Use the scoring uri from above as the URI for the **POST** request.
+
+Option 1: Input is registered data. 
+
+Please provide the full ARMId. Replace with your own information following the sample below. 
+
+.. code-block:: json
+  
+  {
+      "properties": {
+          "dataset": {
+              "dataInputType": 1,
+              "datasetId": "/subscriptions/{{subscription}}/resourceGroups/{{resourcegroup}}/providers/Microsoft.MachineLearningServices/workspaces/{{workspaceName}}/data/{{datasetName}}/versions/1"
+              }
+          }        
+      }
+  }
+
+Option 2: Input is cloud path.
+
+.. code-block:: json
+  
+  {
+      "properties": {
+          "dataset": {
+              "dataInputType": "DataUrl",
+              "AssetPath": {
+                  "Path": "https://pipelinedata.blob.core.windows.net/sampledata/nytaxi/taxi-tip-data.csv",
+                  "IsDirectory": false
+              }
+          }        
+      }
+  }

@@ -32,10 +32,14 @@ Configure other defaults:
     az config set defaults.location="eastus"
     az config set defaults.group="azureml-rg"
 
+
 **If needed**, add your subscription to the allow list (the following must be executed from a bash terminal):
 
 .. note::
-    This is a **one-time operation per subscription** only required during private preview. Onboarding will take **around 10 minutes.** Once onboarded, running the CURL command will result in a state of "Registered."
+    External users please contact your microsoft account team for onboarding.
+
+    This self registration script is for microsoft tenant (one-time operation per subscription). 
+    This will take **around 10 minutes.** Once onboarded, running the CURL command will result in a state of "Registered."
 
 .. code-block:: console
 
@@ -48,6 +52,7 @@ Please let us know you are using the private preview by filling out this `onboar
 
 .. note::
     This is a staged rollout. Current regions available for private preview include canary regions in addition to: **All PROD regions**
+    **Managed inference preview** is invite only at this time. The supported regions include westeurope and westus2 (i.e. Azure ML workspace needs to be in these regions)
 
 
 Azure Machine Learning
@@ -56,13 +61,12 @@ Azure Machine Learning
 Create a Workspace
 ~~~~~~~~~~~~~~~~~~
 
-Create a workspace:
+A workspace is a top-level resource for Azure Machine Learning and provides a centralized place to work with all the artifacts you create during your ML lifecycle. To create a workspace with basic configurations:
 
-.. warning::
-    Workspace creation from CLI does not work yet, please use the ARM template.
-    Note that the defaults set above may not match the ARM template.
+.. code-block:: console
 
-.. image:: https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.svg?sanitize=true
-    :target: https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fmldevplatv2.blob.core.windows.net%2Fcli%2Fazuredeploy.json
+    az ml workspace create --name <NAME OF WORKSPACE>
+
+For more advanced workspace configurations, see the following `documentation <concepts/workspace.html>`_.
 
 You're all set! Let's try it out.

@@ -1,7 +1,7 @@
 library(optparse)
 
 options <- list(
-  make_option(c("-d", "--data_folder"), default=".")
+  make_option(c("-d", "--data_folder"), default="./data")
 )
 
 opt_parser <- OptionParser(option_list = options)
