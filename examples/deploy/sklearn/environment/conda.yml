@@ -2,6 +2,7 @@ name: sklearn-diabetes
 channels:
   - defaults
 dependencies:
+  - python=3.6.2
   - numpy
   - pandas
   - scikit-learn
