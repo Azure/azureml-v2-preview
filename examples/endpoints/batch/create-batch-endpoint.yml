@@ -20,6 +20,8 @@ deployments:
       version: 1
       path: .
       conda_file: file:./mnist/environment/conda.yml
+      docker:
+        image: mcr.microsoft.com/azureml/intelmpi2018.3-ubuntu16.04:20210301.v1
     batch_settings:
       partition_scheme:
         mini_batch_size: 5
