@@ -27,6 +27,7 @@ Coming soon:
 
    overview/installation.rst
    overview/setup.rst
+   overview/tooling.rst
    quickstart/jobs.rst
    quickstart/distributed-training.rst
    quickstart/endpoints.rst
