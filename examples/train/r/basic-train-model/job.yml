@@ -4,7 +4,7 @@ environment: azureml:r-minimal:1
 compute:
   target: azureml:goazurego
 code:
-  directory: ./src
+  local_path: ./src
 inputs:
   iris:
     data: azureml:iris:1

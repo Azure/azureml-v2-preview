@@ -1,7 +1,7 @@
 # yaml-language-server: $schema=https://azuremlsdk2.blob.core.windows.net/latest/commandJob.schema.json
 experiment_name: fastai-pets-example
 code: 
-  directory: ./src
+  local_path: ./src
 command: python train.py
 environment:
   docker:

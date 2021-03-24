@@ -1,10 +1,10 @@
 # yaml-language-server: $schema=https://azuremlsdk2.blob.core.windows.net/latest/commandJob.schema.json
 code: 
-  directory: train
+  local_path: train
 command: >-
   python train.py 
   --data {inputs.training_data} 
-environment: azureml:xgboost-env:1
+environment: azureml:xgboost-environment:1
 compute:
   target: azureml:goazurego
 inputs:

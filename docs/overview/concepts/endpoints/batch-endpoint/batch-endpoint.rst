@@ -55,7 +55,7 @@ Option 2: Input is cloud path.
 
 .. code-block:: bash
   
-  az ml endpoint invoke --name mybatchendpoint --type batch --input-datastore workspaceblobstore --input-path mnist
+  az ml endpoint invoke --name mybatchendpoint --type batch --input-datastore azureml:workspaceblobstore --input-path mnist
 
 
 Option 3: Input is local path.
@@ -72,8 +72,7 @@ Batch scoring job usually takes time to process the entire input. You can monito
 You can also get the job link following below:
 
 1. From your workspace page, click `Studio web URL` to launch studio. 
-2. Open `Endpoints` page, click `Pipeline endpoints`.
-3. Click endpoint name, and you will see a list of jobs.
+2. Open `Experiments` page, and you will see a list of jobs.
 
 If you prefer using CLI, below are the commands.
 

@@ -2,6 +2,7 @@ name: mnist-env
 channels:
   - conda-forge
 dependencies:
+  - python=3.6.2
   - pip
   - pip:
     - tensorflow==1.15.2

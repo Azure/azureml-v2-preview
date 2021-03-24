@@ -70,6 +70,7 @@ where `environment.yml` contains:
 .. literalinclude:: ../../../examples/environments/environment.yml
    :language: yaml
 
+Note: It is required to have interpreter version specified in the conda specification.
 
 Creating Environment using DockerFile + Conda File:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

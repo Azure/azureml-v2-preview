@@ -1,4 +1,6 @@
 # yaml-language-server: $schema=https://azuremlsdk2.blob.core.windows.net/latest/environment.schema.json
-name: xgboost-env
+name: xgboost-environment
 version: 1
 conda_file: file:xgboost_conda.yml
+docker: 
+  image: mcr.microsoft.com/azureml/intelmpi2018.3-ubuntu16.04:20210301.v1

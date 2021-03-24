@@ -20,7 +20,7 @@ objective:
 trial: 
   command: python train.py --lr {search_space.lr} --conv_size {search_space.conv_size} --dropout_rate {search_space.dropout_rate}
   code: 
-    directory: src
+    local_path: src
   environment: azureml:AzureML-Minimal:1
   compute:
     target: azureml:goazurego

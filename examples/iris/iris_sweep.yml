@@ -17,11 +17,11 @@ objective:
 trial:
   command: >-
     python train.py --data {inputs.training_data}
-  environment: azureml:xgboost-env:1
+  environment: azureml:xgboost-environment:1
   compute:
     target: azureml:goazurego
   code: 
-    directory: train
+    local_path: train
   inputs:
     training_data:
       data: azureml:irisdata:1

@@ -1,6 +1,6 @@
 experiment_name: r-accidents-example
 code:
-  directory: ./src
+  local_path: ./src
 command: >-
   Rscript accidents.R
   --data {inputs.training_data}

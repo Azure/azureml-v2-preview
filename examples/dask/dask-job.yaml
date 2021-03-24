@@ -1,6 +1,6 @@
 # yaml-language-server: $schema=https://azuremlsdk2.blob.core.windows.net/latest/commandJob.schema.json
 code: 
-  directory: src
+  local_path: src
   
 command: >-
   python startDask.py
@@ -10,6 +10,8 @@ command: >-
   
 environment: 
   conda_file: file:dask-conda.yaml
+  docker: 
+    image: mcr.microsoft.com/azureml/intelmpi2018.3-ubuntu16.04:20210301.v1
 
 inputs:
   nyc_taxi_dataset:
