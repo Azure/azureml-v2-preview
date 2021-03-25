@@ -1,7 +1,7 @@
 # yaml-language-server: $schema=https://azuremlsdk2.blob.core.windows.net/latest/onlineEndpoint.schema.json
 name: aksendpoint
 type: online
-infrastructure: azureml:sdkv2endpointaks
+target: azureml:sdkv2endpointaks
 auth_mode: Key
 traffic:
     blue: 0
