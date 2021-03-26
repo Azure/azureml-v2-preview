@@ -23,8 +23,8 @@ deployments:
         output_action: AppendRow  #required
         append_row_file_name: append_row.txt
       retry_settings:
-        maximum_retries: 3
-        timeout_in_seconds: 30  #required
+        max_retries: 3
+        timeout: 30  #required
       error_threshold: 10
       logging_level: info  #required
     compute:  #required
