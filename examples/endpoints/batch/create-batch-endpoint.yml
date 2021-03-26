@@ -27,7 +27,7 @@ deployments:
       output_action: append_row
       append_row_file_name: predictions.txt
     retry_settings:
-      maximum_retries: 3
+      max_retries: 3
       timeout: 30
     error_threshold: 10 
     logging_level: info

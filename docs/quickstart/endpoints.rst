@@ -43,7 +43,7 @@ Minimal endpoint specification - batch
         output_action: AppendRow 
         append_row_file_name: append_row.txt
       retry_settings:
-        maximum_retries: 3
+        max_retries: 3
         timeout: 30  
       error_threshold: 10
       logging_level: info  
