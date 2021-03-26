@@ -27,7 +27,7 @@ trial:
 limits:
   max_total_trials: 100
   max_concurrent_trials: 10
-  timeout: 10000
+  timeout_minutes: 10000
 early_termination:
   policy_type: truncation_selection
   evaluation_interval: 100

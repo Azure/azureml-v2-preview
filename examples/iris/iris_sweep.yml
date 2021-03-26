@@ -29,4 +29,4 @@ trial:
 limits:
   max_total_trials: 10
   max_concurrent_trials: 10
-  timeout: 20
+  timeout_minutes: 20
