@@ -1,7 +1,7 @@
 model:
   name: autolog
   version: 1
-  path: ./autolog_nyc_taxi
+  local_path: ./autolog_nyc_taxi
 mini_batch_size: 1
 output_configuration:
   output_action: append_row
