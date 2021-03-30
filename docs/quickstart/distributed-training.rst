@@ -82,11 +82,13 @@ Then, on your local laptop computer, you can run a command similar to the one be
   ssh azureuser@20.67.29.11 -p 50000 -L 9999:10.0.0.4:8888 -L 9797:10.0.0.4:8787
 
 In the above example:
-- 20.67.29.11 is the public IP address of any of the nodes on the cluster (find in ml.azure.com under Compute/Compute Clusters/<cluster name>/Nodes)
-- 50000 is the port of that same node
-- 9999 and 9797 are the ports where the jupyter server and the dask dashboard will be reachable on your local machine
-- 10.0.0.4 is the private IP of the head node of the job, as will be logged by the job and show up in run history (find in ml.azure.com under Experiments/dask/<run id>/details/metrics/headnode) 
+
+- ``20.67.29.11`` is the public IP address of any of the nodes on the cluster (find in ml.azure.com under Compute/Compute Clusters/<cluster name>/Nodes)
+- ``50000`` is the port of that same node
+- ``9999`` and ``9797`` are the ports where the jupyter server and the dask dashboard will be reachable on your local machine
+- ``10.0.0.4`` is the private IP of the head node of the job, as will be logged by the job and show up in run history (find in ml.azure.com under Experiments/dask/<run id>/details/metrics/headnode) 
 
 Then you should be able to access the following urls:
-- http://localhost:9999?token=<jupyter-token> for Jupyter, where <jupyter-token> is jupyter-token that will show up in run history (find in ml.azure.com under Experiments/dask/<run id>/details/metrics/jupyter-token) 
-- http://localhost:9797 for the Dask Dashboard
+
+- ``http://localhost:9999?token=<jupyter-token>`` for Jupyter, where <jupyter-token> is jupyter-token that will show up in run history (find in ml.azure.com under Experiments/dask/<run id>/details/metrics/jupyter-token) 
+- ``http://localhost:9797`` for the Dask Dashboard
