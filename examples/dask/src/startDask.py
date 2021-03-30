@@ -24,7 +24,6 @@ def flush(proc, proc_log):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument("--datastore")
     parser.add_argument("--jupyter_token", default=uuid.uuid1().hex)
     parser.add_argument("--script")
 
@@ -73,7 +72,6 @@ if __name__ == '__main__':
         Run.get_context().log("cluster",
                               "scheduler: {scheduler}, dashboard: {dashboard}".format(scheduler=scheduler,
                                                                                       dashboard=dashboard))
-        Run.get_context().log("datastore", args.datastore)
 
         cmd = ("jupyter lab --ip 0.0.0.0 --port 8888" + \
                           " --NotebookApp.token={token}" + \
@@ -83,15 +81,15 @@ if __name__ == '__main__':
         jupyter_flush = threading.Thread(target=flush, args=(jupyter_proc, jupyter_log))
         jupyter_flush.start()
 
-        while not list(list_running_servers()):
-            time.sleep(5)
+        #while not list(list_running_servers()):
+        #    time.sleep(5)
 
-        jupyter_servers = list(list_running_servers())
-        assert (len(jupyter_servers) == 1), "more than one jupyter server is running"
+        #jupyter_servers = list(list_running_servers())
+        #assert (len(jupyter_servers) == 1), "more than one jupyter server is running"
 
         Run.get_context().log("jupyter",
-                              "ip: {ip_addr}, port: {port}".format(ip_addr=ip, port=jupyter_servers[0]["port"]))
-        Run.get_context().log("jupyter-token", jupyter_servers[0]["token"])
+                              "ip: {ip_addr}, port: {port}".format(ip_addr=ip, port='8888'))
+        Run.get_context().log("jupyter-token", args.jupyter_token)
 
         cmd = "dask-scheduler " + "--port " + scheduler.split(":")[1] + " --dashboard-address " + dashboard
         print(cmd)
