@@ -78,7 +78,7 @@ For debugging and interactive work, the script also launches a Jupyter server on
 a node of the cluster (assuming the cluster is not in a VNet). Make sure to provide your SSH public key while setting up the cluster (in ml.azure.com Create Compute Cluster/Settings/Enable SSH access/Use existing public key).
 Then, on your local laptop computer, you can run a command similar to the one below:
 
-.. code-block:: bash
+.. code-block:: console
   ssh azureuser@20.67.29.11 -p 50000 -L 9999:10.0.0.4:8888 -L 9797:10.0.0.4:8787
 
 In the above example:
