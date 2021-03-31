@@ -121,3 +121,5 @@ Delete a data asset. Note that this not delete the underlying data files in your
 
 Access data in a job
 --------------------
+When referencing a data asset in your job configuration, you can either reference a registered data asset (created through ml data create), or you can define the data
+inline your job configuration. It is not necessary to explicitly create a data asset in order to access data for a job.
