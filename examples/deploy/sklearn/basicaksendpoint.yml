@@ -1,6 +1,6 @@
 name: akstestgh
 type: online
-infrastructure: azureml:devplatv2aks
+target: azureml:devplatv2aks
 auth_mode: Key
 traffic:
     etblue: 80

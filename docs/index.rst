@@ -10,8 +10,8 @@ Welcome to the Azure ML Developer Platform 2.0 private preview! Please use the n
 
 Currently supported:
 ~~~~~~~~~~~~~~~~~~~~
-- Command Job for normal and distributed training
-- Sweep Job for hyperparameter tuning
+- CommandJob for single-node and distributed training
+- SweepJob for hyperparameter tuning
 - Asset management for data / model / environment
 
 Coming soon:

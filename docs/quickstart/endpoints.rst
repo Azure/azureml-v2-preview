@@ -38,17 +38,15 @@ Minimal endpoint specification - batch
       environment: azureml:AzureML-Minimal/versions/1
       scale_settings: 
         node_count: 1
-      batch_settings:
-        partitioning_scheme:
-          mini_batch_size: 5  
-        output_configuration:
-          output_action: AppendRow 
-          append_row_file_name: append_row.txt
-        retry_settings:
-          maximum_retries: 3
-          timeout_in_seconds: 30  
-        error_threshold: 10
-        logging_level: info  
+      mini_batch_size: 5  
+      output_configuration:
+        output_action: AppendRow 
+        append_row_file_name: append_row.txt
+      retry_settings:
+        max_retries: 3
+        timeout: 30  
+      error_threshold: 10
+      logging_level: info  
       compute:
         target: azureml:cpu-cluster
 

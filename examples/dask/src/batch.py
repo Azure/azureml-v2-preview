@@ -5,8 +5,12 @@ import os, uuid, time
 import argparse
 import mlflow
 
+# if running in a notebook, uncomment these 2 lines
+# import sys
+# sys.argv = ['']
+
 parser = argparse.ArgumentParser()
-parser.add_argument("--nyc_taxi_dataset")
+parser.add_argument("--nyc_taxi_dataset", default='AZURE_ML_INPUT0')
 args = parser.parse_args()
 dataset = args.nyc_taxi_dataset
 print(f"dataset location: {dataset}")
@@ -27,7 +31,7 @@ df = dd.read_csv(f'{dataset}/nyctaxi/*.csv',
 # but without making use of the dataset that was provided
 # instead it is pulling the data from a hard-code path on the
 # default_datastore
-
+#
 # from azureml.core import Run
 # run = Run.get_context()
 # ws = run.experiment.workspace
@@ -195,5 +199,5 @@ print(c)
 
 os.system('ls -alg ' + output_path)
 
-print('shutting down cluster')
-c.shutdown()
+# print('shutting down cluster')
+# c.shutdown()

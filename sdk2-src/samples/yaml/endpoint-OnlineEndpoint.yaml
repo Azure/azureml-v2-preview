@@ -2,7 +2,7 @@
 location: centraluseuap
 name: myendpoint2
 type: online
-infrastructure: azureml:myakscluster
+target: azureml:myakscluster
 auth_mode: key
 traffic:
     blue: 0

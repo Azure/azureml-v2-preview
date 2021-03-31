@@ -55,7 +55,7 @@ Option 2: Input is cloud path.
 
 .. code-block:: bash
   
-  az ml endpoint invoke --name mybatchendpoint --type batch --input-datastore azureml:workspaceblobstore --input-path mnist
+  az ml endpoint invoke --name mybatchendpoint --type batch --input-datastore workspaceblobstore --input-path mnist
 
 
 Option 3: Input is local path.
@@ -110,7 +110,7 @@ One batch endpoint can have multiple deployments hosting different models. Use b
 
 .. code-block:: bash
   
-  az ml endpoint update --name mybatchendpoint --type batch --deployment-file examples/endpoints/batch/add-deployment.yml
+  az ml endpoint update --name mybatchendpoint --type batch --deployment autolog_deployment --deployment-file examples/endpoints/batch/add-deployment.yml
 
 This sample uses an MLFlow model, the deployment yaml is much simpler, as environment and scoring script can be auto generated.
 
@@ -162,7 +162,7 @@ Please provide the full ARMId. Replace with your own information following the s
   {
       "properties": {
           "dataset": {
-              "dataInputType": 1,
+              "dataInputType": "DatasetId",
               "datasetId": "/subscriptions/{{subscription}}/resourceGroups/{{resourcegroup}}/providers/Microsoft.MachineLearningServices/workspaces/{{workspaceName}}/data/{{datasetName}}/versions/1"
               }
           }        
@@ -176,11 +176,8 @@ Option 2: Input is cloud path.
   {
       "properties": {
           "dataset": {
-              "dataInputType": "DataUrl",
-              "AssetPath": {
-                  "Path": "https://pipelinedata.blob.core.windows.net/sampledata/nytaxi/taxi-tip-data.csv",
-                  "IsDirectory": false
-              }
+            "dataInputType": "DataUrl",
+            "Path": "https://pipelinedata.blob.core.windows.net/sampledata/nytaxi/taxi-tip-data.csv"                  
           }        
       }
   }

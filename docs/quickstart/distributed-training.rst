@@ -63,9 +63,6 @@ and a worker on the first node of the cluster and a worker on all the other node
   The input dataset will be 24GB in the case of `--months 12`, the parquet output is about 4GB. Using STANDARD_D15_V2 VMs to build your cluster will give you close to 1TB of
   free disk space and works well even for bigger datasets.
 
-For debugging and interactive work, the script also launches a Jupyter server on the first node which can be accessed most 
-easily from a Compute Instance deployed to the same VNet as the Compute Cluster. 
-
 If a --script parameter is provided, then the script will run that script after the cluster has been brought up and the job 
 will be terminated after the script has completed. To start a DASK cluster for interactive work, don't provide a --script parameter, 
 which will have the job run indefinitely (i.e. until you terminate it).
@@ -75,4 +72,24 @@ different nodes of the cluster by just checking the $RANK environment variable. 
 name for that mode of launching a distributed job.
 
 .. literalinclude:: ../../examples/dask/dask-job.yaml
-   :language: yaml
+  :language: yaml
+
+For debugging and interactive work, the script also launches a Jupyter server on the first node which can be accessed by ssh tunnelling into
+a node of the cluster (assuming the cluster is not in a VNet). Make sure to provide your SSH public key while setting up the cluster (in ml.azure.com Create Compute Cluster/Settings/Enable SSH access/Use existing public key).
+Then, on your local laptop computer, you can run a command similar to the one below:
+
+.. code-block:: console
+
+  ssh azureuser@20.67.29.11 -p 50000 -L 9999:10.0.0.4:8888 -L 9797:10.0.0.4:8787
+
+In the above example:
+
+- ``20.67.29.11`` is the public IP address of any of the nodes on the cluster (find in ml.azure.com under Compute/Compute Clusters/<cluster name>/Nodes)
+- ``50000`` is the port of that same node
+- ``9999`` and ``9797`` are the ports where the jupyter server and the dask dashboard will be reachable on your local machine
+- ``10.0.0.4`` is the private IP of the head node of the job, as will be logged by the job and show up in run history (find in ml.azure.com under Experiments/dask/<run id>/details/metrics/headnode) 
+
+Then you should be able to access the following urls:
+
+- ``http://localhost:9999?token=<jupyter-token>`` for Jupyter, where <jupyter-token> is jupyter-token that will show up in run history (find in ml.azure.com under Experiments/dask/<run id>/details/metrics/jupyter-token) 
+- ``http://localhost:9797`` for the Dask Dashboard

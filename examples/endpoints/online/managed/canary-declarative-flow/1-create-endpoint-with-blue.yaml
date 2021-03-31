@@ -1,7 +1,6 @@
 # yaml-language-server: $schema=https://azuremlsdk2.blob.core.windows.net/latest/onlineEndpoint.schema.json
 name: my-endpoint
 type: online
-infrastructure: managed
 auth_mode: aml_token
 traffic:
   blue: 100
@@ -24,7 +23,7 @@ deployments:
       conda_file: file:../../model-1/environment/conda.yml
       docker:
         image: mcr.microsoft.com/azureml/intelmpi2018.3-ubuntu16.04:20210301.v1
-    sku: Standard_F2s_v2
+    instance_type: Standard_F2s_v2
     scale_settings:
       scale_type: manual
       instance_count: 1

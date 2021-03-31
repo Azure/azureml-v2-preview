@@ -59,10 +59,13 @@ Open the resource group from azure portal -> open the endpoint and deployment AR
 Step 5: Check out log analytics
 -------------------------------------------------
 
-1. Create a log analytics workspace. Note: During preview period, both loganalytics workspace and azure ml workspace has to be in either westeurope or westus2.
-1. Open the ARM resource page from endpoint -> select `Diagnostic settings` -> Add settings (add a log analytics workspace - create one if needed)
-2. Make some scoring requests for logs to flow to Log Analytics
-3. Open the log analytics workspace -> Click on `Logs` on left nav -> Close the `Queries` popup opend by default -> double click on `AmlOnlineEndpointConsoleLog` -> click `Run`
+1. Create a log analytics workspace. Note: During preview period, both log analytics workspace and azure ml workspace has to be in either westeurope or westus2.
+
+2. Open the ARM resource page from endpoint -> select `Diagnostic settings` -> Add settings (add a log analytics workspace - create one if needed).
+
+3. Make some scoring requests for logs to flow to Log Analytics.
+
+4. Open the log analytics workspace -> Click on `Logs` on left nav -> Close the `Queries` popup opened by default -> double click on `AmlOnlineEndpointConsoleLog` -> click `Run`.
 
 Step 6: [Optionally] Delete the endpoint along with the deployment
 ------------------------------------------------------------------
