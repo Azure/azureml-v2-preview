@@ -65,7 +65,7 @@ Create YAML config file, e.g. data_from_datastore.yml:
 
   name: my-data
   version: 1
-  datastore: my-datastore
+  datastore: azureml:my-datastore
   path: ./mnist
 
 Create data:
