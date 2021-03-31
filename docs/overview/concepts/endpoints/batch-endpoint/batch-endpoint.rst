@@ -38,7 +38,10 @@ Start a batch scoring job
 Start a batch scoring job by passing the input data. The input data can be a registered data, cloud path or local path. You will get a job name (a GUID) from the response.
 You can also use REST API to start a batch scoring job, see the Appendix below.
 
-**Note**: During private preview, only FileDataset is supported. Configurable output location is working in progress. Scoring outputs will be stored in your workspace's default blob store now.
+**Note**: During private preview, only FileDataset is supported. 
+
+Start a batch scoring job with different input options
+``````````````````````````````````````````````````````
 
 Option 1: Input is registered data.
 
@@ -63,6 +66,26 @@ Option 3: Input is local path.
 .. code-block:: bash
   
   az ml endpoint invoke --name mybatchendpoint --type batch --input-local-path <local-data-path>
+
+Configure output location when start a batch scoring job
+````````````````````````````````````````````````````````
+
+Scoring outputs are by default stored in a folder named job id (a GUID) in the workspace's default store. You can configure the output path when invoking.
+
+.. code-block:: bash
+  
+  az ml endpoint invoke --name mybatchendpoint --type batch --input-data azureml:mnist-data:1 --output-path mypath
+
+Overwrite settings when start a batch scoring job
+`````````````````````````````````````````````````
+
+Some settings can be overwritten when start a batch scoring job. 
+Use ``--mini-batch-size`` to overwrite mini_batch_size if different size of input data is used. Use ``--instance-count`` to overwrite instance_count if different compute resource is needed for this job.
+Use ``--set`` to overwrite other settings including error_threshold and logging_level.
+
+.. code-block:: bash
+  
+  az ml endpoint invoke --name mybatchendpoint --type batch --input-data azureml:mnist-data:1 --mini-batch-size 10 --instance-count 2
 
 Check batch scoring job execution progress
 ------------------------------------------
