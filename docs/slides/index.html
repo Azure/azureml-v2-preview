@@ -336,10 +336,9 @@
 							environment: azureml:AzureML-Minimal:1
 							compute:
 								target: azureml:testCompute
-						limits:
-							max_total_trials: 100
-							max_concurrent_trials: 10
-							timeout_minutes: 10000
+						max_total_trials: 100
+						max_concurrent_trials: 10
+						timeout_minutes: 10000
 						early_termination:
 							policy_type: truncation_selection
 							evaluation_interval: 100
@@ -379,10 +378,9 @@
 							environment: azureml:AzureML-Minimal:1
 							compute:
 								target: azureml:testCompute
-						limits:
-							max_total_trials: 100
-							max_concurrent_trials: 10
-							timeout_minutes: 10000
+						max_total_trials: 100
+						max_concurrent_trials: 10
+						timeout_minutes: 10000
 						early_termination:
 							policy_type: truncation_selection
 							evaluation_interval: 100
@@ -476,7 +474,7 @@
 						deployments:
 							blue: #blue deployment
 								model: azureml:my-model-123:3
-								sku: Standard_FS4_v2
+								instance_type: Standard_FS4_v2
 								scale_settings:
 									scale_type: manual
 									instance_count: 1

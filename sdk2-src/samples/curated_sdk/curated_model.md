@@ -1,7 +1,7 @@
 ## Model for CLI
 
 ```bash
-az ml model create --name <model-name> --version <version> --path <path>
+az ml model create --name <model-name> --version <version> --local-path <path>
 az ml model create --file <file_path>
 az ml model show --name <model-name> --version <version>
 az ml model list

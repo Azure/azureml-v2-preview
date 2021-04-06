@@ -26,7 +26,6 @@ trial:
     training_data:
       data: azureml:irisdata:1
       mode: mount
-limits:
-  max_total_trials: 10
-  max_concurrent_trials: 10
-  timeout_minutes: 20
+max_total_trials: 10
+max_concurrent_trials: 10
+timeout_minutes: 20

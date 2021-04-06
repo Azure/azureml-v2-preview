@@ -2,7 +2,6 @@
 name: my-model
 asset_path: ./model
 version: 4
-environment: azureml:AzureML-Minimal:1
 description: "this is my test model"
 tags:
   foo: bar

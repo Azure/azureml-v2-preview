@@ -22,10 +22,9 @@ trial:
     value:
       data: azureml:/subscriptions/5f08d643-1910-4a38-a7c7-84a39d4f42e0/resourceGroups/sdk_vnext_cli/providers/Microsoft.MachineLearningServices/workspaces/sdk_vnext_cli/data/vnext_test/versions/1
       mode: Mount
-limits:
-  max_total_runs: 100
-  max_concurrent_runs: 10
-  max_duration_minutes: 10000
+max_total_runs: 100
+max_concurrent_runs: 10
+max_duration_minutes: 10000
 early_termination:
   spec: truncation
   evaluation_interval: 100

@@ -39,7 +39,7 @@ When using a YAML file to define the workspace parameters, it must follow the fo
 +------------------------+-------------------------------------------------------------------------------------------------------------------------------------------+
 | location               | [string] The location to create the workspace in.                                                                                         | 
 +------------------------+-------------------------------------------------------------------------------------------------------------------------------------------+
-| display_name           | [string] An alternative display name.                                                                                                     | 
+| friendly_name           | [string] An alternative display name.                                                                                                     | 
 +------------------------+-------------------------------------------------------------------------------------------------------------------------------------------+
 | tags                   | [object] Tags or annotations in the format of `key: value`                                                                                | 
 +------------------------+-------------------------------------------------------------------------------------------------------------------------------------------+
@@ -65,7 +65,7 @@ When using a YAML file to define the workspace parameters, it must follow the fo
 |                        |                  |    - vnet_name: Name of the existing virtual network to deploy the private endpoint to.                                |
 |                        |                  |    - subnet_name:  Name of the existing subnet to deploy the private endpoint to.                                      |
 +------------------------+------------------+------------------------------------------------------------------------------------------------------------------------+
-| customer_managed_keys  | [object] Key vault details for encrypting data with customer-managed keys. If not specified, Microsoft-managed keys will be used.         |
+| customer_managed_key   | [object] Key vault details for encrypting data with customer-managed keys. If not specified, Microsoft-managed keys will be used.         |
 |                        +------------------+------------------------------------------------------------------------------------------------------------------------+
 |                        | key_vault        | [string] The resource ID of the key vault containing the customer managed key.                                         |
 |                        +------------------+------------------------------------------------------------------------------------------------------------------------+

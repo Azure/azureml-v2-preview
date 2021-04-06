@@ -24,10 +24,9 @@ trial:
   environment: azureml:AzureML-Minimal:1
   compute:
     target: azureml:goazurego
-limits:
-  max_total_trials: 100
-  max_concurrent_trials: 10
-  timeout_minutes: 10000
+max_total_trials: 100
+max_concurrent_trials: 10
+timeout_minutes: 10000
 early_termination:
   policy_type: truncation_selection
   evaluation_interval: 100
