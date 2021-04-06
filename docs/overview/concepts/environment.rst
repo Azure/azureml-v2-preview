@@ -14,7 +14,7 @@ Manage Environments
 Creating an environment
 ----------------------
 
-Environment can be created in number of ways. For example using docker file, conda file or even a combination of two. This section shows to represent and create environments using YAML files.
+Environments can be created in a number of ways. For example using docker file, conda file or even a combination of two. This section shows how to represent and create environments using YAML files.
 
 Example - Create Environment from YAML file representing the environment.
 
@@ -26,7 +26,7 @@ Example - Create Environment from YAML file representing the environment.
 .. literalinclude:: ../../../examples/train/fastai/pets-resnet34/fastai_vision_env.yml
    :language: yaml
    
-Environments can be created in number of ways. These examples shows YAML files representing environments for supported scenarios.
+The following examples show YAML files representing environments for supported scenarios.
 
 Creating Environment using existing Docker Image:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

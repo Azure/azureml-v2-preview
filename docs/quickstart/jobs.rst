@@ -1,5 +1,5 @@
 Train Models (Create Jobs)
-============
+==========================
 
 A Job is a Resource that specifies all aspects of a computation job. It aggregates 3 things:
 
@@ -135,7 +135,7 @@ Next the input data needs to be moved to the cloud -- therefore the user can cre
 The above command uploads the data from the local folder `.data/` to the `workspaceblobstore` (default). It creates a data entity and registers it under the name `irisdata`.
 
 Create your xgboost training job
-~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. literalinclude:: ../../examples/iris/iris_job.yml
    :language: yaml

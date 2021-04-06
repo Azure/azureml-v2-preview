@@ -67,14 +67,15 @@ You should see the following output:
 
     Group
         az ml
-
+            This command group is experimental and under development. Reference and support levels:
+            https://aka.ms/CLI_refstatus
     Subgroups:
-        code        [Experimental] : Ml code.
-        compute     [Experimental] : Ml compute.
-        data        [Experimental] : Ml data.
-        datastore   [Experimental] : Ml datastore.
-        endpoint    [Experimental] : Ml endpoint.
-        environment [Experimental] : Ml environment.
-        job         [Experimental] : Ml job.
-        model       [Experimental] : Ml model.
-        workspace   [Experimental] : Ml workspace.
+        code        : Manage Azure ML code assets.
+        compute     : Manage Azure ML compute resources.
+        data        : Manage Azure ML data assets.
+        datastore   : Manage Azure ML datastores.
+        endpoint    : Manage Azure ML endpoints.
+        environment : Manage Azure ML environments.
+        job         : Manage Azure ML jobs.
+        model       : Manage Azure ML models.
+        workspace   : Manage Azure ML workspaces.
