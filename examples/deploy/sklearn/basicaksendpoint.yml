@@ -10,7 +10,7 @@ deployments:
         model: azureml:my-model-1:1
         code_configuration:
             code:
-                local_path code
+                local_path: code
             scoring_script: main.py
         environment:
             name: sklearn-aks-env
@@ -31,7 +31,7 @@ deployments:
         model: azureml:my-model-2:1
         code_configuration:
             code:
-                local_path code
+                local_path: code
             scoring_script: main.py
         environment:
             name: sklearn-aks-env
