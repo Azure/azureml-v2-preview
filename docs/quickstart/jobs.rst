@@ -183,7 +183,7 @@ This is to allow further debugging if data store does not work.
     code: 
       directory: train
   
-Sweep Jobs (Hyperparameter Tuning)
+Sweep jobs (Hyperparameter Tuning)
 ----------------------------------
 
 A Sweep job executes a hyperparameter sweep of a specific search space for a job. The below example uses the command job from the previous section as the 'trial' job in the sweep. It sweeps over different learning rates and subsample rates for each child run. The search space parameters will be passed as arguments to the command in the trial job.
@@ -198,10 +198,46 @@ This can be executed by running (after setting compute name in yaml):
     az ml job create --file iris_sweep.yml
 
 
+AutoML jobs (Azure Automated Machine Learning jobs) - PRIVATE PREVIEW state
+---------------------------------------------------------------------------
+
+**NOTE: 'AutoML job' (CLI) is currently in PRIVATE PREVIEW.** 
+*In order to get access to that PRIVATE PREVIEW for AutoML, please send an email to CESARDL@MICROSOFT.COM requesting access to it.*
+
+Automated Machine Learning, also referred to as Automated ML or AutoML, is the process of automating the time consuming, iterative tasks of machine learning model development. It allows data scientists, analysts, and developers to quickly and easily build ML models with high scale, efficiency, and productivity all while sustaining model quality.
+
+Apply automated ML when you want Azure Machine Learning to train and tune a model for you using the target metric you specify. Automated ML democratizes the machine learning model development process.
+
+Azure AutoML CLI currently supports these three ML tasks:
+
+- Classification (Binary classification and multi-class classification)
+- Regression
+- Time Series Forecasting
+
+The below example uses the command job similar to previous sections but using a specific .YAML configuration specially made for AutoML jobs. 
+The .YAML config below will train multiple models until it finds the best model under the configuration settings (.YAML config file) provided to AutoML.
+
+
+.. literalinclude:: ../../examples/AutoML/classification/01-portoseguro-classif-job-single-dataset.yaml
+   :language: yaml
+
+In order to reference the input dataset, for this PRIVATE PREVIEW only, you need to first upload the dataset into your Azure ML Workspace, then reference to it from the .YAML. In next previews, you will also be able to directly provide a local path to a dataset file and it'll be uploaded automatically to Azure ML.
+
+For the above example, you can download the dataset .csv file from this HTTP URL:
+
+https://azmlworkshopdata.blob.core.windows.net/safedriverdata/porto_seguro_safe_driver_prediction_train.csv
+
+
+This AutoML job can be executed by running the following CLI command (after setting your compute name in the YAML above):
+
+.. code-block:: console
+
+    az ml job create --file 01-portoseguro-classif-job-single-dataset.yaml
+
+
 Other Job Types
 ---------------
 
 Coming soon:
 
-- PipelineJob
-- AutoMLJob (s)
+- PipelineJob (s)

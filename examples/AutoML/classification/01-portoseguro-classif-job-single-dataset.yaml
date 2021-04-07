@@ -1,0 +1,23 @@
+type: automl_job
+name: 01-portoseguro-cli-classif-job-single-dataset-03
+experiment_name: Portoseguro-Classification-CLI-Tests
+compute:
+  target: azureml:cpu-cluster
+general:
+  task: classification
+  primary_metric: AUC_weighted
+  enable_model_explainability: true
+limits:
+  timeout_minutes: 120
+  max_total_trials: 50
+  max_concurrent_trials: 4
+data:
+  training:
+    dataset: azureml:porto_seguro_safe_driver_single_dataset:1
+    target_column_name: target
+  validation:
+    n_cross_validations: 5
+featurization:
+  featurization_config: auto
+training:
+  enable_early_termination: true
