@@ -81,12 +81,13 @@ Overwrite settings when start a batch scoring job
 `````````````````````````````````````````````````
 
 Some settings can be overwritten when start a batch scoring job. 
-Use ``--mini-batch-size`` to overwrite mini_batch_size if different size of input data is used. Use ``--instance-count`` to overwrite instance_count if different compute resource is needed for this job.
-Use ``--set`` to overwrite other settings including error_threshold and logging_level.
+Use ``--mini-batch-size`` to overwrite mini_batch_size if different size of input data is used. 
+Use ``--instance-count`` to overwrite instance_count if different compute resource is needed for this job.
+Use ``--set`` to overwrite other settings including max_retries, timeout, error_threshold and logging_level.
 
 .. code-block:: bash
   
-  az ml endpoint invoke --name mybatchendpoint --type batch --input-data azureml:taxi-tip-data:1 --mini-batch-size 10 --instance-count 2
+  az ml endpoint invoke --name mybatchendpoint --type batch --input-data azureml:taxi-tip-data:1 --set retry_settings.max_retries=1
 
 Check batch scoring job execution progress
 ------------------------------------------
@@ -156,6 +157,12 @@ Use ``endpoint show`` to check which deployment takes 100 traffic, or follow bel
 2. Click the endpoint link, click `Published pipelines`.
 3. The deployment with 100 traffic has a `Default` tag.
 
+Now you can trigger a batch scoring job using the new deployment.
+
+.. code-block:: bash
+  
+  az ml endpoint invoke --name mybatchendpoint --type batch --input-data azureml:mnist-data:1 --mini-batch-size 10 --instance-count 2
+
 Appendix: start a batch scoring job using REST clients
 ------------------------------------------------------
 
@@ -188,8 +195,7 @@ Please provide the full ARMId. Replace with your own information following the s
           "dataset": {
               "dataInputType": "DatasetId",
               "datasetId": "/subscriptions/{{subscription}}/resourceGroups/{{resourcegroup}}/providers/Microsoft.MachineLearningServices/workspaces/{{workspaceName}}/data/{{datasetName}}/versions/1"
-              }
-          },
+              },
           "outputDataset" : {
             "datastoreId": "/subscriptions/{{subscriptionId}}/resourceGroups/{{resourceGroup}}/providers/Microsoft.MachineLearningServices/workspaces/{{workspaceName}}/datastores/{{datastorename}}",
             "path": "mypath"
