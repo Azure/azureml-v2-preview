@@ -12,7 +12,6 @@ All environments are built as Docker images.
 
 Create an environment
 ---------------------
-
 Environments can be created in a number of ways. They can be defined from a Docker image, Dockerfile, or Conda specification file. 
 
 The following examples show the different ways to create an environment.
@@ -25,19 +24,23 @@ Use the help option for more information on all the valid parameters:
 
 Create an environment from a Docker image
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+You can define an environment from an existing Docker image in a publicly accessibly repo by providing the image name.
+
+(Images from private repositories will be supported in an upcoming release).
 
 .. code-block:: console
 
   az ml environment create --file examples/environments/docker_env.yml
 
 
-where `fastai-env.yml` contains:
+where `docker_env.yml` contains:
 
 .. literalinclude:: ../../../examples/environments/docker_env.yml
    :language: yaml
 
 Create an environment from a Dockerfile
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+You can also create an environment by providing a custom Dockerfile. Azure ML will build the Docker image from this Dockerfile when the environment is used and the image will be pushed to the workspace's Azure Container Registry.
 
 .. code-block:: console
 
@@ -50,14 +53,15 @@ where `fastai_vision_env.yml` contains:
 
 Create an environment from a Conda file
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Environments can also be created from a Conda specification. The Conda file should adhere to Conda's environment yaml file structure.
 
 .. code-block:: console
 
-  az ml environment create --file examples/environments/conda_env.yml
+  az ml environment create --file examples/environments/docker_conda_env.yml
 
 Where `conda_env.yml` contains: 
 
-.. literalinclude:: ../../../examples/environments/conda_env.yml
+.. literalinclude:: ../../../examples/environments/docker_conda_env.yml
    :language: yaml
 
 where `environment.yml` contains: 
@@ -65,19 +69,8 @@ where `environment.yml` contains:
 .. literalinclude:: ../../../examples/environments/environment.yml
    :language: yaml
 
-Note: It is required to have interpreter version specified in the conda specification.
-
-Creating Environment using DockerFile + Conda File:
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-.. code-block:: console
-
-  az ml environment create --file examples/environments/docker_conda_env.yml
-
-where `docker_conda_env.yml` contains: 
-
-.. literalinclude:: ../../../examples/environments/docker_conda_env.yml
-   :language: yaml
+.. note::
+  It is required to have the Python interpreter version specified in the conda specification.
 
 
 Update an environment
@@ -110,11 +103,6 @@ List all environments in a workspace:
 
   az ml environment list
 
-List all environment versions under a specific name:
-
-.. code-block:: console
-
-  az ml environment list --name my-env
 
 Delete an environment
 ---------------------
