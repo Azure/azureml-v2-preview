@@ -17,7 +17,8 @@ Create a batch endpoint for batch scoring.
   
   az ml endpoint create --type batch --file examples/endpoints/batch/create-batch-endpoint.yml
 
-Below is the yaml file. To use a registered model, please replace the model section in yaml with **model: azureml:<modelName>:<modelVersion>**.
+No-code deployment is supported for MLflow model, that is environment and scoring script will be auto generated. Below is the yaml file. 
+To use a registered model, please replace the model section in yaml with **model: azureml:<modelName>:<modelVersion>**.
 
 .. literalinclude:: ../../../../../examples/endpoints/batch/create-batch-endpoint.yml
    :language: yaml
@@ -47,18 +48,18 @@ Option 1: Input is registered data.
 
 .. code-block:: bash
   
-  az ml endpoint invoke --name mybatchendpoint --type batch --input-data azureml:mnist-data:1
+  az ml endpoint invoke --name mybatchendpoint --type batch --input-data azureml:taxi-tip-data:1
 
 
 Option 2: Input is cloud path.
 
 .. code-block:: bash
   
-  az ml endpoint invoke --name mybatchendpoint --type batch --input-path https://pipelinedata.blob.core.windows.net/sampledata/mnist
+  az ml endpoint invoke --name mybatchendpoint --type batch --input-path https://pipelinedata.blob.core.windows.net/sampledata/nytaxi/taxi-tip-data.csv
 
 .. code-block:: bash
   
-  az ml endpoint invoke --name mybatchendpoint --type batch --input-datastore workspaceblobstore --input-path mnist
+  az ml endpoint invoke --name mybatchendpoint --type batch --input-datastore azureml:workspaceblobstore --input-path taxi-tip-data
 
 
 Option 3: Input is local path.
@@ -74,7 +75,7 @@ Scoring outputs are by default stored in a folder named job id (a GUID) in the w
 
 .. code-block:: bash
   
-  az ml endpoint invoke --name mybatchendpoint --type batch --input-data azureml:mnist-data:1 --output-path mypath
+  az ml endpoint invoke --name mybatchendpoint --type batch --input-data azureml:taxi-tip-data:1 --output-datastore azureml:workspaceblobstore --output-path mypath
 
 Overwrite settings when start a batch scoring job
 `````````````````````````````````````````````````
@@ -133,9 +134,9 @@ One batch endpoint can have multiple deployments hosting different models. Use t
 
 .. code-block:: bash
   
-  az ml endpoint update --name mybatchendpoint --type batch --deployment autolog_deployment --deployment-file examples/endpoints/batch/add-deployment.yml
+  az ml endpoint update --name mybatchendpoint --type batch --deployment mnist_deployment --deployment-file examples/endpoints/batch/add-deployment.yml
 
-This sample uses an MLFlow model, the deployment yaml is much simpler, as environment and scoring script can be auto generated.
+This sample uses a non-MLFlow model, you will need to provide environment and scoring script.
 
 .. literalinclude:: ../../../../../examples/endpoints/batch/add-deployment.yml
    :language: yaml
@@ -147,7 +148,7 @@ When invoking an endpoint, the deployment with 100 traffic is in use. Use the co
 
 .. code-block:: bash
   
-  az ml endpoint update --name mybatchendpoint --type batch --traffic autolog_deployment:100
+  az ml endpoint update --name mybatchendpoint --type batch --traffic mnist_deployment:100
 
 Use ``endpoint show`` to check which deployment takes 100 traffic, or follow below steps to check in the UI.
 
@@ -188,7 +189,11 @@ Please provide the full ARMId. Replace with your own information following the s
               "dataInputType": "DatasetId",
               "datasetId": "/subscriptions/{{subscription}}/resourceGroups/{{resourcegroup}}/providers/Microsoft.MachineLearningServices/workspaces/{{workspaceName}}/data/{{datasetName}}/versions/1"
               }
-          }        
+          },
+          "outputDataset" : {
+            "datastoreId": "/subscriptions/{{subscriptionId}}/resourceGroups/{{resourceGroup}}/providers/Microsoft.MachineLearningServices/workspaces/{{workspaceName}}/datastores/{{datastorename}}",
+            "path": "mypath"
+        }        
       }
   }
 
@@ -200,7 +205,7 @@ Option 2: Input is cloud path.
       "properties": {
           "dataset": {
             "dataInputType": "DataUrl",
-            "Path": "https://pipelinedata.blob.core.windows.net/sampledata/nytaxi/taxi-tip-data.csv"                  
+            "Path": "https://pipelinedata.blob.core.windows.net/sampledata/mnist"                  
           }        
       }
   }

@@ -3,34 +3,23 @@ description: my sample batch endpoint
 type: batch
 auth_mode: aad_token
 traffic:
-  mnist_deployment: 100
+  autolog_deployment: 100
 
 deployments:
-  mnist_deployment:
+  autolog_deployment:
     model: 
-      name: mnist
+      name: autolog
       version: 1
-      local_path: ./mnist/model/
-    code_configuration:
-      code:
-        local_path: ./mnist/code/
-      scoring_script: digit_identification.py
-    environment: 
-      name: mnist-env
-      version: 1
-      path: .
-      conda_file: file:./mnist/environment/conda.yml
-      docker:
-        image: mcr.microsoft.com/azureml/intelmpi2018.3-ubuntu16.04:20210301.v1
-    mini_batch_size: 5
+      local_path: ./autolog_nyc_taxi
+    mini_batch_size: 1
     output_configuration:
       output_action: append_row
       append_row_file_name: predictions.txt
     retry_settings:
       max_retries: 3
       timeout: 30
-    error_threshold: 10 
+    error_threshold: -1 
     logging_level: info
     compute:
       target: azureml:cpuCompute
-      instance_count: 1
+      instance_count: 1   
