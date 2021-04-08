@@ -55,6 +55,10 @@ Create an environment from a Conda file
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Environments can also be created from a Conda specification. The Conda file should adhere to Conda's environment yaml file structure.
 
+Note that you will still need to provide the base Docker image or Dockerfile to use for the environment. If you do not need to provide your own custom image or Dockerfile, you can use one of the official Azure ML Ubuntu Linux-based base images, e.g. "mcr.microsoft.com/openmpi3.1.2-cuda10.2-cudnn8-ubuntu18.04". You can see the full set of supported images in the https://github.com/Azure/AzureML-Containers GitHub repo.
+
+Azure ML will build a Docker image from these specifications, which includes creating a Conda environment with the Conda dependencies specified. Azure ML will execute your job in that Conda environment.
+
 .. code-block:: console
 
   az ml environment create --file examples/environments/docker_conda_env.yml
@@ -70,7 +74,7 @@ where `environment.yml` contains:
    :language: yaml
 
 .. note::
-  It is required to have the Python interpreter version specified in the conda specification.
+  It is required to have the Python interpreter version specified in the Conda specification.
 
 
 Update an environment
