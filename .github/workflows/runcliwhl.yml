@@ -22,7 +22,7 @@ jobs:
       with:
         python-version: 3.7
     - run: |
-        az extension add --source https://azuremlsdktestpypi.blob.core.windows.net/wheels/sdk-cli-v2/ml-0.0.63-py3-none-any.whl --pip-extra-index-urls https://azuremlsdktestpypi.azureedge.net/sdk-cli-v2 -y
+        az extension add --source https://azuremlsdktestpypi.blob.core.windows.net/wheels/sdk-cli-v2/ml-0.0.64-py3-none-any.whl --pip-extra-index-urls https://azuremlsdktestpypi.azureedge.net/sdk-cli-v2 -y
         # NOTE: If the above line number is changed (currently #25), please update installation.rst (cli install instructions is pulled from here)
     - run: az ml -h
     - run: az ml job -h
