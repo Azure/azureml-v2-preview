@@ -12,5 +12,6 @@ In `azure.ml`, all concepts are represented as an entity. Entities are serializa
    concepts/data.rst
    concepts/environment.rst
    ../quickstart/jobs.rst
+   concepts/sweepjob.rst
    concepts/model.rst
    concepts/endpoint.rst
