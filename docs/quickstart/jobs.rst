@@ -58,15 +58,15 @@ The following is a fully fleshed out job specification YAML file:
 
 ``compute`` defines where you want to run your job and compute-specific information
 
-- ``target`` indicates the compute you want to run your job against. For example, ``azureml:toazurego`` refers to a compute cluster called 'goazurego' in the current workspace.
+- ``target`` indicates the compute you want to run your job against. For example, ``azureml:goazurego`` refers to a compute cluster called 'goazurego' in the current workspace.
 - You can override the compute (or any field in the YAML file) by using the ``--set`` parameter for ``az ml job create``, e.g. ``--set compute.target=azureml:cpu-cluster``
 
 ``inputs`` defines data you want mounted or downloaded for your job.
     
-- ``data`` is either the 1) reference an existing data asset in your workspace you want to use (using the ``azureml:<name>:<version>`` notation or 2) an inline definition of the data
+- ``data`` is either the 1) reference an existing data asset in your workspace you want to use (using the ``azureml:<name>:<version>`` notation) or 2) an inline definition of the data
 - ``mode`` indicates how you want the data made available on the compute for the job. 'mount' and 'download' are the two supported options.
 
-``name`` is the (optional) user-defined identifier of the job's run, which needs to be *unique*. If you do not provide a name a GUID name will be generated for you.
+``name`` is the (optional) user-defined identifier of the job's run, which needs to be *unique*. If you do not provide a name a GUID name will be generated for you. To find the generated GUID, you can either look at the job object returned by ``az ml job create`` in the ``name`` property, or you can look under the "Experiments" tab of the Studio UI. The job name corresponds to the "Run ID" in the UI.
 
 ``experiment_name`` is the (optional) experiment name you want to track your job runs under. Your runs will be tagged with this experiment name, and in the Studio UI the runs will be organized under that experiment in the "Experiments" tab. If this field is not provided, your runs will be tagged with the experiment name "Default". We recommend that you provide a custom experiment_name for each of your jobs to more easily manage your jobs' run details.
 
