@@ -1,3 +1,0 @@
-name: conda_env
-version: 1
-conda_file: file:environment.yml
