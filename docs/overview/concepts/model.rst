@@ -7,8 +7,6 @@ Create a model
 --------------
 
 Creating a model registers the model to your workspace under the specified name and version. You can create a model from a local file or directory.
-
-Run the following command to create a model.
   
 Create YAML config file, e.g. model.yml:
 
