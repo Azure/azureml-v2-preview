@@ -1,79 +1,79 @@
 Manage Models
 ==============
 
-Models are artifacts generated during a job or uploaded by a user. They contain both the binary artifacts which represent the model as well as instructions on how to use the model to make predictions.
+Models are artifacts generated during a job or uploaded by a user. They contain both the binary artifacts which represent the model as well as model metadata.
 
-At its simplest, a model is packaged code that takes an input and predicts an output. Creating a machine learning model involves selecting an algorithm and providing it with data. Training is an iterative process that produces a trained model, which encapsulates what the model learned during the training process.	
+Create a model
+--------------
 
-Create a Model
------------------
+Creating a model registers the model to your workspace under the specified name and version. You can create a model from a local file or directory.
 
-Registered models are identified by name and version. Each time you register a model with the same name as an existing one, the registry assumes that it's a new version. The version is incremented, and the new model is registered under the same name.	Models are identified by name and version. If you register a model with the same name and version as a previously registered model, this will throw an error. You can update the model version or name in the yaml. If you're using MLflow, you can point to the MLmodel file in 
+Run the following command to create a model.
+  
+Create YAML config file, e.g. model.yml:
 
-Run the following command to create a model. Note: If you're an MLflow user, you can set the path to the model folder generate in the output of MLflow runs. 
+.. code-block:: yaml
+
+  name: my-model
+  version: 1
+  description: this is a sample model
+  tags:
+    foo: bar
+  local_path: ./mnist.pt
+  
+Create the model:
 
 .. code-block:: console
 
-  az ml model create --file azureml-v2-preview/examples/simplemodel.yml
+  az ml model create --file model.yml
+  
+You can also create the model directly using the command options:
 
+.. code-block:: console
 
-What constitutes a model?
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  az ml model create --name my-model --version 1 --local-path ./mnist.pt
 
-Minimum required definition for a model:
+MLflow models
+~~~~~~~~~~~~~
+If your model was created via MLflow (mlflow.log_model()), specify the local path to the model folder that contains the model binaries and MLmodel file. 
 
-.. code-block:: yaml
+For example, if the folder containing the MLflow model is named "model":
 
-  name: my-model
-  version: 1
-  asset_path: ./model
+.. code-block:: console
 
-Full specification of a model (note: if you're using MLflow this information can be derived from the MLmodel file produced by runs):
+  az ml model create --name my-model --version 1 --local-path ./model
 
-.. code-block:: yaml
+Show details for a model
+------------------------
+Show details for the latest version of a model:
 
-  name: my-model
-  asset_path: ./model
-  version: 1
-  description: this is my test model
-  tags:
-    foo: bar
-    abc: 123
-  utc_time_created: '2020-10-19 17:44:02.096572'
-  flavors:  # MLflow specific 
-    sklearn:
-      sklearn_version: 0.19.1
-    python_function:
-      loader_module: mlflow.sklearn
-      python_version: 3.8.5
+.. code-block:: console
 
+  az ml model show --name my-model
+  
+Show details for a data asset of a specific name and version:
 
-List models 
---------------
-Run the following command to list models in your workspace, use --name paramter to list all models in a workspace with the specified name.
+.. code-block:: console
+
+  az ml model show --name my-model --version 1
+
+List models in a workspace
+--------------------------
+List all models in a workspace:
 
 .. code-block:: console
 
   az ml model list
-
-
-Show model details
-----------
-
-Run the following command to show specific models in your workspace.
+  
+List all model versions under a specific name:
 
 .. code-block:: console
 
-  az ml model show --name <model name> --version <version>
+  az ml model list --name my-model
 
-
-Delete models
--------------
-
-Run the following command to delete your model.
+Delete a model
+--------------
 
 .. code-block:: console
 
-  az ml model delete --name <model name> --version <version>
-
-
+  az ml model delete --name my-model --version 1
