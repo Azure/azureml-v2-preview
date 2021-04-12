@@ -143,31 +143,33 @@ Create your xgboost training job
    
 To submit the job:
 
-.. code-block:: console
+.. code-block:: bash
 
     az ml job create --file iris_job.yml
 
-The query parameter will return just the studio url for the run, rather than the entire job object. To view the entire job object,
-we can use the CLI to show this job:
 
-.. code-block:: bash
+Defining environment and data inline
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+The above example for configuring the job assumes that you have existing registered assets for environment and data in your workspace that you are referencing for the job.
 
-    az ml job show <name of previous job>
-
-
-The above job can be run without reference to the dataset, by removing the inputs and the arg in the command, since the script sets the default value if no data is input. 
-This is to allow further debugging if data store does not work.
+However, you may not need to or want to explicitly version and track the environment or data for your job. In that case, you can simply define those specifications inline within your job configuration YAML file:
 
 .. code-block:: yaml
-
-    # yaml-language-server: $schema=https://azuremlsdk2.blob.core.windows.net/latest/commandJob.schema.json
-    command: >-
-      python train.py
-    environment: azureml:xgboost-env:1
-    compute:
-      target: azureml:<compute-name>
+    experiment_name: xgboost-iris
     code: 
-      directory: train
+        local_path: train
+    command: >-
+        python train.py --data {inputs.training_data} 
+    environment:
+        conda_file: file:xgboost_conda.yml
+        docker: 
+            image: mcr.microsoft.com/azureml/openmpi3.1.2-ubuntu18.04
+    compute:
+        target: azureml:goazurego
+    inputs:
+        training_data:
+            data: azureml:irisdata:1
+            mode: mount
 
 Monitor a job
 -------------
