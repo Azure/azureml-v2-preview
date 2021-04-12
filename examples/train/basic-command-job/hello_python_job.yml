@@ -7,3 +7,4 @@ environment:
     image: docker.io/python
 compute:
   target: azureml:goazurego
+experiment_name: hello-world
