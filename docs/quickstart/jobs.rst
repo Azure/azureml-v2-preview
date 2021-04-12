@@ -152,7 +152,7 @@ Defining environment and data inline
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 The above example for configuring the job assumes that you have existing registered assets for environment and data in your workspace that you are referencing for the job.
 
-However, you may not need to or want to explicitly version and track the environment or data for your job. In that case, you can simply define those specifications inline within your job configuration YAML file:
+However, you may not need to or want to explicitly version and track the environment or data for your job. In that case, you can simply define those specifications inline within your job configuration YAML file, e.g. iris_job_inline.yml:
 
 .. code-block:: yaml
 
@@ -171,6 +171,12 @@ However, you may not need to or want to explicitly version and track the environ
         training_data:
             data: azureml:irisdata:1
             mode: mount
+            
+Submit the job:
+
+.. code-block:: bash
+
+    az ml job create --file iris_job_inline.yml
 
 Monitor a job
 -------------
