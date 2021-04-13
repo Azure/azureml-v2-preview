@@ -14,7 +14,7 @@ deployments:
     mini_batch_size: 1
     output_configuration:
       output_action: append_row
-      append_row_file_name: predictions.txt
+      append_row_file_name: predictions.csv
     retry_settings:
       max_retries: 3
       timeout: 30
