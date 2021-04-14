@@ -1,3 +1,4 @@
+$schema: https://azuremlsdk2.blob.core.windows.net/latest/workspace.schema.json
 name: hbi-ws
 location: EastUS
 hbi_workspace: true

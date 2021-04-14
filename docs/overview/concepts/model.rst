@@ -11,7 +11,7 @@ Creating a model registers the model to your workspace under the specified name 
 Create YAML config file, e.g. model.yml (description and tags are optional):
 
 .. code-block:: yaml
-
+  $schema: https://azuremlsdk2.blob.core.windows.net/latest/model.schema.json
   name: my-model
   version: 1
   description: this is a sample model

@@ -155,7 +155,7 @@ The above example for configuring the job assumes that you have existing registe
 However, you may not need to or want to explicitly version and track the environment or data for your job. In that case, you can simply define those specifications inline within your job configuration YAML file, e.g. iris_job_inline.yml:
 
 .. code-block:: yaml
-
+    $schema: https://azuremlsdk2.blob.core.windows.net/latest/commandJob.schema.json
     experiment_name: xgboost-iris
     code: 
         local_path: train

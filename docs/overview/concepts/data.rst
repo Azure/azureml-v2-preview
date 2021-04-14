@@ -26,7 +26,7 @@ is named 'workspaceblobstore'.
 Create YAML config file, e.g. data_from_local.yml:
 
 .. code-block:: yaml
-
+  $schema: https://azuremlsdk2.blob.core.windows.net/latest/asset.schema.json
   name: my-data
   version: 1
   local_path: ./mnist
@@ -44,7 +44,7 @@ You can also create a data asset from a storage URL or public URL.
 Create YAML config file, e.g. data_from_url.yml:
 
 .. code-block:: yaml
-
+  $schema: https://azuremlsdk2.blob.core.windows.net/latest/asset.schema.json
   name: my-data
   version: 1
   path: https://pipelinedata.blob.core.windows.net/sampledata/mnist
@@ -62,7 +62,7 @@ To create a data asset that references files in cloud storage, specify the datas
 Create YAML config file, e.g. data_from_datastore.yml:
 
 .. code-block:: yaml
-
+  $schema: https://azuremlsdk2.blob.core.windows.net/latest/asset.schema.json
   name: my-data
   version: 1
   datastore: azureml:my-datastore
