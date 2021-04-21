@@ -59,8 +59,8 @@ jobs:
     - run: |
           az ml data create --file examples/iris/iris_data.yml
       continue-on-error: true
-    - run: |
-          az ml job create --file examples/iris/iris_job.yml --name iris_$GITHUB_RUN_ID
+#     - run: |
+#           az ml job create --file examples/iris/iris_job.yml --name iris_$GITHUB_RUN_ID
     - run: |
           az ml job create --file examples/train/basic-command-job/pip_freeze_job.yml
     - run: |
