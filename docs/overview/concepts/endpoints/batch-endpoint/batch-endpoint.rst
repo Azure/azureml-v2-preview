@@ -6,7 +6,11 @@ Unlike online scoring (also known as realtime scoring) where you get the scoring
 
 Prerequisite
 ------------
-To make the samples work end to end, please create a compute cluster with name **cpuCompute**.
+Batch scoring can't be run locally, so you run them on cloud resources. Run the following command to create a CPU-enabled compute.
+
+.. code-block:: bash
+  
+  az ml compute create --name cpuCompute --type AmlCompute --min-instances 0 --max-instances 5
 
 Create a Batch Endpoint
 -----------------------
@@ -48,7 +52,7 @@ Option 1: Input is registered data.
 
 .. code-block:: bash
   
-  az ml endpoint invoke --name mybatchendpoint --type batch --input-data azureml:taxi-tip-data:1
+  az ml endpoint invoke --name mybatchendpoint --type batch --input-data azureml:<datasetName>:<datasetVersion>
 
 
 Option 2: Input is cloud path.
@@ -75,7 +79,7 @@ Scoring outputs are by default stored in a folder named job id (a GUID) in the w
 
 .. code-block:: bash
   
-  az ml endpoint invoke --name mybatchendpoint --type batch --input-data azureml:taxi-tip-data:1 --output-datastore azureml:workspaceblobstore --output-path mypath
+  az ml endpoint invoke --name mybatchendpoint --type batch --input-path https://pipelinedata.blob.core.windows.net/sampledata/nytaxi/taxi-tip-data.csv --output-datastore azureml:workspaceblobstore --output-path mypath
 
 Overwrite settings when start a batch scoring job
 `````````````````````````````````````````````````
@@ -87,7 +91,7 @@ Use ``--set`` to overwrite other settings including max_retries, timeout, error_
 
 .. code-block:: bash
   
-  az ml endpoint invoke --name mybatchendpoint --type batch --input-data azureml:taxi-tip-data:1 --set retry_settings.max_retries=1
+  az ml endpoint invoke --name mybatchendpoint --type batch --input-path https://pipelinedata.blob.core.windows.net/sampledata/nytaxi/taxi-tip-data.csv --set retry_settings.max_retries=1
 
 Check batch scoring job execution progress
 ------------------------------------------
@@ -161,7 +165,7 @@ Now you can trigger a batch scoring job using the new deployment.
 
 .. code-block:: bash
   
-  az ml endpoint invoke --name mybatchendpoint --type batch --input-data azureml:mnist-data:1 --mini-batch-size 10 --instance-count 2
+  az ml endpoint invoke --name mybatchendpoint --type batch --input-path https://pipelinedata.blob.core.windows.net/sampledata/mnist --mini-batch-size 10 --instance-count 2
 
 Appendix: start a batch scoring job using REST clients
 ------------------------------------------------------
