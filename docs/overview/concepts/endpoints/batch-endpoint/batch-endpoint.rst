@@ -139,7 +139,7 @@ One batch endpoint can have multiple deployments hosting different models. Use t
 
 .. code-block:: bash
   
-  az ml endpoint update --name mybatchendpoint --type batch --deployment mnist_deployment --deployment-file examples/endpoints/batch/add-deployment.yml
+  az ml endpoint update --name mybatchendpoint --type batch --deployment-file examples/endpoints/batch/add-deployment.yml
 
 This sample uses a non-MLFlow model, you will need to provide environment and scoring script.
 
