@@ -79,3 +79,17 @@ You should see the following output:
         job         : Manage Azure ML jobs.
         model       : Manage Azure ML models.
         workspace   : Manage Azure ML workspaces.
+
+
+Python core SDK
+----------------------------
+
+The Python core SDK provides functionalities to manage your Azure ML resources, e.g. creating a job for training, deploying an endpoint for inference or listing ML assets.
+
+
+Install with private index
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: console
+
+pip install azure-ml -U --extra-index-url https://azuremlsdktestpypi.azureedge.net/sdk-cli-v2
