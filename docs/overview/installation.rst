@@ -92,4 +92,4 @@ Install with private index
 
 .. code-block:: console
 
-pip install azure-ml --extra-index-url https://azuremlsdktestpypi.azureedge.net/sdk-cli-v2
+pip install azure-ml -U --extra-index-url https://azuremlsdktestpypi.azureedge.net/sdk-cli-v2
